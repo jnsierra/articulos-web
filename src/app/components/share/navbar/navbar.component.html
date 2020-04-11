@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#" [routerLink]="['publico']">
+    <img src="assets/img/dna-structure.png" width="30" height="30" alt="">
+    BioArticle
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['home']" *ngIf="autenticado()">Inicio</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="autenticado() && usuario.tipoUsuario == 'ALUMNO' ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArt" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Artículos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownArt">
+          <a class="dropdown-item" href="#" [routerLink]="['/subirPdfAlumnoList']">Aprobados Sin PDF</a>
+        </div>
+      </li>
+      <app-navbaradmin *ngIf="autenticado() && usuario.tipoUsuario == 'ADMIN' "></app-navbaradmin>
+      <app-navbaralumno *ngIf="autenticado() && usuario.tipoUsuario == 'ALUMNO' "></app-navbaralumno>
+      <app-navbarprofesor *ngIf="autenticado() && usuario.tipoUsuario == 'PROFESOR' "></app-navbarprofesor>
+    </ul>
+    &nbsp;&nbsp;
+    <div class="form-inline my-2 my-lg-0">
+      <a class="btn btn-outline-primary btn-sm" [routerLink]="['login']" *ngIf="!autenticado()">Ingresar</a>
+      &nbsp; &nbsp;
+      <div class="dropdown dropleft" *ngIf="autenticado()">
+        <button mat-mini-fab color="warn" class="btn btn-danger btn-sm" type="button" *ngIf="notifications == 'red' "
+          id="dropdownNotifiButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          (click)="buscaTitulosNotificaciones()">
+          {{numNotifi}}<mat-icon>notification_important</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" type="button" *ngIf="notifications != 'red'"
+          (click)="validaNotificaciones()">
+          <mat-icon>notification_important</mat-icon>
+        </button>
+        <div class="dropdown-menu center" aria-labelledby="dropdownNotifiButton">
+          <div *ngIf="usuario.tipoUsuario === 'PROFESOR'" class="container">
+            <a class="dropdown-item" href="#" [routerLink]="['/articuloProf/' + item.idArticulo]"
+              *ngFor="let item of notificacionesList">{{item.tituloIdea | uppercase }} {{item.tipoUsuario}}</a>
+          </div>
+          <div *ngIf="usuario.tipoUsuario === 'ALUMNO'" class="container">
+            <a class="dropdown-item" href="#" [routerLink]="['/articuloAlumn/' + item.idIdea]"
+              *ngFor="let item of notificacionesList">{{item.tituloIdea | uppercase }} {{item.tipoUsuario}}</a>
+          </div>
+        </div>
+      </div>
+      &nbsp; &nbsp;
+      <div class="dropdown dropleft" *ngIf="autenticado()">
+        <button mat-mini-fab color="warn" class="btn btn-danger dropdown-toggle btn-sm" type="button"
+          id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{firstLetter | uppercase}}
+        </button>
+        <div class="dropdown-menu center" aria-labelledby="dropdownMenuButton">
+          <div class="container">
+            <a class="dropdown-item" href="#">{{usuario.email| lowercase}}</a>
+            <a class="dropdown-item" href="#">{{usuario.nombre| lowercase}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">{{usuario['tipoUsuario']| uppercase}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <a class="btn btn-danger btn-sm" style="color: white" (click)="logout()">Salir</a>
+            </a>
+          </div>
+        </div>
+      </div>
+      &nbsp; &nbsp;
+    </div>
+    <!--div class="form-inline my-2 my-lg-0" *ngIf="autenticado()">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success btn-sm" type="button">Search</button>
+    </div-->
+
+  </div>
+</nav>

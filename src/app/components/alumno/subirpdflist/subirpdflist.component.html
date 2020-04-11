@@ -1,0 +1,27 @@
+<div class="container main-container">
+  <div class="card-columns">
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor="let item of articulos ">
+      <div class="card-header">
+        <b>Idea Título:</b> {{item.idea.titulo}} <br/>
+        <b>Idea Contenido: </b> {{item.idea.contenido}} <br/>
+        <b>Prof. Autoriza: </b> {{item.idea.profesorAutoriza.nombre | uppercase }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          Id Articulo: {{item.id}}
+        </h5>
+        <p class="card-text">
+          <b>Resumen Ingles: </b>{{item.resumenIngles}}<br/>
+          <b>Resumen Español: </b>{{item.resumenEspanol}}<br/>
+          <b>Contenido: </b>{{item.contenido}}
+        </p>
+      </div>
+      <footer class="blockquote-footer">
+        <a class="btn btn-outline-primary btn-block" style="color: white" (click)="cargarPdf(item.id)" >Cargar Pdf</a>
+        <small class="text-muted">
+          Estado <cite title="Source Title">{{item.estado}}</cite>
+        </small>
+      </footer>
+    </div>
+  </div>
+</div>

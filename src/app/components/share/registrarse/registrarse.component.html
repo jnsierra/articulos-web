@@ -1,0 +1,41 @@
+<div class="container main-container">
+  <div class="login-dark">
+    <form #f="ngForm" (ngSubmit)="registrarse( f )">
+      <h2 class="sr-only">Ingreso</h2>
+      <div class="illustration">
+        <i class="material-icons" style="font-size: 80px;">
+          fingerprint
+        </i>
+      </div>
+      <div class="form-group">
+          <span class="text-danger" *ngIf="f.submitted && f.controls['nombre'].invalid">El Nombre es obligatorio</span>
+          <input class="form-control" type="nombre" name="nombre" placeholder="Nombre y Apellido" [(ngModel)]="usuario.nombre" required
+            >
+        </div>
+      <div class="form-group">
+        <span class="text-danger" *ngIf="f.submitted && f.controls['email'].invalid">El correo es obligatorio</span>
+        <input class="form-control" type="email" name="email" placeholder="Email" [(ngModel)]="usuario.email" required
+          email>
+      </div>
+      <div class="form-group">
+        <span class="text-danger" *ngIf="f.submitted && f.controls['password'].invalid">Password es obligatorio</span>
+        <input class="form-control" type="password" name="password" placeholder="Password"
+          [(ngModel)]="usuario.password" required>
+      </div>
+      <div class="form-group">
+          <span class="text-danger" *ngIf="f.submitted && f.controls['passwordConfirm'].value !== f.controls['password'].value">Las contraseñas no coinciden</span>
+          <input class="form-control" type="password" name="passwordConfirm" placeholder="Confirmar Password"
+            [(ngModel)]="confirmPass" required>
+        </div>
+      
+      <div class="form-group">
+        <section class="example-section">
+          <mat-checkbox class="example-margin" [(ngModel)]="recordarme" name="recordarme">Recordarme</mat-checkbox>
+        </section>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">Registrarse</button>
+      </div>
+    </form>
+  </div>
+</div>

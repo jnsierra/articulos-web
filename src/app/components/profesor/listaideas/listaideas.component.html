@@ -1,0 +1,37 @@
+<h2>Ideas a Revisar:</h2>
+<div class="container main-container">
+  <div class="card-columns">
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor="let item of ideas ">
+      <div class="card-header">Alumno: {{item.alumno.nombre | uppercase}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{item.titulo | uppercase}}</h5>
+        <p class="card-text">{{item.contenido}}</p>
+      </div>
+      <footer class="blockquote-footer">
+        <a class="btn btn-outline-primary btn-block" style="color: white" (click)="actualizarEstadoIdea(item.id, 'APROBAR')">APROBAR</a>
+        <a class="btn btn-outline-danger btn-block" style="color: white"  (click)="actualizarEstadoIdea(item.id, 'RECHAZAR')">RECHAZAR</a>
+        <small class="text-muted">
+          Estado <cite title="Source Title">{{item.estado}}</cite>
+        </small>
+      </footer>
+    </div>
+  </div>
+</div>
+<h2>Ideas a Espera de correcciones:</h2>
+<div class="container main-container">
+    <div class="card-columns">
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor="let item of ideasEnEspera ">
+        <div class="card-header">Alumno: {{item.alumno.nombre | uppercase}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{item.titulo | uppercase}}</h5>
+          <p class="card-text">{{item.contenido}}</p>
+        </div>
+        <footer class="blockquote-footer">
+          <small class="text-muted">
+            Estado <cite title="Source Title">{{item.estado}}</cite>
+          </small>
+        </footer>
+      </div>
+    </div>
+  </div>
+

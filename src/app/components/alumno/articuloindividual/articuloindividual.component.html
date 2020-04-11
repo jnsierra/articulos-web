@@ -1,0 +1,156 @@
+<div class="container container-main">
+  <!--Ini Profesor involucrado-->
+  <div class="row">
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2">
+    </div>
+    <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">
+      <div class="viewer-container">
+        <div class="viewer-title">
+          <h4>PROFESORES INVOLUCRADOS</h4>&nbsp;&nbsp;<i class="material-icons">gavel</i>
+        </div>
+        <div class="viewer-body">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+              <b>Profesor asignado por el Estudiante:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              {{articulo.idea.profesorAsignado.nombre}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+              <b>Profesor aprobador:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              {{articulo.idea.profesorAutoriza.nombre}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2">
+    </div>
+  </div>
+  <!--Fin Profesor involucrado-->
+  <!--Ini Datos de la idea-->
+  <div class="row">
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+    <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">
+      <div class="viewer-container">
+        <div class="viewer-title">
+          <h4>IDEA</h4>&nbsp;&nbsp;<i class="material-icons">wb_incandescent</i>&nbsp;&nbsp;
+          <h4>ID: {{articulo.idea.id}}</h4>
+        </div>
+        <div class="viewer-body">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+              <b>Título:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-left">
+              {{articulo.idea.titulo}}
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right">
+              <b>Usuario Creador:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-left">
+              {{articulo.idea.usuario.nombre}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+              <b>Contenido:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-left">
+              {{articulo.idea.contenido}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+              <b>Fecha:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-left">
+              {{articulo.idea.fechaAprobacion | date }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+  </div>
+  <!--Fin Datos de la idea-->
+  <!--Ini Comentarios-->
+  <div class="row" *ngIf="comentarios.length > 0 ">
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+      <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">      
+          <div class="viewer-container">
+            <div class="viewer-title">
+                <h4>COMENTARIO</h4>&nbsp;&nbsp;<i class="material-icons">feedback</i>&nbsp;&nbsp;
+            </div>
+            <div class="viewer-body">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <td>Cometario</td>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let item of comentarios ">
+                    <td >{{item.comentario | uppercase }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+  </div>
+  <!--Ini Comentarios-->
+  <!--Ini Articulo Historial-->
+  <div class="row" *ngIf="articulosHis.length > 0 ">
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+      <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">      
+          <div class="viewer-container">
+            <div class="viewer-title">
+                <h4>Historial Articulos</h4>&nbsp;&nbsp;<i class="material-icons">history</i>&nbsp;&nbsp;
+            </div>
+            <div class="viewer-body">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <td>Historial</td>
+                  </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let item of articulosHis ">
+                      <td>{{ item.estado}}</td>
+                      <td>{{ item.resumenIngles}}</td>
+                      <td>{{ item.resumenEspanol}}</td>
+                      <td>{{ item.contenido }}</td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+  </div>
+  <!--Fin Articulo Historial-->
+
+  <!--Ini Articulo de la idea-->
+  <div class="row">
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+      <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">      
+          <div class="viewer-container">
+            <div class="viewer-title">
+              <h4>ARTÍCULO</h4>&nbsp;&nbsp;<i class="material-icons">account_balance</i>&nbsp;&nbsp;
+              <button class="btn btn-outline-warning" (click)="obtieneHistorialArticulos()" >Historial</button>&nbsp;&nbsp;
+              <button class="btn btn-outline-primary" (click)="obtieneComentariosProfArt()">Comentarios Prof.</button>
+            </div>
+            <div class="viewer-body">
+              <app-correccionarticulo [ideaItem]="articulo.idea"></app-correccionarticulo>
+            </div>
+          </div>
+      </div>
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+    </div>
+</div>

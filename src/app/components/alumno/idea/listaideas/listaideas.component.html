@@ -1,0 +1,21 @@
+<h2>Ideas propuestas:</h2>
+<div class="container main-container">
+  <div class="card-columns">
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor="let item of ideas ">
+      <div class="card-header">Profesor: {{item.profesores['nombre']}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{item.titulo | uppercase}}</h5>
+        <p class="card-text">{{item.contenido}}</p>
+      </div>
+      <footer class="blockquote-footer">
+          <a class="btn btn-outline-primary btn-block" style="color: white" *ngIf="item.estado == 'APROBAR' " (click)="consultaArticuloByIdea(item.id)" >CARGAR ARTÍCULO</a>
+        <small class="text-muted">
+          Estado <cite title="Source Title" *ngIf="item.estado == 'RECHAZAR' " >RECHAZADA</cite>
+          <cite title="Source Title" *ngIf="item.estado == 'CREADA' " >POR REVISAR</cite>
+          <cite title="Source Title" *ngIf="item.estado == 'APROBAR' " >APROBADA</cite>
+          <cite title="Source Title" *ngIf="item.estado == 'EN_ESPERA' " >ESPERA POR CORRECCIONES DEL PROFESOR (ARTICULO)</cite>
+        </small>
+      </footer>
+    </div>
+  </div>
+</div>
