@@ -46,17 +46,17 @@ export class ArticulosService {
   }
 
   consultarHistArtById(idIdea: number){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}/idea/${idIdea}`;
+    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}idea/${idIdea}`;
     return this.http.get(URL_SERVICE);
   }
 
   consultaArticulosAlumnoAprobados(idAlumno: number){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}/alumno/aprobados/${idAlumno}/`;
+    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}alumno/aprobados/${idAlumno}/`;
     return this.http.get(URL_SERVICE);
   }
   
   consultaArticulosAlumnoPublicados(idAlumno: number){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}/alumno/publicados/${idAlumno}/`;
+    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}alumno/publicados/${idAlumno}/`;
     return this.http.get(URL_SERVICE);
   }
 }

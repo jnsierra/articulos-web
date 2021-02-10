@@ -18,7 +18,7 @@ export class UrlServices {
         this.server = 'localhost';
         this.protocol = 'http';
         this.port = '8081';
-        this.context = 'api';
+        this.context = 'articles';
         this.init();
     }
 
@@ -46,7 +46,7 @@ export class UrlServices {
     }
 
     getEndPointArticulo(): string {
-        return `${ this.urlBase }v.1/articulos/`;
+        return `${ this.urlBase }v.1/articulos/`; 
     }
 
     getEndPointComentario(): string {
