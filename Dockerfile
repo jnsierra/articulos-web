@@ -9,4 +9,4 @@ RUN npm run build --prod
 FROM nginx:alpine
 COPY --from=node /app/dist/articulos-web /usr/share/nginx/html
 
-#Nicolas 00111
+#Nicolas 001111
