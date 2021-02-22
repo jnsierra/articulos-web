@@ -37,4 +37,4 @@ const APP_ROUTERS: Routes = [
     { path: '**', pathMatch: 'full', redirectTo: 'publico'} 
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTERS, { useHash: true} );
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTERS, { useHash: true, relativeLinkResolution: 'legacy' } );

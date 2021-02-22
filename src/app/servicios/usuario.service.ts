@@ -23,7 +23,7 @@ export class UsuarioService {
   }
 
   consultarUsuarioByEmail(email: string){
-    const URL_SERVICE = `${this.url.getEndPointUsuarios()}/by/?correo=${email}`;
+    const URL_SERVICE = `${this.url.getEndPointUsuarios()}by/?correo=${email}`;
     return this.http.get(URL_SERVICE);
   }
 
