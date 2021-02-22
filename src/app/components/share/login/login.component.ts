@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('email', this.usuario.email);
     }
     this.authServices.login( this.usuario ).subscribe( resp => {
-      console.log(resp, "Respuesta de mi servicio: ")
+      console.log("Esta es la respuesta: " , resp)
       Swal.close();
       localStorage.setItem('email', this.usuario.email);
       this.consultarUsuarioAutenticado(this.usuario.email);
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
 
   consultarUsuarioAutenticado(email: string): void {
     this.usuarioService.consultarUsuarioByEmail(email).subscribe( resp => {
-      const USUARIO_PERSIST = resp[0];
+      const USUARIO_PERSIST = resp;
       localStorage.setItem('usuario', JSON.stringify(USUARIO_PERSIST));
       this.router.navigateByUrl('/home');
     });
