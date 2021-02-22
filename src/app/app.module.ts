@@ -8,14 +8,14 @@ import { ChartsModule } from 'ng2-charts';
 //Interceptores
 import { AuthInterceptorService } from './servicios/auth-interceptor.service';
 //Importaciones de Material
-import { MatCheckboxModule, 
-  MatMenuModule, 
-  MatIconModule, 
-  MatTableModule, 
-  MatInputModule,
-  MatSelectModule,
-  MatToolbarModule,
-  MatButtonModule } from '@angular/material';
+import { MatCheckboxModule} from '@angular/material/checkbox' 
+import {MatMenuModule} from '@angular/material/menu' 
+import {MatIconModule} from '@angular/material/icon' 
+import {MatTableModule} from '@angular/material/table' 
+import {MatInputModule} from '@angular/material/input'
+import {MatSelectModule} from '@angular/material/select'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatButtonModule} from '@angular/material/button';
 //Rutas
 import { APP_ROUTING } from './app.routes';
 //Componentes personalizados
@@ -37,6 +37,7 @@ import { CorreccionarticuloComponent } from './components/alumno/correccionartic
 import { AutorizararticuloComponent } from './components/profesor/autorizararticulo/autorizararticulo.component';
 import { SubirpdfComponent } from './components/alumno/subirpdf/subirpdf.component';
 import { SubirpdflistComponent } from './components/alumno/subirpdflist/subirpdflist.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [

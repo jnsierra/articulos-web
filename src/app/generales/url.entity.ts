@@ -15,15 +15,16 @@ export class UrlServices {
 
 
     constructor() {
-        this.server = 'localhost';
+        this.server = '186.147.239.102';
         this.protocol = 'http';
-        this.port = '8081';
-        this.context = 'articles';
+        this.port = '8080';
+        this.context = 'api/';
         this.init();
     }
 
     init() {
         this.urlBase = environment.urlBase;
+        console.log(environment.urlBase, "prueba")
         console.log('****************');
         console.log(this.urlBase);
         console.log('****************');

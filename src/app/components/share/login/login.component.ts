@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('email', this.usuario.email);
     }
     this.authServices.login( this.usuario ).subscribe( resp => {
+      console.log(resp, "Respuesta de mi servicio: ")
       Swal.close();
       localStorage.setItem('email', this.usuario.email);
       this.consultarUsuarioAutenticado(this.usuario.email);

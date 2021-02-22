@@ -35,7 +35,7 @@ export class AuthService {
       contrasena: usuario.password
     };
     //'http://localhost:8081/api/login/'
-    console.log(this.url.getEndPointLogin());
+    console.log(this.url.getEndPointLogin(), "ruta");
     return this.http.post( this.url.getEndPointLogin() , usuarioDto).pipe(
       map( resp =>{
         this.guardarToken(resp['token']);
