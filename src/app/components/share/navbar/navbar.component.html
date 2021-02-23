@@ -13,7 +13,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['home']" *ngIf="autenticado()">Inicio</a>
       </li>
-      <li class="nav-item dropdown" *ngIf="autenticado() && usuario.tipoUsuario == 'ALUMNO' ">
+      <li class="nav-item dropdown" *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ALUMNO' ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArt" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Artículos
@@ -22,9 +22,9 @@
           <a class="dropdown-item" href="#" [routerLink]="['/subirPdfAlumnoList']">Aprobados Sin PDF</a>
         </div>
       </li>
-      <app-navbaradmin *ngIf="autenticado() && usuario.tipoUsuario == 'ADMIN' "></app-navbaradmin>
-      <app-navbaralumno *ngIf="autenticado() && usuario.tipoUsuario == 'ALUMNO' "></app-navbaralumno>
-      <app-navbarprofesor *ngIf="autenticado() && usuario.tipoUsuario == 'PROFESOR' "></app-navbarprofesor>
+      <app-navbaradmin *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ADMIN' "></app-navbaradmin>
+      <app-navbaralumno *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ALUMNO' "></app-navbaralumno>
+      <app-navbarprofesor *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'PROFESOR' "></app-navbarprofesor>
     </ul>
     &nbsp;&nbsp;
     <div class="form-inline my-2 my-lg-0">
@@ -41,11 +41,11 @@
           <mat-icon>notification_important</mat-icon>
         </button>
         <div class="dropdown-menu center" aria-labelledby="dropdownNotifiButton">
-          <div *ngIf="usuario.tipoUsuario === 'PROFESOR'" class="container">
+          <div *ngIf="usuario.tipoUsuario.tipo === 'PROFESOR'" class="container">
             <a class="dropdown-item" href="#" [routerLink]="['/articuloProf/' + item.idArticulo]"
               *ngFor="let item of notificacionesList">{{item.tituloIdea | uppercase }} {{item.tipoUsuario}}</a>
           </div>
-          <div *ngIf="usuario.tipoUsuario === 'ALUMNO'" class="container">
+          <div *ngIf="usuario.tipoUsuario.tipo === 'ALUMNO'" class="container">
             <a class="dropdown-item" href="#" [routerLink]="['/articuloAlumn/' + item.idIdea]"
               *ngFor="let item of notificacionesList">{{item.tituloIdea | uppercase }} {{item.tipoUsuario}}</a>
           </div>
@@ -62,7 +62,7 @@
             <a class="dropdown-item" href="#">{{usuario.email| lowercase}}</a>
             <a class="dropdown-item" href="#">{{usuario.nombre| lowercase}}</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">{{usuario['tipoUsuario']| uppercase}}</a>
+            <a class="dropdown-item" href="#">{{usuario['tipoUsuario'].tipo | uppercase}}</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
               <a class="btn btn-danger btn-sm" style="color: white" (click)="logout()">Salir</a>

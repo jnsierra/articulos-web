@@ -16,7 +16,7 @@
             <mat-label *ngIf="nonSubmited()" class="mat-error full-width">Tipo de usuario es requerido</mat-label>
             <mat-form-field class="full-width">
               <mat-label>TIPO USUARIO:</mat-label>
-              <mat-select required [(value)]="usuario.tipoUsuario">
+              <mat-select required [(value)]="usuario.tipoUsuario.tipo">
                 <mat-option *ngFor="let item of selTipoUsuario" [value]="item.value">
                   {{item.viewValue}}
                 </mat-option>

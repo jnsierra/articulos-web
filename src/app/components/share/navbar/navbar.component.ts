@@ -33,7 +33,7 @@ export class NavbarComponent {
 
   buscarNotificaciones() {
     if (this.usuario) {
-      if (this.usuario.tipoUsuario === 'PROFESOR' && this.numNotifi === -1) {
+      if (this.usuario.tipoUsuario.tipo === 'PROFESOR' && this.numNotifi === -1) {
         this.numNotifi = -2;
         this._articuloService
           .consultaNotificaciones(this.usuario.id)
@@ -45,7 +45,7 @@ export class NavbarComponent {
               this.notifications = 'sin_notificacion';
             }
           });
-      } else if (this.usuario.tipoUsuario === 'ALUMNO' && this.numNotifi === -1) {
+      } else if (this.usuario.tipoUsuario.tipo === 'ALUMNO' && this.numNotifi === -1) {
         this.numNotifi = -2;
         this._articuloService
           .consultaNotificacionesAlumn(this.usuario.id)
@@ -62,12 +62,12 @@ export class NavbarComponent {
   }
 
   buscaTitulosNotificaciones() {
-    if (this.usuario.tipoUsuario === 'PROFESOR') {
+    if (this.usuario.tipoUsuario.tipo === 'PROFESOR') {
       this._articuloService.consultaTituloNotificacion(this.usuario.id)
       .subscribe(resp => {
         this.notificacionesList = resp;
       });
-    } else if (this.usuario.tipoUsuario === 'ALUMNO') {
+    } else if (this.usuario.tipoUsuario.tipo === 'ALUMNO') {
       this._articuloService.consultaTituloNotificacionAlumn(this.usuario.id)
       .subscribe(resp => {
         this.notificacionesList = resp;

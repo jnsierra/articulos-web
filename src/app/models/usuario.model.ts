@@ -1,11 +1,14 @@
+import { TipoUsuarioModel } from './tipousuario.model';
 export class UsuarioModel{
     id: number;
     nombre: string;
     email: string;
     password: string;
-    tipoUsuario?: string;
+    tipoUsuario?: TipoUsuarioModel;
 
-    constructor(){}
+    constructor(){
+        this.tipoUsuario = new TipoUsuarioModel();
+    }
 
     public of(objeto: any):UsuarioModel{
         let usuario = new UsuarioModel();

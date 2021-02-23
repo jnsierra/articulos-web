@@ -47,7 +47,7 @@ export class UsuarioService {
   }
 
   obtenerUsuariosById(id: number){
-    const URL_SERVICE = `${this.url.getEndPointUsuarios()}/${id}`;
+    const URL_SERVICE = `${this.url.getEndPointUsuarios()}${id}/`;
     return this.http.get(URL_SERVICE);
   }
 
