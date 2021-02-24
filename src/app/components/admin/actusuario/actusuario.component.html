@@ -13,15 +13,27 @@
             <mat-form-field class="full-width">
               <input matInput placeholder="CORREO: " disabled value="{{usuario.correo | uppercase}}">
             </mat-form-field>
+
+            <mat-label *ngIf="nonSubmited()" class="mat-error full-width">Estado es requerido</mat-label>
+            <mat-form-field class="full-width">
+              <mat-label>ESTADO:</mat-label>
+              <mat-select required [(value)]="usuario.estado">
+                <mat-option *ngFor="let item of selEstado" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
             <mat-label *ngIf="nonSubmited()" class="mat-error full-width">Tipo de usuario es requerido</mat-label>
             <mat-form-field class="full-width">
               <mat-label>TIPO USUARIO:</mat-label>
-              <mat-select required [(value)]="usuario.tipoUsuario.tipo">
+              <mat-select required [(value)]="usuario.tipoUsuario.id">
                 <mat-option *ngFor="let item of selTipoUsuario" [value]="item.value">
                   {{item.viewValue}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
+
             <button type="submit" class="btn btn-outline-primary btn-block" >Asignar</button>
           </form>
         </div>

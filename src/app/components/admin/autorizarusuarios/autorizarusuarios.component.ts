@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AutorizarusuariosComponent implements OnInit {
 
   dataSourceUsu: IUsuarioConsulta[];
-  displayedColumnsUsu: string[] = ['id','nombre', 'email','tipoUsuario', 'accion'];
+  displayedColumnsUsu: string[] = ['id','nombre', 'email','tipoUsuario','estado' ,'accion'];
 
   constructor(private usuarioService: UsuarioService,
     private router: Router) { }
@@ -28,7 +28,8 @@ export class AutorizarusuariosComponent implements OnInit {
         id : item['id'],
         nombre : item['nombre'],
         email: item['correo'],
-        tipoUsuario: item['tipoUsuario']
+        tipoUsuario: item['tipoUsuario'],
+        estado: item['estado']
       };
       return usuarioItem;
     });
@@ -45,5 +46,6 @@ export interface IUsuarioConsulta{
   id: number,
   nombre: string,
   email: string,
-  tipoUsuario: string
+  tipoUsuario: string,
+  estado: string
 }

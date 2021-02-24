@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel } from 'src/app/models/usuario.model';
@@ -16,6 +18,7 @@ export class RegistrarseComponent implements OnInit {
   usuario: UsuarioModel;
   recordarme: boolean;
   confirmPass: string;
+  picker: string;
 
   constructor(private usuarioService: UsuarioService, private router: Router) {
     this.usuario = new UsuarioModel();
@@ -29,6 +32,7 @@ export class RegistrarseComponent implements OnInit {
   }
 
   registrarse(form: NgForm) {
+    console.log(form)
     if (form.invalid) {
       return;
     }

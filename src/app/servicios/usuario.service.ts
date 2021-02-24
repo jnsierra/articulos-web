@@ -13,11 +13,17 @@ export class UsuarioService {
   constructor(private url: UrlServices, private http: HttpClient) { }
 
   registrarUsuario(usuario: UsuarioModel){
+    const personaDto =  {
+      nombres: usuario.nombre,
+      apellidos: usuario.persona.apellidos,
+      fechaNacimiento: usuario.persona.fechaNacimiento
+    }
     const usuarioDto = {
       correo: usuario.email,
       contrasena: usuario.password,
       nombre: usuario.nombre,
-      cambioContra: 'S'
+      cambioContra: 'S',
+      persona: personaDto
     };
     return this.http.post(this.url.getEndPointRegistrarse(), usuarioDto );
   }
@@ -52,6 +58,7 @@ export class UsuarioService {
   }
 
   modificarTipoUsuario(usuario: any){
+    console.log(usuario)
     const usuarioDto = {
       id: usuario.id,
       correo: usuario.correo,

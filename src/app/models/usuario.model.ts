@@ -1,3 +1,4 @@
+import { PersonaModel } from './persona.model';
 import { TipoUsuarioModel } from './tipousuario.model';
 export class UsuarioModel{
     id: number;
@@ -5,9 +6,11 @@ export class UsuarioModel{
     email: string;
     password: string;
     tipoUsuario?: TipoUsuarioModel;
+    persona: PersonaModel;
 
     constructor(){
         this.tipoUsuario = new TipoUsuarioModel();
+        this.persona = new PersonaModel();
     }
 
     public of(objeto: any):UsuarioModel{

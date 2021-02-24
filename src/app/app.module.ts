@@ -16,6 +16,9 @@ import {MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material';
+import {MatNativeDateModule} from '@angular/material';
+
 //Rutas
 import { APP_ROUTING } from './app.routes';
 //Componentes personalizados
@@ -76,9 +79,13 @@ import { from } from 'rxjs';
     MatInputModule,
     MatSelectModule,
     MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     APP_ROUTING
   ],
   providers: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

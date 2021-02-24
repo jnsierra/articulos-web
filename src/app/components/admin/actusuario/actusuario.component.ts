@@ -14,17 +14,27 @@ export class ActusuarioComponent implements OnInit {
   usuario;
 
   selTipoUsuario = [
-    {value: 'ADMIN', viewValue: 'Administrador'},
-    {value: 'PROFESOR', viewValue: 'Profesor'},
-    {value: 'ALUMNO', viewValue: 'Alumno'}
+    {value: 1, viewValue: 'Administrador'},
+    {value: 2, viewValue: 'Profesor'},
+    {value: 3, viewValue: 'Alumno'}
+  ];
+
+  selEstado = [
+    {value: 'ACTIVO', viewValue: 'Activo'},
+    {value: 'INACTIVO', viewValue: 'Inactivo'}
   ];
 
   constructor(private activatedRoute: ActivatedRoute,
     private _usuarioService: UsuarioService,
     private router: Router) {
+    const TipoUsuario = {
+      id: 1, 
+      descripcion: ''
+    }
     this.usuario = {
       correo: '',
-      nombre: ''
+      nombre: '',
+      tipoUsuario: TipoUsuario
     };
     this.activatedRoute.params.subscribe( params => {
       this.buscaUsuarioById(Number(params['id']));
@@ -44,6 +54,9 @@ export class ActusuarioComponent implements OnInit {
 
   actualizarTipo( f:NgForm ){
     if(!this.usuario['tipoUsuario']){
+      return;
+    }
+    if(!this.usuario['estado']){
       return;
     }
     Swal.fire({
@@ -79,6 +92,9 @@ export class ActusuarioComponent implements OnInit {
 
   nonSubmited(  ){
     if(this.usuario['tipoUsuario']){
+      return false;
+    }
+    if(this.usuario['estado']){
       return false;
     }
     return true;

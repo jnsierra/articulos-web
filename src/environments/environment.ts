@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBase : '/api/api-business/'
+  urlBase : '/api-business/'
 };
 
 /*
