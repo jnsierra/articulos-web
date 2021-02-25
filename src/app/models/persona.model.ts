@@ -3,6 +3,7 @@ export class PersonaModel{
     nombre: string;
     apellidos: string;
     fechaNacimiento: Date;
+    documento: number;
 
     constructor(){}
 }

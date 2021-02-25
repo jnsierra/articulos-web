@@ -32,7 +32,6 @@ export class RegistrarseComponent implements OnInit {
   }
 
   registrarse(form: NgForm) {
-    console.log(form)
     if (form.invalid) {
       return;
     }

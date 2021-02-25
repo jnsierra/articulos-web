@@ -16,7 +16,8 @@ export class UsuarioService {
     const personaDto =  {
       nombres: usuario.nombre,
       apellidos: usuario.persona.apellidos,
-      fechaNacimiento: usuario.persona.fechaNacimiento
+      fechaNacimiento: usuario.persona.fechaNacimiento,
+      documento: usuario.persona.documento
     }
     const usuarioDto = {
       correo: usuario.email,
