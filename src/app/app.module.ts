@@ -16,8 +16,8 @@ import {MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatButtonModule} from '@angular/material/button';
-import {MatDatepickerModule} from '@angular/material';
-import {MatNativeDateModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 //Rutas
 import { APP_ROUTING } from './app.routes';
@@ -85,7 +85,6 @@ import { from } from 'rxjs';
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
