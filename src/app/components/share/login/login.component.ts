@@ -47,16 +47,16 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('email', this.usuario.email);
     }
     this.authServices.login( this.usuario ).subscribe( resp => {
-      console.log("Esta es la respuesta: " , resp)
       Swal.close();
       localStorage.setItem('email', this.usuario.email);
       this.consultarUsuarioAutenticado(this.usuario.email);
     }, catchError => {
       if(catchError.status === 401 ){
+        Swal.close();
         Swal.fire({
           type: 'error',
           text: catchError.error.mensaje,
-          title: 'Error de usuario o contraseña'
+          title: 'Autenticacion'
         });
       } else {
         Swal.fire({
