@@ -3,10 +3,8 @@ FROM node:latest as node
 WORKDIR /app
 COPY . .
 RUN npm install 
-RUN npm run build --prod
+RUN npm run build --prod --configuration=public
 
 # Stage 2
 FROM nginx:alpine
 COPY --from=node /app/dist/articulos-web /usr/share/nginx/html
-
-#Nicolas pruebang 
