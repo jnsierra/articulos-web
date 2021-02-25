@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "externaldev": "ng serve --configuration=public --proxy-config proxy-public.conf.json"
   },
   "private": true,
   "dependencies": {
