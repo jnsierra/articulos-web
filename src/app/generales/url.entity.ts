@@ -12,6 +12,7 @@ export class UrlServices {
     context: string;
 
     urlBase: string;
+    urlBaseDatos: string;
 
 
     constructor() {
@@ -23,15 +24,20 @@ export class UrlServices {
     }
 
     init() {
-        this.urlBase = environment.urlBase;
-        console.log(environment.urlBase, "prueba")
+        this.urlBase = environment.urlBaseBussines;
+        this.urlBaseDatos = environment.urlBaseDatos;
         console.log('****************');
         console.log(this.urlBase);
+        console.log(this.urlBaseDatos);
         console.log('****************');
     }
 
     getEndPointUsuarios() {
         return `${ this.urlBase }v.1/usuarios/`;
+    }
+
+    getEndPointUsuariosDatos() {
+        return `${ this.urlBaseDatos }v.1/usuarios/`;
     }
 
     getEndPointLogin(): string {

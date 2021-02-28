@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  urlBase : '/api/api-business/'
+  urlBaseBussines : '/api/api-business/',
+  urlBaseDatos: '/api/api-datos/'
 };
