@@ -1,3 +1,4 @@
+import { UsuarioModel } from 'src/app/models/usuario.model';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { IdeaModel } from './../../../../models/idea.model';
@@ -24,6 +25,7 @@ export class CrearideaComponent implements OnInit {
 
   idea: IdeaModel;
   profesores;
+  usuarioAut: UsuarioModel;
 
   selected = new FormControl('', [
     Validators.required
@@ -37,6 +39,7 @@ export class CrearideaComponent implements OnInit {
     this.idea = new IdeaModel();
     this.profesores = [];
     this.buscarProfesores();
+    this.usuarioAut =  JSON.parse(localStorage.getItem('usuario'));
   }
 
   ngOnInit() {
@@ -54,7 +57,7 @@ export class CrearideaComponent implements OnInit {
         Swal.showLoading()
       }
     });
-    this._ideaService.insertarIdea(this.idea).subscribe(resp => {
+    this._ideaService.insertarIdea(this.idea, this.usuarioAut).subscribe(resp => {
       console.log(resp);
       Swal.fire({
         allowOutsideClick: false,

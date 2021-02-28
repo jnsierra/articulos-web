@@ -52,6 +52,10 @@ export class UrlServices {
         return `${ this.urlBase }v.1/ideas/`;
     }
 
+    getEndPointIdeaDatos(): string {
+        return `${ this.urlBaseDatos }v.1/ideas/`;
+    }
+
     getEndPointArticulo(): string {
         return `${ this.urlBase }v.1/articulos/`; 
     }

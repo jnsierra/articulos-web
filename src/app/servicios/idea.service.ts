@@ -1,3 +1,4 @@
+import { UsuarioModel } from 'src/app/models/usuario.model';
 import { Injectable } from '@angular/core';
 import { UrlServices } from '../generales/url.entity';
 import { HttpClient } from '@angular/common/http';
@@ -11,20 +12,21 @@ export class IdeaService {
   constructor(private _urlService: UrlServices, private http: HttpClient) { }
 
 
-  insertarIdea(idea: IdeaModel){
+  insertarIdea(idea: IdeaModel, usuarioAut: UsuarioModel){
     const ideaDto ={
+      usuarioId: usuarioAut.id,
       titulo: idea.titulo,
       contenido: idea.contenido,
-      idProfesor: idea.idProfesor,
+      id_profesor: idea.idProfesor,
       estado: 'CREADA'
     };
-    const URL_SERVICE = this._urlService.getEndPointIdea();
+    const URL_SERVICE = this._urlService.getEndPointIdeaDatos();
     return this.http.post(URL_SERVICE, ideaDto);
   }
 
   consultaIdeasCreadasByUsuario(idUsuario: number){
-    const URL_SERVICE = `${this._urlService.getEndPointIdea()}by/?idUsuario=${idUsuario}`;
-    return this.http.get(URL_SERVICE);
+    const URL_SERVICE = `${this._urlService.getEndPointIdea()}by/usuarios/`;
+    return this.http.get(URL_SERVICE, {params: { id: "" + idUsuario } });
   }
 
   consultarIdeasProfesorByEstado(idProfesor :number, estado: string){

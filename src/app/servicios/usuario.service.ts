@@ -34,7 +34,7 @@ export class UsuarioService {
   }
 
   consultarUsuarioByTipoUsuario(tipoUsuario: string) {
-    const URL_SERVICE = `${this.url.getEndPointUsuarios()}/by/?tipoUsuario=${tipoUsuario}`;
+    const URL_SERVICE = `${this.url.getEndPointUsuariosDatos()}/by/?tipoUsuario=${tipoUsuario}`;
     return this.http.get(URL_SERVICE);
   }
 

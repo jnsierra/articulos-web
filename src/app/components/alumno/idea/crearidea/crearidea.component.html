@@ -11,7 +11,7 @@
                     <div class="viewer-body">
 
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="Titulo" [(ngModel)]="idea.titulo" name="titulo" required />
+                            <input matInput placeholder="Titulo" [(ngModel)]="idea.titulo" name="titulo" required oninput="this.value = this.value.toUpperCase()" />
                             <mat-hint>Dale un título a tu idea! (Al final sera el título de tu articulo)</mat-hint>
                             <mat-error
                                 *ngIf="f.submitted && f.controls['titulo'].invalid && f.controls['titulo'].errors['required']">
