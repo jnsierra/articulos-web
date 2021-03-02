@@ -34,7 +34,7 @@ const APP_ROUTERS: Routes = [
     { path: 'listaIdeasProf', component: ListaideasProfComponent, canActivate: [AuthGuard] },
     { path: 'subirPdfAlumnoList', component: SubirpdflistComponent, canActivate: [AuthGuard] },
     { path: 'subirPdfAlumno/:id', component: SubirpdfComponent, canActivate: [AuthGuard] },
-    { path: '**', pathMatch: 'full', redirectTo: 'publico'} 
+    { path: '**', pathMatch: 'full', redirectTo: 'login'} 
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTERS, { useHash: true, relativeLinkResolution: 'legacy' } );

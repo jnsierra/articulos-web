@@ -1,35 +1,41 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <h5>IDEAS POR ESTADO finalizado</h5>
-      <div>
-        <div>
-          <div class="chart">
-            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-              [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
-              [legend]="pieChartLegend">
-            </canvas>
+<mat-card>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <mat-card>
+          <h2>ideas por estado finalizado</h2>
+          <div>
+            <div>
+              <div class="chart">
+                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                  [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                  [legend]="pieChartLegend">
+                </canvas>
+              </div>
+            </div>  
           </div>
+        </mat-card>
+        <div>
+          <button mat-button mat-raised-button class="btn btn-outline-primary" (click)="pieChartLegend=!pieChartLegend">
+            Eliminar Etiquetas modificado
+          </button>
         </div>
       </div>
-      <div>
-        <button mat-button mat-raised-button class="btn btn-outline-success" (click)="pieChartLegend=!pieChartLegend">
-          Eliminar Etiquetas modificado
-        </button>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-      <h5>ARTÍCULOS POR ESTADO</h5>
-      <div>
-        <div>
-          <div class="chart">
-            <canvas baseChart [data]="pieChartDataArt" [labels]="pieChartLabelsArt" [chartType]="pieChartType"
-              [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
-              [legend]="pieChartLegend">
-            </canvas>
+      <div class="col-sm-12 col-md-6">
+        <mat-card>
+          <h2>artículos por estado</h2>
+          <div>
+            <div>
+              <div class="chart">
+                <canvas baseChart [data]="pieChartDataArt" [labels]="pieChartLabelsArt" [chartType]="pieChartType"
+                  [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                  [legend]="pieChartLegend">
+                </canvas>
+              </div>
+            </div>
           </div>
-        </div>
+        </mat-card>
       </div>
     </div>
   </div>
-</div>
+</mat-card>

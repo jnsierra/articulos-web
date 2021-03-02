@@ -1,10 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/prebuilt-themes/purple-green.css";
+
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+.inputs-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
 
 .docs-app-background{
-    background: #303030;
-    color: #ffffff;
+    background: #98999A;
+    color: #000000;
 }
 
 .main-container{
@@ -19,12 +26,10 @@
     width: 100%;
   }
 
-
-
   .login-dark form {
     width: 90%;
-    background-color: #1e2833;
-    padding: 30px;
+    background-image: linear-gradient(#98999A,#373435);
+    padding: 30px; 
     border-radius: 4px;
     transform: translate(-50%, -50%);
     position: absolute;
@@ -87,6 +92,7 @@
 
 
 
+
 .viewer-container{
     border: 1px solid rgba(255, 255, 255, 0.03);
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
@@ -105,6 +111,10 @@
 
 .viewer-body{
     padding: 30px;
+}
+
+.tr{
+    display:table-row;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

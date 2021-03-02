@@ -3,26 +3,33 @@
     <form #f="ngForm" (ngSubmit)="ingresar( f )">
       <h2 class="sr-only">Ingreso</h2>
       <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-      <div class="form-group">
+      <div class="form-group">          
           <span class="text-danger" *ngIf="f.submitted && f.controls['email'].invalid" >El correo es obligatorio</span>
-          <input  class="form-control" 
-                type="email" 
-                name="email" 
-                placeholder="Email" 
-                [(ngModel)]="usuario.email"
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input 
+            class="inputs-form"
+            type="email" 
+            name="email"
+            matInput placeholder="example@example.com"
+            [(ngModel)]="usuario.email"
                 required
-                email
-                >
+                email>
+          </mat-form-field>
       </div>
       <div class="form-group">
         <span class="text-danger" *ngIf="f.submitted && f.controls['password'].invalid" >Password es obligatorio</span>
-        <input  class="form-control" 
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                [(ngModel)]="usuario.password" 
-                required
-                >
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input 
+          class="inputs-form"
+          type="password" 
+          matInput placeholder="123456"
+          name="password" 
+          placeholder="Password" 
+          [(ngModel)]="usuario.password" 
+          required>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <section class="example-section">

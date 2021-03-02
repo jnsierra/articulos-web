@@ -11,44 +11,46 @@
           *ngIf="f.submitted && f.controls['cedula'].invalid"
           >Documento es obligatorio</span
         >
-        <input
-          class="form-control"
+        <mat-form-field class="full-width">
+          <mat-label>Documento</mat-label>
+          <input 
+          matInput placeholder="321689"
           type="text"
           name="cedula"
           placeholder="Documento"
           [(ngModel)]="usuario.persona.documento"
-          required
-        />
+          required>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <span
           class="text-danger"
           *ngIf="f.submitted && f.controls['nombre'].invalid"
-          >Nombres son obligatorios</span
-        >
-        <input
-          class="form-control"
+          >Nombres son obligatorios</span>
+        <mat-form-field class="full-width">
+          <mat-label>Nombres</mat-label>
+          <input 
+          matInput placeholder="pepe"
           type="text"
           name="nombre"
-          placeholder="Nombres"
           [(ngModel)]="usuario.nombre"
-          required
-        />
+          required>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <span
           class="text-danger"
           *ngIf="f.submitted && f.controls['apellidos'].invalid"
-          >Apellidos son obligatorios</span
-        >
-        <input
-          class="form-control"
+          >Apellidos son obligatorios</span>
+        <mat-form-field class="full-width">
+          <mat-label>Apellidos</mat-label>
+          <input 
+          matInput placeholder="pepito"
           type="text"
           name="apellidos"
-          placeholder="Apellidos"
           [(ngModel)]="usuario.persona.apellidos"
-          required
-        />
+          required>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <span
@@ -56,14 +58,16 @@
           *ngIf="f.submitted && f.controls['picker'].invalid"
           >Fecha de Nacimiento es obligatorio</span
         >
-        <input
-          class="form-control"
+        <mat-form-field class="full-width">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input 
+          matInput placeholder="10/10/10"
           type="text"
           placeholder="Fecha de Nacimiento"
           [matDatepicker]="picker"
           name="picker"
-          [(ngModel)]="usuario.persona.fechaNacimiento"
-        />
+          [(ngModel)]="usuario.persona.fechaNacimiento">
+        </mat-form-field>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </div>
@@ -73,15 +77,17 @@
           *ngIf="f.submitted && f.controls['email'].invalid"
           >El correo es obligatorio</span
         >
-        <input
-          class="form-control"
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input 
+          matInput placeholder="example@example.com"
           type="email"
           name="email"
           placeholder="Email"
           [(ngModel)]="usuario.email"
           required
-          email
-        />
+          email>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <span
@@ -89,15 +95,17 @@
           *ngIf="f.submitted && f.controls['password'].invalid"
           >Password es obligatorio</span
         >
-        <input
-          class="form-control"
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input 
+          matInput placeholder="********"
           type="password"
           name="password"
           placeholder="Password"
           [(ngModel)]="usuario.password"
-          required
-        />
-      </div>
+          required>
+        </mat-form-field>
+      </div>  
       <div class="form-group">
         <span
           class="text-danger"
@@ -107,14 +115,16 @@
           "
           >Las contraseñas no coinciden</span
         >
-        <input
-          class="form-control"
+        <mat-form-field class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input 
+          matInput placeholder="********"
           type="password"
           name="passwordConfirm"
           placeholder="Confirmar Password"
           [(ngModel)]="confirmPass"
-          required
-        />
+          required>
+        </mat-form-field>
       </div>
 
       <div class="form-group">

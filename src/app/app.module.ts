@@ -18,6 +18,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
 
 //Rutas
 import { APP_ROUTING } from './app.routes';
@@ -81,6 +82,7 @@ import { from } from 'rxjs';
     MatToolbarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
     APP_ROUTING
   ],
   providers: [
