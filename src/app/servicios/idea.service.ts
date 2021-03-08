@@ -30,13 +30,13 @@ export class IdeaService {
   }
 
   consultarIdeasProfesorByEstado(idProfesor :number, estado: string){
-    const URL_SERVICE = `${this._urlService.getEndPointIdea()}profesor/${idProfesor}/?estado=${estado}`;
-    return this.http.get(URL_SERVICE);
+    const URL_SERVICE = `${this._urlService.getEndPointIdea()}by/profesor/${idProfesor}/`;
+    return this.http.get(URL_SERVICE, {params: {estado: estado}});
   }
 
   actualizarEstadoIdea(idIdea: number, estado: string, idProfesor: number){
-    const URL_SERVICE = `${this._urlService.getEndPointIdea()}estado/${idIdea}/${estado}/${idProfesor}/`;
-    return this.http.get(URL_SERVICE);
+    const URL_SERVICE = `${this._urlService.getEndPointIdeaDatos()}estado/${idIdea}/${estado}/${idProfesor}/`;
+    return this.http.put(URL_SERVICE,{});
   }
 
   obtenerIdeaById(id: number){
