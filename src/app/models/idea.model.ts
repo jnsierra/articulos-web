@@ -9,12 +9,10 @@ export class IdeaModel{
     idProfesor: string;
     usuario?: UsuarioModel;
     fechaAprobacion?: any;
-    profesorAsignado?: ProfesorModel;
-    profesorAutoriza?: ProfesorModel;
+    profesorAsignado?: string;
+    profesorAutoriza?: string;
 
     constructor(){
-        this.profesorAsignado = new ProfesorModel();
-        this.profesorAutoriza = new ProfesorModel();
         this.usuario = new UsuarioModel();
     }
 
@@ -24,8 +22,8 @@ export class IdeaModel{
         idea.contenido = objeto.contenido;
         idea.titulo = objeto.titulo;
         idea.fechaAprobacion = objeto.fechaAprobacion;
-        idea.profesorAsignado = this.profesorAsignado.of(objeto.profesorAsignado);
-        idea.profesorAutoriza = this.profesorAutoriza.of(objeto.profesorAutoriza);
+        idea.profesorAsignado = objeto.profesorAsignado;
+        idea.profesorAutoriza = objeto.profesorAutoriza;
         idea.usuario = this.usuario.of( objeto.usuario );
         return idea;
     }
