@@ -52,10 +52,18 @@ export class LoginComponent implements OnInit {
       this.consultarUsuarioAutenticado(this.usuario.email);
     }, catchError => {
       if(catchError.status === 401 ){
+        let mensaje = '';
+        if("USER_BLOKED" === catchError.error.mensaje){
+          mensaje = 'Usuario bloqueado, por favor contacte al administrador';
+        }else if("PASSWORD_INCORRECT" === catchError.error.mensaje){
+          mensaje = 'Usuario o pasword Incorrecto';
+        }else if("USER_NOT_FOUND" === catchError.error.mensaje){
+          mensaje = 'Usuario no encontrado, por favor registrate!';
+        }
         Swal.close();
         Swal.fire({
           type: 'error',
-          text: catchError.error.mensaje,
+          text: mensaje,
           title: 'Autenticacion'
         });
       } else {

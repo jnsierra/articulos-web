@@ -45,7 +45,7 @@ export class IdeaService {
   }
 
   obtieneIdArtByIdIdea(idIdea: number){
-    const URL_SERVICE = `${ this._urlService.getEndPointIdea() }${ idIdea }/articulo/`;
+    const URL_SERVICE = `${ this._urlService.getEndPointArticuloDatos() }idea/${ idIdea }/`;
     return this.http.get(URL_SERVICE);
   }
 

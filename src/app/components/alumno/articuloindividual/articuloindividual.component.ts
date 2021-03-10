@@ -63,7 +63,9 @@ export class ArticuloindividualComponent implements OnInit {
   obtieneIdArticuloByIdea() {
     this._ideaService.obtieneIdArtByIdIdea(this.articulo.idea.id).subscribe(resp => {
       this.idArticulo = Number(resp);
-    });
+    }, catchError => {
+      console.log(catchError);
+    } );
   }
 
   obtieneComentariosProfArt() {

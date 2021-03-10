@@ -59,6 +59,9 @@ export class UrlServices {
     getEndPointArticulo(): string {
         return `${ this.urlBase }v.1/articulos/`; 
     }
+    getEndPointArticuloDatos(): string {
+        return `${ this.urlBaseDatos }v.1/articulos/`; 
+    }
 
     getEndPointComentario(): string {
         return `${ this.urlBase }v.1/comentario/`;
