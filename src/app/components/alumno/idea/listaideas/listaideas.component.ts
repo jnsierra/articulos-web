@@ -49,5 +49,9 @@ export class ListaideasComponent implements OnInit {
   consultaArticuloByIdea(id: number){
     this.router.navigate(['/articuloAlumn', id]);
   }
+
+  actualizarIdea(id:number){
+    this.router.navigate(['/actualizarIdea', id]);
+  }
   
 }

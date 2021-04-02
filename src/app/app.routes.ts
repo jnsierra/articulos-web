@@ -19,6 +19,7 @@ import { SubirpdfComponent } from './components/alumno/subirpdf/subirpdf.compone
 import { SubirpdflistComponent } from './components/alumno/subirpdflist/subirpdflist.component';
 //Componentes para profesor
 import { ListaideasProfComponent } from './components/profesor/listaideas/listaideas.component';
+import { ActualizarComponent } from './components/alumno/idea/actualizar/actualizar.component';
 
 const APP_ROUTERS: Routes = [
     { path: 'publico', component: PublicoComponent },
@@ -28,6 +29,7 @@ const APP_ROUTERS: Routes = [
     { path: 'admAuUsuario', component: AutorizarusuariosComponent, canActivate: [AuthGuard] },
     { path: 'actUsuario/:id', component: ActusuarioComponent, canActivate: [AuthGuard] },
     { path: 'crearIdea', component: CrearideaComponent, canActivate: [AuthGuard] },
+    { path: 'actualizarIdea/:id', component: ActualizarComponent, canActivate: [AuthGuard]},
     { path: 'articuloAlumn/:id', component: ArticuloindividualComponent, canActivate: [AuthGuard] },
     { path: 'articuloProf/:id' , component: AutorizararticuloComponent, canActivate: [AuthGuard] },
     { path: 'listaIdeas', component: ListaideasComponent, canActivate: [AuthGuard] },

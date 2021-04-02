@@ -36,4 +36,17 @@ export class IdeaModel{
         idea.fechaAprobacion = objeto.fechaAprobacion;
         return idea;
     }
+
+    public ofWithIdProf(objeto: any): IdeaModel{
+        let idea = new IdeaModel();
+        idea.id = objeto.id;
+        idea.contenido = objeto.contenido;
+        idea.titulo = objeto.titulo;
+        idea.fechaAprobacion = objeto.fechaAprobacion;
+        idea.profesorAsignado = objeto.profesorAsignado;
+        idea.profesorAutoriza = objeto.profesorAutoriza;
+        idea.idProfesor = objeto.id_profesor;
+        idea.usuario = this.usuario.of( objeto.usuario );
+        return idea;
+    }
 }

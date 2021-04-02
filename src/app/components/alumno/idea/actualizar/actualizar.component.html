@@ -1,0 +1,58 @@
+<div class="container container-main">
+    <div class="row">
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <form #f="ngForm" (ngSubmit)="actualizarIdea( f )">
+                <div class="viewer-container">
+                    <div class="viewer-title">
+                        <h4>CORREGIR IDEA</h4>&nbsp;&nbsp;<i class="material-icons">wb_incandescent</i>
+                    </div>
+                    <div class="viewer-body">
+
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Titulo" [(ngModel)]="idea.titulo" name="titulo" required oninput="this.value = this.value.toUpperCase()" />
+                            <mat-hint>Dale un título a tu idea! (Al final sera el título de tu articulo)</mat-hint>
+                            <mat-error
+                                *ngIf="f.submitted && f.controls['titulo'].invalid && f.controls['titulo'].errors['required']">
+                                El título es obligatorio
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <textarea matInput placeholder="Contenido" required minlength="10" name="contenido"
+                                [(ngModel)]="idea.contenido"></textarea>
+                            <mat-hint>Plasma tu idea para el articulo! (Esta sera la idea en la que girara el desarrollo
+                                del articulo)</mat-hint>
+                            <mat-error
+                                *ngIf="f.submitted && f.controls['contenido'].invalid && f.controls['contenido'].errors['minlength'] ">
+                                El contenido debe ser superior a diez caracteres
+                            </mat-error>
+                            <mat-error
+                                *ngIf="f.submitted && f.controls['contenido'].invalid && f.controls['contenido'].errors['required'] ">
+                                El contenido es requerido
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Profesor:</mat-label>
+                            <mat-select required [(value)]="idea.idProfesor" name="profesor" [formControl]="selected" [errorStateMatcher]="matcher">
+                                <mat-option *ngFor="let item of profesores" [value]="item.id">
+                                    {{item.nombre}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint>Selecciona el Profesor con el cual contaras para la realización de tu articulo
+                            </mat-hint>
+                            <mat-error *ngIf="selected.hasError('required') ">
+                                Profesor es requerido
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="viewer-title">
+                        <button mat-raised-button color="primary" class="full-width">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+    </div>
+</div>

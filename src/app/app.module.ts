@@ -42,6 +42,7 @@ import { AutorizararticuloComponent } from './components/profesor/autorizarartic
 import { SubirpdfComponent } from './components/alumno/subirpdf/subirpdf.component';
 import { SubirpdflistComponent } from './components/alumno/subirpdflist/subirpdflist.component';
 import { from } from 'rxjs';
+import { ActualizarComponent } from './components/alumno/idea/actualizar/actualizar.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { from } from 'rxjs';
     CorreccionarticuloComponent,
     AutorizararticuloComponent,
     SubirpdfComponent,
-    SubirpdflistComponent
+    SubirpdflistComponent,
+    ActualizarComponent
   ],
   imports: [
     BrowserModule,
