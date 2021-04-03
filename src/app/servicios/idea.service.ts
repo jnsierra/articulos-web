@@ -24,6 +24,19 @@ export class IdeaService {
     return this.http.post(URL_SERVICE, ideaDto);
   }
 
+  actualizaIdea(idea: IdeaModel, usuarioAut: UsuarioModel){
+    const URL_SERVICE = this._urlService.getEndPointIdeaDatos();
+    const ideaDto ={
+      id: idea.id,
+      usuarioId: usuarioAut.id,
+      titulo: idea.titulo,
+      contenido: idea.contenido,
+      id_profesor: idea.idProfesor,
+      estado: 'CREADA'
+    };
+    return this.http.put(URL_SERVICE, ideaDto);
+  }
+
   consultaIdeasCreadasByUsuario(idUsuario: number){
     const URL_SERVICE = `${this._urlService.getEndPointIdea()}by/usuarios/`;
     return this.http.get(URL_SERVICE, {params: { id: "" + idUsuario } });

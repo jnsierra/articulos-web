@@ -60,7 +60,7 @@ export class ActualizarComponent implements OnInit {
         Swal.showLoading()
       }
     });
-    this._ideaService.insertarIdea(this.idea, this.usuarioAut).subscribe(resp => {
+    this._ideaService.actualizaIdea(this.idea, this.usuarioAut).subscribe(resp => {
       console.log(resp);
       Swal.fire({
         allowOutsideClick: false,
