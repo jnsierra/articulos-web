@@ -53,5 +53,9 @@ export class ListaideasComponent implements OnInit {
   actualizarIdea(id:number){
     this.router.navigate(['/actualizarIdea', id]);
   }
+
+  cargarFormato(id:number){
+    this.router.navigate(['/cargarFormato',id]);
+  }
   
 }

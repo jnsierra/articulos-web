@@ -8,7 +8,8 @@
         <p class="card-text"><b>Contenido: </b>{{item.contenido}}</p>
       </div>
       <footer class="blockquote-footer">
-          <a class="btn btn-outline-primary btn-block" style="color: white" *ngIf="item.estado == 'APROBAR' " (click)="consultaArticuloByIdea(item.id)" >CARGAR ARTÍCULO</a>
+          <!--a class="btn btn-outline-primary btn-block" style="color: white" *ngIf="item.estado == 'APROBAR' " (click)="consultaArticuloByIdea(item.id)" >CARGAR ARTÍCULO</a-->
+          <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'APROBAR' " (click)="cargarFormato(item.id)" >CARGAR FORMATO</a>
           <a class="btn btn-outline-info btn-block" style="color: white" *ngIf="item.estado == 'RECHAZAR' " (click)="actualizarIdea(item.id)" >CORREGIR</a>
         <small class="text-muted">
           Estado <cite title="Source Title" *ngIf="item.estado == 'RECHAZAR' " >RECHAZADA</cite>

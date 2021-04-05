@@ -78,4 +78,8 @@ export class UrlServices {
     getEndPointEstadisticas(): string {
         return `${ this.urlBase }v.1/estadisticas/`;
     }
+
+    getEndPointDownloadFiles(): string{
+        return `${ this.urlBase }v.1/downloadFiles/`;
+    }
 }

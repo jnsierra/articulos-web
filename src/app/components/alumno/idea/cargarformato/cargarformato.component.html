@@ -1,0 +1,77 @@
+<div class="container container-main">
+  <!--Ini Datos de la idea-->
+  <div class="row">
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+    <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">
+      <div class="viewer-container">
+        <div class="viewer-title">
+          <h4>IDEA</h4>
+          &nbsp;&nbsp;<i class="material-icons">wb_incandescent</i>&nbsp;&nbsp;
+          <h4>ID: {{ idea.id }}</h4>
+        </div>
+        <div class="viewer-body">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+              <b>Título:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-left">
+              {{ idea.titulo }}
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right">
+              <b>Usuario Creador:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-left">
+              {{ idea.usuario.nombre }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+              <b>Contenido:</b>
+            </div>
+            <div
+              class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-left"
+            >
+              {{ idea.contenido }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+              <b>Fecha:</b>
+            </div>
+            <div
+              class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-left"
+            >
+              {{ idea.fechaAprobacion | date }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+  </div>
+  <!--Fin Datos de la idea-->
+  <!--Ini Carga de documentos-->
+  <div class="row">
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+    <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">
+        <div class="viewer-container">
+            <div class="viewer-title">
+                <h4>Documentos &nbsp;<i class="material-icons">archive_outlined</i> </h4>
+            </div>
+            <div class="viewer-body">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left">
+                        Debes descargar el formato <span (click)="descargarFormato()" style="color: blue;text-decoration: underline blue;">aquí</span>, gestionarlo y subirlo firmado en formato pdf.
+                        <br/>
+                        <br/>
+                        <label for="uploadFormat">Carga formato diligenciado</label>
+                        <input type="file" class="form-control-file" id="uploadFormat">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
+  </div>
+  <!--Fin Carga de documentos-->
+</div>

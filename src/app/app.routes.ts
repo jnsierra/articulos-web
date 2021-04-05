@@ -17,6 +17,7 @@ import { ListaideasComponent } from './components/alumno/idea/listaideas/listaid
 import { ArticuloindividualComponent } from './components/alumno/articuloindividual/articuloindividual.component';
 import { SubirpdfComponent } from './components/alumno/subirpdf/subirpdf.component';
 import { SubirpdflistComponent } from './components/alumno/subirpdflist/subirpdflist.component';
+import { CargarformatoComponent } from './components/alumno/idea/cargarformato/cargarformato.component';
 //Componentes para profesor
 import { ListaideasProfComponent } from './components/profesor/listaideas/listaideas.component';
 import { ActualizarComponent } from './components/alumno/idea/actualizar/actualizar.component';
@@ -31,6 +32,8 @@ const APP_ROUTERS: Routes = [
     { path: 'crearIdea', component: CrearideaComponent, canActivate: [AuthGuard] },
     { path: 'actualizarIdea/:id', component: ActualizarComponent, canActivate: [AuthGuard]},
     { path: 'articuloAlumn/:id', component: ArticuloindividualComponent, canActivate: [AuthGuard] },
+    //Alumno
+    { path: 'cargarFormato/:id', component: CargarformatoComponent, canActivate: [AuthGuard] },
     { path: 'articuloProf/:id' , component: AutorizararticuloComponent, canActivate: [AuthGuard] },
     { path: 'listaIdeas', component: ListaideasComponent, canActivate: [AuthGuard] },
     { path: 'listaIdeasProf', component: ListaideasProfComponent, canActivate: [AuthGuard] },
