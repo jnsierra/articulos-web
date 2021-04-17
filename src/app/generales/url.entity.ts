@@ -82,4 +82,8 @@ export class UrlServices {
     getEndPointDownloadFiles(): string{
         return `${ this.urlBase }v.1/downloadFiles/`;
     }
+
+    getEndPointFormatoIDea(): string{
+        return `${ this.urlBase }v.1/formatoidea/`
+    }
 }

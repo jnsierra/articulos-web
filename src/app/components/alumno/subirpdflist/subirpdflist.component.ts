@@ -1,9 +1,10 @@
+import { UploadArticulo } from 'src/app/models/uploadarticulo.model';
 import { UploadService } from './../../../servicios/upload.service';
 import { ArticuloModel } from './../../../models/articulo.model';
 import { ArticulosService } from './../../../servicios/articulos.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { UploadArticulo } from 'src/app/models/uploadarticulo.model';
+
 
 @Component({
   selector: 'app-subirpdflist',
