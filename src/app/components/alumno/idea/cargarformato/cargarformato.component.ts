@@ -86,6 +86,10 @@ export class CargarformatoComponent implements OnInit {
         allowOutsideClick: false,
         type: "success",
         text: "Formato cargado correctamente"
+      }).then( (result) => {
+        if(result){
+          this.router.navigateByUrl('/listaIdeas');
+        }
       });
     }, catchError => {
       Swal.fire({
