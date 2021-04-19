@@ -9,7 +9,7 @@
       </div>
       <footer class="blockquote-footer">
         <a class="btn btn-outline-primary btn-block" style="color: white" (click)="actualizarEstadoIdea(item.id, 'APROBAR')">APROBAR</a>
-        <a class="btn btn-outline-danger btn-block" style="color: white"  (click)="actualizarEstadoIdea(item.id, 'RECHAZAR')">RECHAZAR</a>
+        <a class="btn btn-outline-danger btn-block" style="color: white"  (click)="capturaComentarioRechazo(item.id, 'RECHAZAR')">RECHAZAR</a>
         <small class="text-muted">
           Estado <cite title="Source Title">{{item.estado}}</cite>
         </small>

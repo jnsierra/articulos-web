@@ -1,3 +1,7 @@
+import { UsuarioModel } from './../../../models/usuario.model';
+import { ComentarioGeneralService } from './../../../servicios/comentariogeneral.service';
+import { ComentarioGeneralModel } from './../../../models/comentariogeneral.model';
+import { ComentariosService } from './../../../servicios/comentarios.service';
 import { Component, OnInit } from '@angular/core';
 import { IdeaService } from 'src/app/servicios/idea.service';
 import Swal from 'sweetalert2';
@@ -12,9 +16,12 @@ export class ListaideasProfComponent implements OnInit {
   ideas;
   usuario;
   ideasEnEspera;
+  usuarioAut: UsuarioModel;
 
-  constructor(private _ideaServicio: IdeaService) {
+  constructor(private _ideaServicio: IdeaService, 
+              private _comentarioServicio: ComentarioGeneralService) {
     this.buscarIdeasProfesor();
+    this.usuarioAut =  JSON.parse(localStorage.getItem('usuario'));
   }
 
   ngOnInit() {
@@ -62,4 +69,28 @@ export class ListaideasProfComponent implements OnInit {
     });
   }
 
+  capturaComentarioRechazo(idIdea: number, estado: string){
+    Swal.fire({
+      allowOutsideClick: false,
+      title: 'IDEA RECHAZADA',
+      type: 'error',
+      text: 'Por favor digite el comentario de rechazo de la idea:',
+      showCancelButton: true,
+      confirmButtonText: 'Enviar',
+      showLoaderOnConfirm: true,
+      input: 'textarea',
+      preConfirm: (mensaje) => {
+        let comentario = new ComentarioGeneralModel();
+        comentario = comentario.of('RECHAZO_IDEA',this.usuarioAut.id,idIdea,mensaje);
+        this._comentarioServicio.insertarComentario(comentario).subscribe((resp) => { 
+          return true;
+        },(catcherror)=>{
+          Swal.showValidationMessage('Error al persistir el comentario')
+        });
+        
+      }
+    }).then( (result) =>  {
+      this.actualizarEstadoIdea(idIdea, estado);
+    });
+  }
 }

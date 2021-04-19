@@ -67,6 +67,10 @@ export class UrlServices {
         return `${ this.urlBase }v.1/comentario/`;
     }
 
+    getEndPointComentarioDatos(): string {
+        return `${ this.urlBaseDatos }v.1/comentario/`;
+    }
+
     getEndPointUpload(): string {
         return `${ this.urlBase }v.1/upload/`;
     }
