@@ -1,6 +1,6 @@
 import { ComentarioGeneralModel } from './../models/comentariogeneral.model';
 import { ComentarioModel } from './../models/comentario.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UrlServices } from '../generales/url.entity';
 
@@ -14,6 +14,12 @@ export class ComentarioGeneralService {
   insertarComentario(comentario: ComentarioGeneralModel){
     const URL_SERVICE = `${this._urlService.getEndPointComentarioDatos()}`;
     return this.http.post( URL_SERVICE, comentario );
+  }
+
+  consultaComentariosByLlaveAndType(llave: number, type: string){
+    const URL_SERVICE = `${this._urlService.getEndPointComentarioDatos()}by/`;
+    let params = new HttpParams().set("llave", llave.toString() ).set("type_comments", type);
+    return this.http.get<ComentarioGeneralModel[]>(URL_SERVICE,{params: params});
   }
 
   

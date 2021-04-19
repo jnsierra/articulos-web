@@ -32,7 +32,7 @@ export class ListaideasProfComponent implements OnInit {
     this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'CREADA').subscribe(resp => {
       this.ideas = resp;
     });
-    this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'EN_ESPERA').subscribe(resp => {
+    this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'POR_CONFIRMAR_FORMATO').subscribe(resp => {
       this.ideasEnEspera = resp;
     });
   }

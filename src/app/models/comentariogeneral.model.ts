@@ -1,6 +1,7 @@
 export class ComentarioGeneralModel{
 
     id?: number;
+    nombreProfesor?:string;
     tipo_comentario: string;
     id_usuario: number;
     llave: number;

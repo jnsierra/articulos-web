@@ -1,3 +1,5 @@
+import { ComentarioGeneralModel } from './../../../../models/comentariogeneral.model';
+import { ComentarioGeneralService } from './../../../../servicios/comentariogeneral.service';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { IdeaService } from 'src/app/servicios/idea.service';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -26,6 +28,8 @@ export class ActualizarComponent implements OnInit {
   idea: IdeaModel;
   profesores;
   usuarioAut: UsuarioModel;
+  comentarioGeneral: ComentarioGeneralModel[];
+  usuarios: UsuarioModel[];
 
   selected = new FormControl('', [
     Validators.required
@@ -35,12 +39,15 @@ export class ActualizarComponent implements OnInit {
 
   constructor(private _usuarioService: UsuarioService,
     private _ideaService: IdeaService,
+    private _comentarioGeneralService: ComentarioGeneralService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
+    this.usuarios = [];
     this.idea = new IdeaModel();
     this.usuarioAut =  JSON.parse(localStorage.getItem('usuario'));
     this.activatedRoute.params.subscribe(params => {
       this.idIdea = Number(params['id']);
+      this.buscarComentariosRechazo();
       this.buscarProfesores();
     }); 
    }
@@ -91,6 +98,20 @@ export class ActualizarComponent implements OnInit {
     this._ideaService.obtenerIdeaById(this.idIdea).subscribe(resp => {
       this.idea = this.idea.ofWithIdProf(resp);
     });
+  }
+
+  buscarComentariosRechazo(){
+    this._comentarioGeneralService.consultaComentariosByLlaveAndType(this.idIdea,'RECHAZO_IDEA').subscribe( resp => {
+      this.comentarioGeneral = resp;
+      //Buscamos el nombre del profesor
+      this.comentarioGeneral.forEach(item => {
+        this._usuarioService.obtenerUsuariosById(item.id_usuario).subscribe( resp => {
+          let usuario = new UsuarioModel();
+          usuario = usuario.of(resp);
+          item.nombreProfesor = usuario.nombre;
+        });
+      });
+    }); 
   }
 
 }
