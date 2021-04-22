@@ -4,10 +4,12 @@
     <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
     <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">
       <div class="viewer-container">
-        <div class="viewer-title">
-          <h4>IDEA</h4>
-          &nbsp;&nbsp;<i class="material-icons">wb_incandescent</i>&nbsp;&nbsp;
-          <h4>ID: {{ idea.id }}</h4>
+        <div class="viewer-title text-center">
+          <legend>IDEA<i class="material-icons">wb_incandescent</i>
+            &nbsp;&nbsp;
+            ID: {{ idea.id }}
+          </legend>
+          
         </div>
         <div class="viewer-body">
           <div class="row">
@@ -52,9 +54,7 @@
     <div class="col-0 col-sm-0 col-md-10 col-lg-10 col-xl-8">
       <div class="viewer-container">
         <div class="viewer-title text-center">
-          <!--h4>Documentos &nbsp;<i class="material-icons">archive_outlined</i> </h4-->
-          <h4>Documentos</h4>
-          &nbsp;&nbsp;<i class="material-icons" style="width: 24px;">archive_outlined</i>&nbsp;&nbsp;
+          <legend>Documentos &nbsp;&nbsp;<i class="material-icons" style="width: 24px;">archive_outlined</i>&nbsp;&nbsp;</legend>
         </div>
         <div class="viewer-body">
           <div class="row">
@@ -80,4 +80,38 @@
     <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
   </div>
   <!--Fin Carga de documentos-->
+</div>
+<div class="container container-main" *ngIf="comentarioGeneral">
+  <div class="row">
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+      </div>
+      <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+          <div class="viewer-container">
+              <div class="viewer-title">
+                  <h4><b>COMENTARIOS DE RECHAZO DEL DOCUMENTO</b></h4>&nbsp;&nbsp;<i class="material-icons">message</i>
+              </div>
+          </div>
+          <div class="viewer-body">
+              <table class="table">
+                  <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Profesor</th>
+                        <th scope="col">Comentario</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of comentarioGeneral; let i = index " >
+                          <td>{{i+1}}</td>  
+                          <td> {{item.nombreProfesor}}</td>
+                          <td> {{item.comentario}} </td>
+                        </tr>
+                    </tbody>
+              </table>
+              
+          </div>
+      </div>
+      <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+      </div>
+  </div>
 </div>

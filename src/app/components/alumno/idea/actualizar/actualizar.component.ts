@@ -68,7 +68,6 @@ export class ActualizarComponent implements OnInit {
       }
     });
     this._ideaService.actualizaIdea(this.idea, this.usuarioAut).subscribe(resp => {
-      console.log(resp);
       Swal.fire({
         allowOutsideClick: false,
         type: 'success',

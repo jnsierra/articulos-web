@@ -1,0 +1,41 @@
+<div class="viewer-container">
+    <div class="viewer-title">
+        <legend>IDEA<i class="material-icons">wb_incandescent</i>
+            &nbsp;&nbsp;
+            ID: {{ idea.id }}
+        </legend>
+
+    </div>
+    <div class="viewer-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+                <b>Título:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-left">
+                {{ idea.titulo }}
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right">
+                <b>Usuario Creador:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-left">
+                {{ idea.usuario.nombre }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+                <b>Contenido:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-left">
+                {{ idea.contenido }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right">
+                <b>Fecha:</b>
+            </div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-left">
+                {{ idea.fechaAprobacion | date }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+import { AprobarformatoComponent } from './components/profesor/idea/aprobarformato/aprobarformato.component';
 import { AutorizararticuloComponent } from './components/profesor/autorizararticulo/autorizararticulo.component';
 import { RouterModule, Routes } from '@angular/router';
 //Guards (Interceptores previos a la renderizacion de la pagina)
@@ -39,6 +40,8 @@ const APP_ROUTERS: Routes = [
     { path: 'listaIdeasProf', component: ListaideasProfComponent, canActivate: [AuthGuard] },
     { path: 'subirPdfAlumnoList', component: SubirpdflistComponent, canActivate: [AuthGuard] },
     { path: 'subirPdfAlumno/:id', component: SubirpdfComponent, canActivate: [AuthGuard] },
+    //Profesores
+    { path: 'aprobarFormatoIdea/:id', component: AprobarformatoComponent, canActivate: [AuthGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'login'} 
 ];
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UsuarioModel } from './../../../models/usuario.model';
 import { ComentarioGeneralService } from './../../../servicios/comentariogeneral.service';
 import { ComentarioGeneralModel } from './../../../models/comentariogeneral.model';
@@ -19,7 +20,8 @@ export class ListaideasProfComponent implements OnInit {
   usuarioAut: UsuarioModel;
 
   constructor(private _ideaServicio: IdeaService, 
-              private _comentarioServicio: ComentarioGeneralService) {
+              private _comentarioServicio: ComentarioGeneralService,
+              private router: Router) {
     this.buscarIdeasProfesor();
     this.usuarioAut =  JSON.parse(localStorage.getItem('usuario'));
   }
@@ -93,4 +95,10 @@ export class ListaideasProfComponent implements OnInit {
       this.actualizarEstadoIdea(idIdea, estado);
     });
   }
+
+  verFormato(idIdea: number){
+    this.router.navigate(['/aprobarFormatoIdea', idIdea]);
+    console.log(idIdea);
+  }
+
 }

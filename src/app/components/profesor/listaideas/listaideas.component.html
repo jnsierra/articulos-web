@@ -38,7 +38,7 @@
           <p class="card-text">{{ item.contenido }}</p>
         </div>
         <footer class="blockquote-footer">
-          <a class="btn btn-outline-primary btn-block" style="color: white">VER FORMATO</a>
+          <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFormato(item.id)">VER FORMATO</a>
           <small class="text-muted">
             Estado <cite title="Source Title">{{ item.estado }}</cite>
           </small>

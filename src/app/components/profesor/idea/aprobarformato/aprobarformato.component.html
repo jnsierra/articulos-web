@@ -1,0 +1,43 @@
+<div class="container container-main">    
+    <div class="row">
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <app-ver-idea [idIdea]="idIdea"></app-ver-idea>    
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+    </div>
+</div>
+<div class="container container-main">
+    <div class="row">
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <div class="viewer-container">
+                <div class="viewer-title">
+                    <legend>FORMATO</legend>
+                </div>
+                <div class="viewer-body">
+                    Ver Formato. <span (click)="descargarFormato()" style="color: blue; text-decoration: underline blue; cursor: pointer ">aquí</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+    </div>
+    <app-comentarios [idIdea]="idIdea" [estadoComentarios]="'RECHAZO_FORMATO_IDEA'" [titulo]="'COMENTARIOS DE RECHAZO FORMATO'"></app-comentarios>
+    <br/>
+    <div class="row">
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+            <button color="primary" class="btn btn-warning" (click)="rechazarDocumento(idea.id)">Rechazar</button> &nbsp; &nbsp;&nbsp;
+            <button color="primary" class="btn btn-primary" (click)="aprobarDocumento(idea.id)">Aprobar</button> &nbsp; &nbsp;&nbsp;
+            <button color="danger" class="btn btn-danger" routerLink="/listaIdeasProf" routerLinkActive="active">Cancelar</button>
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+        </div>
+    </div>
+</div>
+<br/><br/>

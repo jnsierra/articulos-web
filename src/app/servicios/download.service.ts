@@ -21,4 +21,9 @@ export class DownloadService {
     const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}formatoIdea/`;
     return this.http.get<DocumentDownload>(URL_SERVICE);
   }
+
+  getFormatoIdeaFirmado(idIdea: number){
+    const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}formatoAdjuntoIdea/${idIdea}/`;
+    return this.http.get<DocumentDownload>(URL_SERVICE);
+  }
 }

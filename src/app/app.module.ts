@@ -44,6 +44,9 @@ import { SubirpdflistComponent } from './components/alumno/subirpdflist/subirpdf
 import { from } from 'rxjs';
 import { ActualizarComponent } from './components/alumno/idea/actualizar/actualizar.component';
 import { CargarformatoComponent } from './components/alumno/idea/cargarformato/cargarformato.component';
+import { AprobarformatoComponent } from './components/profesor/idea/aprobarformato/aprobarformato.component';
+import { ComentariosComponent } from './components/general/comentarios/comentarios.component';
+import { VerIdeaComponent } from './components/general/ver-idea/ver-idea.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { CargarformatoComponent } from './components/alumno/idea/cargarformato/c
     SubirpdfComponent,
     SubirpdflistComponent,
     ActualizarComponent,
-    CargarformatoComponent
+    CargarformatoComponent,
+    AprobarformatoComponent,
+    ComentariosComponent,
+    VerIdeaComponent
   ],
   imports: [
     BrowserModule,
