@@ -11,18 +11,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./correccionarticulo.component.css']
 })
 export class CorreccionarticuloComponent implements OnInit {
+
   @Input()
   ideaItem;
 
   articulo: ArticuloModel;
 
+  estadoButtons: string;
+
   constructor(private _articuloService: ArticulosService,
               private router: Router) {
     this.articulo = new ArticuloModel();
     this.articulo.estado = 'SIN_CORRECCIONES';
+    this.articulo.ideaId = this.ideaItem;
   }
 
   ngOnInit() {
+    console.log('Esta es la idea: ', this.ideaItem);
+    this.validaIdea();  
+  }
+
+  validaIdea(){
+
   }
 
   crearArticulo(f: NgForm) {
@@ -38,8 +48,10 @@ export class CorreccionarticuloComponent implements OnInit {
         Swal.showLoading()
       }
     });
-    this.articulo.ideaId = this.ideaItem.id;
+    this.articulo.ideaId = this.ideaItem;
+    this.articulo.idea.id = this.ideaItem;
     this.articulo.estado = 'ENVIADO_POR_CORRECCIONES';
+    console.log('Este es el articulo: ', this.articulo);
     this._articuloService.guardarArticulo(this.articulo).subscribe(resp => {
       Swal.close();
       Swal.fire({

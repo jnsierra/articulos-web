@@ -30,12 +30,7 @@
     <div class="form-inline my-2 my-lg-0">
       <a class="btn btn-outline-primary btn-sm" [routerLink]="['login']" *ngIf="!autenticado()">Ingresar</a>
       &nbsp; &nbsp;
-      <div class="dropdown dropleft" *ngIf="autenticado()">
-        <button mat-mini-fab color="warn" class="btn btn-danger btn-sm" type="button" *ngIf="notifications == 'red' "
-          id="dropdownNotifiButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-          (click)="buscaTitulosNotificaciones()">
-          {{numNotifi}}<mat-icon>notification_important</mat-icon>
-        </button>
+      <div class="dropdown dropleft" *ngIf="autenticado()">        
         <button mat-mini-fab color="primary" type="button" *ngIf="notifications != 'red'"
           (click)="validaNotificaciones()">
           <mat-icon>notification_important</mat-icon>

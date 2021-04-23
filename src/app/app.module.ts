@@ -47,6 +47,7 @@ import { CargarformatoComponent } from './components/alumno/idea/cargarformato/c
 import { AprobarformatoComponent } from './components/profesor/idea/aprobarformato/aprobarformato.component';
 import { ComentariosComponent } from './components/general/comentarios/comentarios.component';
 import { VerIdeaComponent } from './components/general/ver-idea/ver-idea.component';
+import { ProfesoresIdeaComponent } from './components/general/profesores-idea/profesores-idea.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { VerIdeaComponent } from './components/general/ver-idea/ver-idea.compone
     CargarformatoComponent,
     AprobarformatoComponent,
     ComentariosComponent,
-    VerIdeaComponent
+    VerIdeaComponent,
+    ProfesoresIdeaComponent,
   ],
   imports: [
     BrowserModule,

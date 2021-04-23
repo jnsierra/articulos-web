@@ -29,17 +29,7 @@ export class ArticulosService {
     const URL_SERVICE = `${this._urlService.getEndPointArticulo()}profesor/notificaciones/titulos/${idProfesor}/`;
     return this.http.get(URL_SERVICE);
   }
-
-  consultaNotificaciones(idProfesor: number){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}profesor/notificaciones/${idProfesor}/`;
-    return this.http.get(URL_SERVICE);
-  }
-
-  consultaNotificacionesAlumn(idAlumn: number){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}alumno/notificaciones/${idAlumn}/`;
-    return this.http.get(URL_SERVICE);
-  }
-
+  
   consultaTituloNotificacionAlumn(idAlumn: number){
     const URL_SERVICE = `${this._urlService.getEndPointArticulo()}alumno/notificaciones/titulos/${idAlumn}/`;
     return this.http.get(URL_SERVICE);

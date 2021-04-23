@@ -34,29 +34,6 @@ export class ArticuloindividualComponent implements OnInit {
     this.articulo = new ArticuloModel();
     this.activatedRoute.params.subscribe(params => {
       this.idIdea = Number(params['id']);
-      this.buscaIdeaById(this.idIdea);
-    });
-  }
-
-  buscaIdeaById(idIdea: number) {
-    this._ideaService.obtenerIdeaById(this.idIdea).subscribe(resp => {
-      this.articulo.idea = new IdeaModel();
-      this.articulo.idea = this.articulo.idea.of(resp);
-      this.obtieneIdArticuloByIdea();
-    }, catchError => {
-      if (catchError.status == 403) {
-        console.log('Problema con el estado 403');
-        Swal.fire({
-          allowOutsideClick: false,
-          type: 'error',
-          text: 'Error de autenticacion por favor ingrese de nuevo'
-        }).then((result) => {
-          if (result.value) {
-            this._authService.logout();
-            this.router.navigateByUrl('/login');
-          }
-        });
-      }
     });
   }
 

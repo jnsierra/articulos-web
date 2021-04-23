@@ -3,7 +3,8 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
-import { ArticulosService } from 'src/app/servicios/articulos.service';
+import { NotificacionesService } from 'src/app/servicios/notificaciones.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,7 @@ export class NavbarComponent {
     private router: Router,
     private authService: AuthService,
     private usuarioService: UsuarioService,
-    private _articuloService: ArticulosService
+    private _notificacionesService: NotificacionesService
   ) {
     this.usuario = new UsuarioModel();
     this.numNotifi = -1;
@@ -35,8 +36,8 @@ export class NavbarComponent {
     if (this.usuario) {
       if (this.usuario.tipoUsuario.tipo === 'PROFESOR' && this.numNotifi === -1) {
         this.numNotifi = -2;
-        this._articuloService
-          .consultaNotificaciones(this.usuario.id)
+        this._notificacionesService
+          .consultaNotificacionesProfesor(this.usuario.id)
           .subscribe(resp => {
             this.numNotifi = Number(resp);
             if (this.numNotifi > 0) {
@@ -47,7 +48,7 @@ export class NavbarComponent {
           });
       } else if (this.usuario.tipoUsuario.tipo === 'ALUMNO' && this.numNotifi === -1) {
         this.numNotifi = -2;
-        this._articuloService
+        this._notificacionesService
           .consultaNotificacionesAlumn(this.usuario.id)
           .subscribe(resp => {
             this.numNotifi = Number(resp);
@@ -61,21 +62,7 @@ export class NavbarComponent {
     }
   }
 
-  buscaTitulosNotificaciones() {
-    if (this.usuario.tipoUsuario.tipo === 'PROFESOR') {
-      this._articuloService.consultaTituloNotificacion(this.usuario.id)
-      .subscribe(resp => {
-        this.notificacionesList = resp;
-      });
-    } else if (this.usuario.tipoUsuario.tipo === 'ALUMNO') {
-      this._articuloService.consultaTituloNotificacionAlumn(this.usuario.id)
-      .subscribe(resp => {
-        this.notificacionesList = resp;
-      });
-    }
-    this.numNotifi = -1;
-    this.buscarNotificaciones();
-  }
+  
 
   init() {
     //Obtenemos el objeto usuario

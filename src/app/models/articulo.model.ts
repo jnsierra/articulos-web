@@ -4,7 +4,7 @@ export class ArticuloModel{
     id: number;
     resumenIngles: string;
     resumenEspanol: string;
-    contenido: string;
+    titulo: string;
     estado: string;
     ideaId: number;
     idea?: IdeaModel;
@@ -18,7 +18,7 @@ export class ArticuloModel{
         articulo.id = objeto.id;
         articulo.resumenIngles = objeto.resumenIngles;
         articulo.resumenEspanol = objeto.resumenEspanol;
-        articulo.contenido = objeto.contenido;
+        articulo.titulo = objeto.titulo;
         articulo.estado = objeto.estado;
         if( objeto.idea ){
             articulo.idea = articulo.idea.of(objeto.idea);
