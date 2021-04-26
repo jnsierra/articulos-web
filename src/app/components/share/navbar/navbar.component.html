@@ -19,8 +19,9 @@
           Artículos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownArt">
-          <a class="dropdown-item" href="#" [routerLink]="['/subirPdfAlumnoList']">Aprobados Sin PDF</a>
-        </div>
+          <a class="dropdown-item" href="#" [routerLink]="['/subirPdfAlumnoList']">Aprobados Sin PDFsss</a>
+          <a class="dropdown-item" href="#" [routerLink]="['/listarArticulos']">Articulos en proceso</a>
+        </div>        
       </li>
       <app-navbaradmin *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ADMIN' "></app-navbaradmin>
       <app-navbaralumno *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ALUMNO' "></app-navbaralumno>

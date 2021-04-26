@@ -11,12 +11,12 @@ export class ArticulosService {
   constructor(private _urlService: UrlServices, private http: HttpClient) { }
 
   guardarArticulo(articulo: ArticuloModel){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}/`;
+    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}`;
     return this.http.post(URL_SERVICE, articulo);
   }
 
   consultaArticuloById(id: number){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}${id}/`;
+    const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}by/${id}/`;
     return this.http.get(URL_SERVICE);
   }
 
@@ -48,5 +48,10 @@ export class ArticulosService {
   consultaArticulosAlumnoPublicados(idAlumno: number){
     const URL_SERVICE = `${this._urlService.getEndPointArticulo()}alumno/publicados/${idAlumno}/`;
     return this.http.get(URL_SERVICE);
+  }
+
+  consultarArticulosByUsuario(idAlumno: number){
+    const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}idea/user/${idAlumno}/`;
+    return this.http.get<ArticuloModel[]>(URL_SERVICE);
   }
 }

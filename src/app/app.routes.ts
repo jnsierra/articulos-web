@@ -1,3 +1,7 @@
+import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-articulo/ver-idea-articulo.component';
+import { VerIdeaComponent } from './components/general/ver-idea/ver-idea.component';
+import { CrearArticuloComponent } from './components/alumno/articulo/crear-articulo/crear-articulo.component';
+import { ListarArtComponent } from './components/alumno/articulo/listar-art/listar-art.component';
 import { AprobarformatoComponent } from './components/profesor/idea/aprobarformato/aprobarformato.component';
 import { AutorizararticuloComponent } from './components/profesor/autorizararticulo/autorizararticulo.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -35,11 +39,14 @@ const APP_ROUTERS: Routes = [
     { path: 'articuloAlumn/:id', component: ArticuloindividualComponent, canActivate: [AuthGuard] },
     //Alumno
     { path: 'cargarFormato/:id', component: CargarformatoComponent, canActivate: [AuthGuard] },
+    { path: 'listarArticulos', component: ListarArtComponent, canActivate: [AuthGuard] },
     { path: 'articuloProf/:id' , component: AutorizararticuloComponent, canActivate: [AuthGuard] },
     { path: 'listaIdeas', component: ListaideasComponent, canActivate: [AuthGuard] },
     { path: 'listaIdeasProf', component: ListaideasProfComponent, canActivate: [AuthGuard] },
     { path: 'subirPdfAlumnoList', component: SubirpdflistComponent, canActivate: [AuthGuard] },
     { path: 'subirPdfAlumno/:id', component: SubirpdfComponent, canActivate: [AuthGuard] },
+    { path: 'editarArticulo/:id', component: CrearArticuloComponent, canActivate: [AuthGuard] },
+    { path: 'verIdeaArticulo/:id/:idArticulo', component: VerIdeaArticuloComponent, canActivate: [AuthGuard] },
     //Profesores
     { path: 'aprobarFormatoIdea/:id', component: AprobarformatoComponent, canActivate: [AuthGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'login'} 

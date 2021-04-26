@@ -27,7 +27,6 @@ export class CorreccionarticuloComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Esta es la idea: ', this.ideaItem);
     this.validaIdea();  
   }
 
@@ -51,6 +50,7 @@ export class CorreccionarticuloComponent implements OnInit {
     this.articulo.ideaId = this.ideaItem;
     this.articulo.idea.id = this.ideaItem;
     this.articulo.estado = 'ENVIADO_POR_CORRECCIONES';
+    this.articulo.contenido = '.';
     console.log('Este es el articulo: ', this.articulo);
     this._articuloService.guardarArticulo(this.articulo).subscribe(resp => {
       Swal.close();

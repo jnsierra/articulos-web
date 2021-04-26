@@ -1,0 +1,51 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><span
+                style="color: blue; text-decoration: underline; cursor: pointer;">Articulo</span></li>
+    </ol>
+</nav>
+<br />
+
+<div class="row">
+    <div class="col-0 col-sm-0 col-md-2 col-lg-1"></div>
+    <div class="col-12 col-sm-12 col-md-8 col-lg-10 text-center">
+        <button class="btn btn-outline-primary" routerLink="/verIdeaArticulo/{{articulo.ideaId}}/{{articulo.id}}">Ver Idea</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-outline-warning">Agregar Control de lectura</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-outline-success">Administrar Parrafos</button>
+    </div>
+    <div class="col-0 col-sm-0 col-md-2 col-lg-1"></div>
+</div>
+<br/>
+<form #f="ngForm" (ngSubmit)="actualizarArticulo( f )">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Estado (disabled)" disabled value="{{articulo.estado | uppercase}}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Abstract in English" [(ngModel)]="articulo.resumen_ingles" name="resumenIngles"
+            required></textarea>
+        <mat-hint>Inicia el resumen de tú articulo(En ingles)</mat-hint>
+        <mat-error
+            *ngIf="f.submitted && f.controls['resumenIngles'].invalid && f.controls['resumenIngles'].errors['required']">
+            Resumen obligatorio
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Resumen en español" [(ngModel)]="articulo.resumen" name="resumenEspanol"
+            required></textarea>
+        <mat-hint>Inicia el resumen de tú articulo(En español)</mat-hint>
+        <mat-error
+            *ngIf="f.submitted && f.controls['resumenEspanol'].invalid && f.controls['resumenEspanol'].errors['required']">
+            Resumen obligatorio
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Título" [(ngModel)]="articulo.titulo" name="titulo" required></textarea>
+        <mat-hint>Digita el título de tu artículo</mat-hint>
+        <mat-error *ngIf="f.submitted && f.controls['titulo'].invalid && f.controls['titulo'].errors['required']">
+            Contenido obligatorio
+        </mat-error>
+    </mat-form-field>
+    <div style="margin-top: 20px;">
+        <button mat-raised-button color="primary" class="full-width">Guardar</button>
+    </div>
+</form>

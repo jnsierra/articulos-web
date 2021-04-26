@@ -48,6 +48,10 @@ import { AprobarformatoComponent } from './components/profesor/idea/aprobarforma
 import { ComentariosComponent } from './components/general/comentarios/comentarios.component';
 import { VerIdeaComponent } from './components/general/ver-idea/ver-idea.component';
 import { ProfesoresIdeaComponent } from './components/general/profesores-idea/profesores-idea.component';
+import { ListarArtComponent } from './components/alumno/articulo/listar-art/listar-art.component';
+import { ItemArtComponent } from './components/alumno/articulo/item-art/item-art.component';
+import { CrearArticuloComponent } from './components/alumno/articulo/crear-articulo/crear-articulo.component';
+import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-articulo/ver-idea-articulo.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +80,10 @@ import { ProfesoresIdeaComponent } from './components/general/profesores-idea/pr
     ComentariosComponent,
     VerIdeaComponent,
     ProfesoresIdeaComponent,
+    ListarArtComponent,
+    ItemArtComponent,
+    CrearArticuloComponent,
+    VerIdeaArticuloComponent
   ],
   imports: [
     BrowserModule,

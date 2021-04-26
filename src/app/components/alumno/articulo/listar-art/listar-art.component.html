@@ -1,0 +1,9 @@
+<div *ngIf="articulos">
+    <h2>EN PROCESO</h2>
+    <div class="container main-container">
+        <div class="card-columns">
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem" *ngFor="let item of articulos">
+                <app-item-art [articulo]="item"></app-item-art>
+            </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@
     <input matInput placeholder="Estado (disabled)" disabled value="{{articulo.estado | uppercase}}">
   </mat-form-field>
   <mat-form-field class="full-width">
-    <textarea matInput placeholder="Abstract in English" [(ngModel)]="articulo.resumenIngles" name="resumenIngles"
+    <textarea matInput placeholder="Abstract in English" [(ngModel)]="articulo.resumen_ingles" name="resumenIngles"
       required></textarea>
     <mat-hint>Inicia el resumen de tú articulo(En ingles)</mat-hint>
     <mat-error *ngIf="f.submitted && f.controls['resumenIngles'].invalid && f.controls['resumenIngles'].errors['required']">
@@ -11,7 +11,7 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <textarea matInput placeholder="Resumen en español" [(ngModel)]="articulo.resumenEspanol" name="resumenEspanol"
+    <textarea matInput placeholder="Resumen en español" [(ngModel)]="articulo.resumen" name="resumenEspanol"
       required></textarea>
     <mat-hint>Inicia el resumen de tú articulo(En español)</mat-hint>
     <mat-error *ngIf="f.submitted && f.controls['resumenEspanol'].invalid && f.controls['resumenEspanol'].errors['required']">

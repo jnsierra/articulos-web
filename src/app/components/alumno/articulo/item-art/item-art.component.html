@@ -1,0 +1,13 @@
+<div class="card-header">
+    <b>{{articulo.titulo | uppercase}}</b>
+</div>
+<div class="card-body">
+    <p class="card-text"><b>Resumen: </b>{{articulo.resumen}}</p>
+    <p class="card-text"><b>Abstract: </b>{{articulo.resumen_ingles}}</p>
+</div>
+<footer class="blockquote-footer">
+    <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES'" routerLink="/editarArticulo/{{articulo.id}}" >VER ARTICULO</a>
+    <small class="text-muted">
+        ESTADO <cite title="Source Title" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES' " >GUARDADA</cite>
+    </small>
+</footer>
