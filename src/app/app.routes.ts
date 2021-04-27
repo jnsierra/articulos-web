@@ -1,3 +1,5 @@
+import { GestionParrafosComponent } from './components/alumno/articulo/gestion-parrafos/gestion-parrafos.component';
+import { GestionLecturaComponent } from './components/alumno/articulo/gestion-lectura/gestion-lectura.component';
 import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-articulo/ver-idea-articulo.component';
 import { VerIdeaComponent } from './components/general/ver-idea/ver-idea.component';
 import { CrearArticuloComponent } from './components/alumno/articulo/crear-articulo/crear-articulo.component';
@@ -47,6 +49,8 @@ const APP_ROUTERS: Routes = [
     { path: 'subirPdfAlumno/:id', component: SubirpdfComponent, canActivate: [AuthGuard] },
     { path: 'editarArticulo/:id', component: CrearArticuloComponent, canActivate: [AuthGuard] },
     { path: 'verIdeaArticulo/:id/:idArticulo', component: VerIdeaArticuloComponent, canActivate: [AuthGuard] },
+    { path: 'verControlLectura/:id', component: GestionLecturaComponent, canActivate: [AuthGuard] },
+    { path: 'verParrafos/:id', component: GestionParrafosComponent, canActivate: [AuthGuard] },
     //Profesores
     { path: 'aprobarFormatoIdea/:id', component: AprobarformatoComponent, canActivate: [AuthGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'login'} 

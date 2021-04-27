@@ -1,0 +1,39 @@
+<br/>
+<div class="row">
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+    </div>
+    <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="viewer-container">
+            <div class="viewer-title">
+                <legend>{{titulo}}&nbsp;&nbsp;<i class="material-icons">message</i></legend>
+            </div>
+        </div>
+        <div class="viewer-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Autor</th>
+                      <th scope="col">Link</th>
+                      <th scope="col">Año de publicacion</th>
+                      <th scope="col">Comentario</th>
+                      <th scope="col">Calificación</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of listControlLectura; let i = index " >
+                        <td>{{i+1}}</td>  
+                        <td> {{item.autor}}</td>
+                        <td> {{item.link}} </td>
+                        <td> {{item.year}} </td>
+                        <td> {{item.comentario}} </td>
+                        <td> {{item.calificacion}} </td>
+                      </tr>
+                  </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <div class="col-0 col-sm-0 col-md-1 col-lg-1">
+    </div>
+</div>

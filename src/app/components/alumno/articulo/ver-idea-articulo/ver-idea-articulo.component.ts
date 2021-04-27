@@ -15,8 +15,6 @@ export class VerIdeaArticuloComponent implements OnInit {
     this.activatedRoute.params.subscribe(params =>{
       this.idIdea = Number(params['id']);
       this.idArticulo = Number(params['idArticulo']);
-      console.log("Art:",this.idArticulo);
-      console.log("Idea:", this.idIdea);
     });
   }
 

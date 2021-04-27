@@ -94,4 +94,8 @@ export class UrlServices {
     getEndPointNotificaciones(): string{
         return `${ this.urlBase }/v.1/notificaciones/`;
     }
+
+    getEndPointControlLecturaDatos(): string{
+        return `${ this.urlBaseDatos }v.1/controllectura/`;
+    }
 }

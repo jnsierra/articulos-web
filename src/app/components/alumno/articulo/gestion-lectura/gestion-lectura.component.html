@@ -1,0 +1,59 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item ">
+            <span style="cursor: pointer;" routerLink="/editarArticulo/{{idArticulo}}">Articulo</span>
+        </li>
+        <li class="breadcrumb-item active">
+            <span style="color: blue; text-decoration: underline; cursor: pointer;">Control de lectura</span>
+        </li>
+    </ol>
+</nav>
+<br />
+<div class="container main-container">
+    <div class="row">
+        <div class="viewer-container">
+            <div class="viewer-body">
+                <form #form="ngForm" (ngSubmit)="actualizaControl( form )">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Autor" name="autor" required [(ngModel)]="controlLectura.autor" />
+                        <mat-hint>Digita el autor del articulo leido</mat-hint>
+                        <mat-error *ngIf="form.submitted && form.controls['autor'] ">Autor es requerido</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Link" name="link" required  [(ngModel)]="controlLectura.link" >
+                        <mat-hint>Referencia el link en el que se encuentra publico el artículo</mat-hint>
+                        <mat-error *ngIf="form.submitted && form.controls['link'] ">Link es requerido</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Comentario" name="comentario" required [(ngModel)]="controlLectura.comentario">
+                        <mat-hint>Realiza un comentario sobre el artículo:</mat-hint>
+                        <mat-error *ngIf="form.submitted && form.controls['comentario'] ">Comentario es requerido</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label *ngIf="nonSubmited()" class="mat-error full-width">Año de publicación es requerido
+                        </mat-label>
+                        <mat-label>Año de publicación del artículo:</mat-label>
+                        <mat-select required [(value)]="controlLectura.year">
+                            <mat-option *ngFor="let item of listAnios" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <mat-label *ngIf="nonSubmited()" class="mat-error full-width">Calificación es requerida
+                        </mat-label>
+                        <mat-label>Dale una calificación al artículo leido:</mat-label>
+                        <mat-select required [(value)]="controlLectura.calificacion">
+                            <mat-option *ngFor="let item of listCalificacion" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button type="submit" class="btn btn-outline-primary btn-block">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-ver-control-lectura [idArticulo]="idArticulo" [titulo]="'CONTROLES DE LECTURA'" ></app-ver-control-lectura>

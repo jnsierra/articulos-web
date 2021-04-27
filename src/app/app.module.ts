@@ -52,6 +52,9 @@ import { ListarArtComponent } from './components/alumno/articulo/listar-art/list
 import { ItemArtComponent } from './components/alumno/articulo/item-art/item-art.component';
 import { CrearArticuloComponent } from './components/alumno/articulo/crear-articulo/crear-articulo.component';
 import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-articulo/ver-idea-articulo.component';
+import { GestionLecturaComponent } from './components/alumno/articulo/gestion-lectura/gestion-lectura.component';
+import { GestionParrafosComponent } from './components/alumno/articulo/gestion-parrafos/gestion-parrafos.component';
+import { VerControlLecturaComponent } from './components/general/ver-control-lectura/ver-control-lectura.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,10 @@ import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-
     ListarArtComponent,
     ItemArtComponent,
     CrearArticuloComponent,
-    VerIdeaArticuloComponent
+    VerIdeaArticuloComponent,
+    GestionLecturaComponent,
+    GestionParrafosComponent,
+    VerControlLecturaComponent
   ],
   imports: [
     BrowserModule,
