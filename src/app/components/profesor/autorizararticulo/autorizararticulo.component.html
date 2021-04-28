@@ -92,8 +92,8 @@
                         <tbody>
                             <tr *ngFor="let item of articulosHis ">
                                 <td>{{ item.estado}}</td>
-                                <td>{{ item.resumenIngles}}</td>
-                                <td>{{ item.resumenEspanol}}</td>
+                                <td>{{ item.resumen_ingles}}</td>
+                                <td>{{ item.resumen}}</td>
                                 <td>{{ item.contenido }}</td>
                             </tr>
                         </tbody>
@@ -150,7 +150,7 @@
                             <b>Abstract:</b>
                         </div>
                         <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-                            {{articulo.resumenIngles}}
+                            {{articulo.resumen_ingles}}
                         </div>
                     </div>
                     <div class="row">
@@ -158,7 +158,7 @@
                             <b>Resumen:</b>
                         </div>
                         <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-                            {{articulo.resumenEspanol}}
+                            {{articulo.resumen}}
                         </div>
                     </div>
                     <div class="row">
