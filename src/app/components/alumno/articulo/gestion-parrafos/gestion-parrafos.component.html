@@ -9,3 +9,52 @@
     </ol>
 </nav>
 <br />
+<div class="container">
+    <div class="row">
+        <div class="col-12 viewer-container">
+            <div class="viewer-title">
+                <legend>PARRAFO <i class="material-icons">announcement</i></legend>
+            </div>
+            <div class="viewer-body">
+            <form #f="ngForm" (ngSubmit)="submitForm(f)">
+                <div class="mb-3">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Contenido" name="contenido" required
+                            [(ngModel)]="parrafo.contenido"></textarea>
+                        <mat-hint>Digita el contenido del parrafo:</mat-hint>
+                        <mat-error *ngIf="f.submitted && f.controls['contenido'] ">Comentario es requerido</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="mb-3">
+                    <mat-form-field>
+                        <mat-label *ngIf="nonSubmited()" class="mat-error full-width">Orden del parrafo es requerido
+                        </mat-label>
+                        <mat-label>Orden del parrafo dentro del articulo:</mat-label>
+                        <mat-select required [(value)]="parrafo.orden">
+                            <mat-option *ngFor="let item of listaOrden" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="mb-3">
+                    <mat-form-field class="estado-full-width">
+                        <mat-label>ESTADO (disabled)</mat-label>
+                        <input matInput disabled value="{{parrafo.estado}}">
+                    </mat-form-field>                    
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-danger btn-block" >GUARDAR</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 viewer-container">
+            <app-ver-parrafos [idArticulo]="idArticulo" [titulo]="'PARRAFOS DEL ARTICULO'" [muestraUpdate]="true" (parrafoSeleccionado)="editar( $event )" ></app-ver-parrafos>
+        </div>
+    </div>
+</div>

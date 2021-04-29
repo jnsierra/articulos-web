@@ -98,4 +98,8 @@ export class UrlServices {
     getEndPointControlLecturaDatos(): string{
         return `${ this.urlBaseDatos }v.1/controllectura/`;
     }
+
+    getEndPointParrafoDatos(): string{
+        return `${ this.urlBaseDatos }v.1/parrafo/`;
+    }
 }

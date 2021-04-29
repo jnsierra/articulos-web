@@ -34,31 +34,31 @@ export class NavbarComponent {
 
   buscarNotificaciones() {
     if (this.usuario) {
-      if (this.usuario.tipoUsuario.tipo === 'PROFESOR' && this.numNotifi === -1) {
-        this.numNotifi = -2;
-        this._notificacionesService
-          .consultaNotificacionesProfesor(this.usuario.id)
-          .subscribe(resp => {
-            this.numNotifi = Number(resp);
-            if (this.numNotifi > 0) {
-              this.notifications = 'red';
-            } else {
-              this.notifications = 'sin_notificacion';
-            }
-          });
-      } else if (this.usuario.tipoUsuario.tipo === 'ALUMNO' && this.numNotifi === -1) {
-        this.numNotifi = -2;
-        this._notificacionesService
-          .consultaNotificacionesAlumn(this.usuario.id)
-          .subscribe(resp => {
-            this.numNotifi = Number(resp);
-            if (this.numNotifi > 0) {
-              this.notifications = 'red';
-            } else {
-              this.notifications = 'sin_notificacion';
-            }
-          });
-      }
+      //if (this.usuario.tipoUsuario.tipo === 'PROFESOR' && this.numNotifi === -1) {
+//        this.numNotifi = -2;
+//        this._notificacionesService
+//          .consultaNotificacionesProfesor(this.usuario.id)
+//          .subscribe(resp => {
+//            this.numNotifi = Number(resp);
+//            if (this.numNotifi > 0) {
+//              this.notifications = 'red';
+//            } else {
+//              this.notifications = 'sin_notificacion';
+//            }
+//          });
+//      } else if (this.usuario.tipoUsuario.tipo === 'ALUMNO' && this.numNotifi === -1) {
+//        this.numNotifi = -2;
+//        this._notificacionesService
+//          .consultaNotificacionesAlumn(this.usuario.id)
+//          .subscribe(resp => {
+//            this.numNotifi = Number(resp);
+//            if (this.numNotifi > 0) {
+//              this.notifications = 'red';
+//            } else {
+//              this.notifications = 'sin_notificacion';
+//            }
+//          });
+//      }
     }
   }
 

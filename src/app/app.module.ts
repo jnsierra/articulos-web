@@ -1,9 +1,10 @@
+import { HttpErrorInterceptorService } from './servicios/httpInterceptor.service';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 //Interceptores
 import { AuthInterceptorService } from './servicios/auth-interceptor.service';
@@ -55,6 +56,7 @@ import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-
 import { GestionLecturaComponent } from './components/alumno/articulo/gestion-lectura/gestion-lectura.component';
 import { GestionParrafosComponent } from './components/alumno/articulo/gestion-parrafos/gestion-parrafos.component';
 import { VerControlLecturaComponent } from './components/general/ver-control-lectura/ver-control-lectura.component';
+import { VerParrafosComponent } from './components/general/ver-parrafos/ver-parrafos.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,8 @@ import { VerControlLecturaComponent } from './components/general/ver-control-lec
     VerIdeaArticuloComponent,
     GestionLecturaComponent,
     GestionParrafosComponent,
-    VerControlLecturaComponent
+    VerControlLecturaComponent,
+    VerParrafosComponent
   ],
   imports: [
     BrowserModule,
@@ -116,6 +119,11 @@ import { VerControlLecturaComponent } from './components/general/ver-control-lec
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
       multi: true
     }
   ],

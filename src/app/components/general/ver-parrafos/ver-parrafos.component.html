@@ -1,0 +1,21 @@
+<div class="viewer-title">
+    <legend>{{titulo}} <i class="material-icons">book_online</i></legend>
+</div>
+<div class="viewer-body">
+    <div class="table-responsive">
+        <table class="table table-borderless">
+            <tr *ngFor="let item of listaParrafos">
+                <td style="text-align:justify" data-toggle="tooltip" data-placement="left" title="Orden: {{item.orden}}">
+                <div class="border" style="padding: 10px;" [class.border-primary]="item.estado === 'POR_REVISAR_PROFESOR'"
+                     [class.border-warning]="item.estado === 'CORREGIDO_PARA_REVISION'">
+                    {{item.contenido}}
+                </div>
+                <br/>
+                </td>
+                <td *ngIf="muestraUpdate">
+                    <i class="material-icons" (click)="editarParrafo(item)" data-toggle="tooltip" data-placement="left" title="Editar Parrafo">edit</i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
