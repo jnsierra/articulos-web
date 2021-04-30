@@ -26,6 +26,7 @@
       <app-navbaradmin *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ADMIN' "></app-navbaradmin>
       <app-navbaralumno *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'ALUMNO' "></app-navbaralumno>
       <app-navbarprofesor *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'PROFESOR' "></app-navbarprofesor>
+      <app-navbarcoordinacion *ngIf="autenticado() && usuario.tipoUsuario.tipo == 'COORDINACION'"></app-navbarcoordinacion>
     </ul>
     &nbsp;&nbsp;
     <div class="form-inline my-2 my-lg-0">

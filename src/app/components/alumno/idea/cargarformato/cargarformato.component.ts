@@ -35,16 +35,13 @@ export class CargarformatoComponent implements OnInit {
     private _authService: AuthService,
     private _downloadService: DownloadService,
     private router: Router,
-    private _comentarioGeneralService: ComentarioGeneralService,
     private _formatoIdeaService: FormatoIdeaService,
-    private _usuarioService: UsuarioService
   ) {
     this.idea = new IdeaModel();
     this.uploadFormatoIdea = new UploadFormatoIdea();
     this.activatedRoute.params.subscribe((params) => {
       this.idIdea = Number(params["id"]);
       this.buscaIdeaById();
-      this.buscarComentariosRechazo();
     });
   }
 
@@ -122,21 +119,5 @@ export class CargarformatoComponent implements OnInit {
     link.href = source;
     link.download = `${fileName}.docx`;
     link.click();
-  }
-
-  buscarComentariosRechazo(){
-    this._comentarioGeneralService.consultaComentariosByLlaveAndType(this.idIdea,'RECHAZO_FORMATO_IDEA').subscribe( resp => {
-      this.comentarioGeneral = resp;
-      //Buscamos el nombre del profesor
-      if(this.comentarioGeneral){
-        this.comentarioGeneral.forEach(item => {
-          this._usuarioService.obtenerUsuariosById(item.id_usuario).subscribe( resp => {
-            let usuario = new UsuarioModel();
-            usuario = usuario.of(resp);
-            item.nombreProfesor = usuario.nombre;
-          });
-        });
-      }
-    }); 
   }
 }

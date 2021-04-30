@@ -16,7 +16,8 @@ export class ActusuarioComponent implements OnInit {
   selTipoUsuario = [
     {value: 1, viewValue: 'Administrador'},
     {value: 2, viewValue: 'Profesor'},
-    {value: 3, viewValue: 'Alumno'}
+    {value: 3, viewValue: 'Alumno'},
+    {value: 4, viewValue: 'Coordinación'},
   ];
 
   selEstado = [

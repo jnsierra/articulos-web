@@ -6,6 +6,9 @@ export class ComentarioGeneralModel{
     id_usuario: number;
     llave: number;
     comentario: string;
+    ubicacion: string;
+    base?:string;
+    tipo_documento?:string;
 
     constructor(){}
 

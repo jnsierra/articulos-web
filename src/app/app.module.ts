@@ -57,6 +57,8 @@ import { GestionLecturaComponent } from './components/alumno/articulo/gestion-le
 import { GestionParrafosComponent } from './components/alumno/articulo/gestion-parrafos/gestion-parrafos.component';
 import { VerControlLecturaComponent } from './components/general/ver-control-lectura/ver-control-lectura.component';
 import { VerParrafosComponent } from './components/general/ver-parrafos/ver-parrafos.component';
+import { NavbarcoordinacionComponent } from './components/share/navbarcoordinacion/navbarcoordinacion.component';
+import { AsignacionTutorComponent } from './components/coordinacion/articulo/asignacion-tutor/asignacion-tutor.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { VerParrafosComponent } from './components/general/ver-parrafos/ver-parr
     GestionLecturaComponent,
     GestionParrafosComponent,
     VerControlLecturaComponent,
-    VerParrafosComponent
+    VerParrafosComponent,
+    NavbarcoordinacionComponent,
+    AsignacionTutorComponent
   ],
   imports: [
     BrowserModule,

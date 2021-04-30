@@ -1,3 +1,4 @@
+import { AsignacionTutorComponent } from './components/coordinacion/articulo/asignacion-tutor/asignacion-tutor.component';
 import { GestionParrafosComponent } from './components/alumno/articulo/gestion-parrafos/gestion-parrafos.component';
 import { GestionLecturaComponent } from './components/alumno/articulo/gestion-lectura/gestion-lectura.component';
 import { VerIdeaArticuloComponent } from './components/alumno/articulo/ver-idea-articulo/ver-idea-articulo.component';
@@ -51,6 +52,8 @@ const APP_ROUTERS: Routes = [
     { path: 'verIdeaArticulo/:id/:idArticulo', component: VerIdeaArticuloComponent, canActivate: [AuthGuard] },
     { path: 'verControlLectura/:id', component: GestionLecturaComponent, canActivate: [AuthGuard] },
     { path: 'verParrafos/:id', component: GestionParrafosComponent, canActivate: [AuthGuard] },
+    //Coordinacion
+    { path: 'asignacionTutor', component: AsignacionTutorComponent, canActivate: [AuthGuard] },
     //Profesores
     { path: 'aprobarFormatoIdea/:id', component: AprobarformatoComponent, canActivate: [AuthGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'login'} 

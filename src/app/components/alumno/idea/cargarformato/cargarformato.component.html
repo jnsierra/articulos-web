@@ -81,37 +81,4 @@
   </div>
   <!--Fin Carga de documentos-->
 </div>
-<div class="container container-main" *ngIf="comentarioGeneral">
-  <div class="row">
-      <div class="col-0 col-sm-0 col-md-1 col-lg-1">
-      </div>
-      <div class="col-12 col-sm-12 col-md-10 col-lg-10">
-          <div class="viewer-container">
-              <div class="viewer-title">
-                  <h4><b>COMENTARIOS DE RECHAZO DEL DOCUMENTO</b></h4>&nbsp;&nbsp;<i class="material-icons">message</i>
-              </div>
-          </div>
-          <div class="viewer-body">
-              <table class="table">
-                  <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Profesor</th>
-                        <th scope="col">Comentario</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of comentarioGeneral; let i = index " >
-                          <td>{{i+1}}</td>  
-                          <td> {{item.nombreProfesor}}</td>
-                          <td> {{item.comentario}} </td>
-                        </tr>
-                    </tbody>
-              </table>
-              
-          </div>
-      </div>
-      <div class="col-0 col-sm-0 col-md-1 col-lg-1">
-      </div>
-  </div>
-</div>
+<app-comentarios [idIdea]="idIdea" [estadoComentarios]="'RECHAZO_FORMATO_IDEA'" [titulo]="'COMENTARIOS DE RECHAZO FORMATO'"></app-comentarios>

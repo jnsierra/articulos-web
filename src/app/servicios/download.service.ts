@@ -26,4 +26,9 @@ export class DownloadService {
     const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}formatoAdjuntoIdea/${idIdea}/`;
     return this.http.get<DocumentDownload>(URL_SERVICE);
   }
+
+  getDocumentByUbicacion(documento: DocumentDownload){
+    const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}`;
+    return this.http.post<DocumentDownload>(URL_SERVICE, documento);
+  }
 }

@@ -12,7 +12,7 @@ export class ComentarioGeneralService {
   constructor(private _urlService: UrlServices, private http: HttpClient) { }
 
   insertarComentario(comentario: ComentarioGeneralModel){
-    const URL_SERVICE = `${this._urlService.getEndPointComentarioDatos()}`;
+    const URL_SERVICE = `${this._urlService.getEndPointComentario()}file`;
     return this.http.post( URL_SERVICE, comentario );
   }
 

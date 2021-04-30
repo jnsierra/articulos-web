@@ -104,19 +104,60 @@ export class AprobarformatoComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Enviar',
       showLoaderOnConfirm: true,
-      input: 'textarea',
-      preConfirm: (mensaje) => {
-        let comentario = new ComentarioGeneralModel();
-        comentario = comentario.of('RECHAZO_FORMATO_IDEA', this.usuarioAut.id, this.idea.id, mensaje);
-        this._comentarioServicio.insertarComentario(comentario).subscribe((resp) => {
-          return true;
-        }, (catcherror) => {
-          Swal.showValidationMessage('Error al persistir el comentario');
-        });
-
-      }
+      html:
+        '<div class="text-left">'+
+        '<legend>Comentario:</legend>'+
+        '<textarea class="form-control" id="comentario-rechazo" placeholder="Deja un comentario aquí" ></textarea>'+
+        '<legend>Formato con correcciones:</legend>'+
+        '<input type="file" class="form-control" id="upload-correcciones" accept="application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, .docx" />'+
+        '</div>',
+      preConfirm: () =>{
+        var comentario = (<HTMLInputElement>document.getElementById('comentario-rechazo')).value;
+        var documento = (<HTMLInputElement>document.getElementById('upload-correcciones')).files[0];
+        if(!comentario){
+          Swal.showValidationMessage(
+            `Comentario es requerido`
+          )
+        }
+        return {'comentario': comentario, 'documento': documento };
+      }   
     }).then((result) => {
+      this.enviarInformacion(result);
+    });
+  }
+
+  async enviarInformacion(resultado:any){
+    let comentario = new ComentarioGeneralModel();
+    comentario = comentario.of('RECHAZO_FORMATO_IDEA', this.usuarioAut.id, this.idea.id, resultado.value.comentario);    
+    if(resultado.value.documento){
+      var base =  await this.baseTo64File(resultado.value.documento);
+      comentario.base = String(base);
+      comentario.tipo_documento = this.identificaTipoDocumento(resultado.value.documento.name);
+    }
+    this._comentarioServicio.insertarComentario(comentario).subscribe((resp) => {
       this.actualizarEstadoIdea(this.idea.id, 'APROBAR', 'Formato rechazado, El estudiante debe cargar de nuevo el formato.');
+    }, (catcherror) => {
+      Swal.showValidationMessage('Error al persistir el comentario');
+    });
+  }
+
+  identificaTipoDocumento(name:string):string{
+    var n = name.search("pdf");
+    if(n>=0){
+      return "pdf";
+    }
+    n = name.search("docx");
+    if(n>=0){
+      return "docx";
+    }
+    return "";
+  }
+
+  baseTo64File(file){
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
     });
   }
 

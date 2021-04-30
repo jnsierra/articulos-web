@@ -1,3 +1,5 @@
+import { DocumentDownload } from './../../../models/DocumentDownload.model';
+import { DownloadService } from './../../../servicios/download.service';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { ComentarioGeneralModel } from './../../../models/comentariogeneral.model';
@@ -19,7 +21,8 @@ export class ComentariosComponent implements OnInit {
   comentarioGeneral: ComentarioGeneralModel[];
 
   constructor(private _comentarioGeneralService: ComentarioGeneralService,
-    private _usuarioService: UsuarioService) { }
+    private _usuarioService: UsuarioService,
+    private _downloadService: DownloadService) { }
 
   ngOnInit(): void {
     this.buscarComentarios();
@@ -39,6 +42,23 @@ export class ComentariosComponent implements OnInit {
         });
       }
     });
+  }
+
+  descargarDocumento(ubicacion: string){
+    let documento = new DocumentDownload();
+    documento.ubicacion = ubicacion;
+    this._downloadService.getDocumentByUbicacion(documento).subscribe(resp => {
+      this.downloadPdf(resp.document, resp.nombre);
+    });
+    console.log(ubicacion);
+  }
+
+  downloadPdf(base64String, fileName) {
+    const source = `data:application/pdf;base64,${base64String}`;
+    const link = document.createElement("a");
+    link.href = source;
+    link.download = `${fileName}`;
+    link.click();
   }
 
 }
