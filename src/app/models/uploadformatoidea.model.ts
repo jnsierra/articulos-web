@@ -2,6 +2,7 @@ export class UploadFormatoIdea{
     idIdea?: number;
     base64?: string;
     formato?: string;
+    tipo?: string;
 
     constructor(){}
 

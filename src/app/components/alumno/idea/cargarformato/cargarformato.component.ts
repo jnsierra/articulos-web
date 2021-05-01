@@ -94,16 +94,29 @@ export class CargarformatoComponent implements OnInit {
     this.uploadFormatoIdea.base64 = String(base);
     this.uploadFormatoIdea.idIdea = this.idIdea;
     this.uploadFormatoIdea.formato = "AUTORIZACION_ARTICULO";
+    this.uploadFormatoIdea.tipo = this.identificaTipoDocumento(fileInput.name);
     this._formatoIdeaService.insertaFormatoIdea(this.uploadFormatoIdea).subscribe(resp => {
-      Swal.fire({
-        allowOutsideClick: false,
-        type: "success",
-        text: "Formato cargado correctamente"
-      }).then( (result) => {
-        if(result){
-          this.router.navigateByUrl('/listaIdeas');
-        }
-      });
+      if(resp){
+        Swal.fire({
+          allowOutsideClick: false,
+          type: "success",
+          text: "Formato cargado correctamente"
+        }).then( (result) => {
+          if(result){
+            this.router.navigateByUrl('/listaIdeas');
+          }
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: false,
+          type: "error",
+          text: "Error al cargar el formato, contacte al administrador"
+        }).then( (result) => {
+          if(result){
+            this.router.navigateByUrl('/listaIdeas');
+          }
+        });
+      }
     }, catchError => {
       Swal.fire({
         allowOutsideClick: false,
@@ -111,6 +124,18 @@ export class CargarformatoComponent implements OnInit {
         text: "Error al cargar el formato"
       });      
     });
+  }
+
+  identificaTipoDocumento(name:string):string{
+    var n = name.search("pdf");
+    if(n>=0){
+      return "pdf";
+    }
+    n = name.search("docx");
+    if(n>=0){
+      return "docx";
+    }
+    return "";
   }
 
   baseTo64File(file){
