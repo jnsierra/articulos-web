@@ -1,3 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { DocumentDownload } from './../../../../models/DocumentDownload.model';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { UsuarioModel } from './../../../../models/usuario.model';
 import { UsuarioService } from './../../../../servicios/usuario.service';
 import { ComentarioGeneralService } from './../../../../servicios/comentariogeneral.service';
@@ -13,6 +16,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import Swal from "sweetalert2";
 import * as _ from "lodash";
+import { of, throwError } from 'rxjs';
 
 @Component({
   selector: "app-cargarformato",
@@ -72,7 +76,11 @@ export class CargarformatoComponent implements OnInit {
 
   descargarFormato() {
     this._downloadService.getFormatoIdea().subscribe((resp) => {
-      this.downloadPdf(resp.document, resp.nombre);
+      if(resp){
+        this.downloadPdf(resp.document, resp.nombre);
+      }else{
+        Swal.fire('Error','Error formato no encontrado, contacte al administrador', 'error');
+      }
     });
   }
 

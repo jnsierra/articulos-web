@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { DocumentDownload } from './../models/DocumentDownload.model';
 import { UploadArticulo } from './../models/uploadarticulo.model';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +19,7 @@ export class DownloadService {
     return this.http.get<UploadArticulo>(URL_SERVICE);
   }
 
-  getFormatoIdea(){
+  getFormatoIdea(){    
     const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}formatoIdea/`;
     return this.http.get<DocumentDownload>(URL_SERVICE);
   }
