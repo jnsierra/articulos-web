@@ -59,6 +59,7 @@ import { VerControlLecturaComponent } from './components/general/ver-control-lec
 import { VerParrafosComponent } from './components/general/ver-parrafos/ver-parrafos.component';
 import { NavbarcoordinacionComponent } from './components/share/navbarcoordinacion/navbarcoordinacion.component';
 import { AsignacionTutorComponent } from './components/coordinacion/articulo/asignacion-tutor/asignacion-tutor.component';
+import { VerFormatoIdeaComponent } from './components/general/ver-formato-idea/ver-formato-idea.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { AsignacionTutorComponent } from './components/coordinacion/articulo/asi
     VerControlLecturaComponent,
     VerParrafosComponent,
     NavbarcoordinacionComponent,
-    AsignacionTutorComponent
+    AsignacionTutorComponent,
+    VerFormatoIdeaComponent
   ],
   imports: [
     BrowserModule,

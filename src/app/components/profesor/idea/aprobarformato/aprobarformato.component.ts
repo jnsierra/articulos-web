@@ -68,21 +68,6 @@ export class AprobarformatoComponent implements OnInit {
     });
   }
 
-  descargarFormato() {
-    this._downloadService.getFormatoIdeaFirmado(this.idIdea).subscribe((resp) => {
-      this.downloadPdf(resp.document, resp.nombre);
-    });
-  }
-
-  downloadPdf(base64String, fileName) {
-    this.verPdf = true;
-    const source = `data:application/pdf;base64,${base64String}`;
-    const link = document.createElement("a");
-    link.href = source;
-    link.download = `${fileName}`;
-    link.click();
-  }
-
   aprobarDocumento(id: number) {
     if(this.verPdf){
       this.actualizarEstadoIdea(this.idea.id, 'FINALIZADA', 'Documento aprobado correctamente.');

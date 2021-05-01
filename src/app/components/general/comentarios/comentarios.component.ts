@@ -1,3 +1,4 @@
+import { UtilesBase64Service } from './../../../servicios/utilesBase64.service';
 import { DocumentDownload } from './../../../models/DocumentDownload.model';
 import { DownloadService } from './../../../servicios/download.service';
 import { UsuarioModel } from 'src/app/models/usuario.model';
@@ -22,7 +23,8 @@ export class ComentariosComponent implements OnInit {
 
   constructor(private _comentarioGeneralService: ComentarioGeneralService,
     private _usuarioService: UsuarioService,
-    private _downloadService: DownloadService) { }
+    private _downloadService: DownloadService,
+    private _utilesBase64Service: UtilesBase64Service) { }
 
   ngOnInit(): void {
     this.buscarComentarios();
@@ -48,17 +50,8 @@ export class ComentariosComponent implements OnInit {
     let documento = new DocumentDownload();
     documento.ubicacion = ubicacion;
     this._downloadService.getDocumentByUbicacion(documento).subscribe(resp => {
-      this.downloadPdf(resp.document, resp.nombre);
+      this._utilesBase64Service.downloadPdf(resp.document, resp.nombre);
     });
-    console.log(ubicacion);
-  }
-
-  downloadPdf(base64String, fileName) {
-    const source = `data:application/pdf;base64,${base64String}`;
-    const link = document.createElement("a");
-    link.href = source;
-    link.download = `${fileName}`;
-    link.click();
-  }
+  } 
 
 }

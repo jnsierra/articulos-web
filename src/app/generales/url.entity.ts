@@ -91,6 +91,10 @@ export class UrlServices {
         return `${ this.urlBase }v.1/formatoidea/`
     }
 
+    getEndPointFormatoIDeaDatos(): string{
+        return `${ this.urlBaseDatos }v.1/formatoidea/`
+    }
+
     getEndPointNotificaciones(): string{
         return `${ this.urlBase }/v.1/notificaciones/`;
     }
