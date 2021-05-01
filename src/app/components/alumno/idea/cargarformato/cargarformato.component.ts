@@ -93,7 +93,7 @@ export class CargarformatoComponent implements OnInit {
     var base =  await this.baseTo64File(fileInput)
     this.uploadFormatoIdea.base64 = String(base);
     this.uploadFormatoIdea.idIdea = this.idIdea;
-    this.uploadFormatoIdea.formato = "AUTORIZACION_ARTICULO";
+    this.uploadFormatoIdea.formato = "PROCESO_AUT_TUTOR";
     this.uploadFormatoIdea.tipo = this.identificaTipoDocumento(fileInput.name);
     this._formatoIdeaService.insertaFormatoIdea(this.uploadFormatoIdea).subscribe(resp => {
       if(resp){
