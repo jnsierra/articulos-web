@@ -44,8 +44,9 @@ export class PublicoComponent {
   pieChartDataArt: number[];
 
   constructor(private _estadisticasServices: EstadisticasService) {
-    this.getEstadisticasByIdeas();
-    this.getEstadisticasByArticulo();
+    //TODO Volver a hacer las estadisticas
+    //this.getEstadisticasByIdeas();
+    //this.getEstadisticasByArticulo();
     this.pieChartData = new Array();
     this.pieChartLabels = new Array();
 
