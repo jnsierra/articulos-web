@@ -3,7 +3,7 @@ import { DownloadService } from './../../../servicios/download.service';
 import { UtilesBase64Service } from './../../../servicios/utilesBase64.service';
 import { FormatoIdeaModel } from './../../../models/formatoIdea.model';
 import { FormatoIdeaService } from './../../../servicios/formatoIdea.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-ver-formato-idea',
@@ -21,10 +21,15 @@ export class VerFormatoIdeaComponent implements OnInit {
 
   listVerFormato: FormatoIdeaModel[];
 
+  @Output()
+  varDocumento: EventEmitter<boolean>;
+
   constructor(
     private _formatoIdeaService: FormatoIdeaService,
     private _utilesBase64Service: UtilesBase64Service,
-    private _downloadService: DownloadService) { }
+    private _downloadService: DownloadService) {
+      this.varDocumento = new EventEmitter();
+    }
 
   ngOnInit(): void {
     this.buscaVersionesFormato();
@@ -44,5 +49,6 @@ export class VerFormatoIdeaComponent implements OnInit {
     this._downloadService.getDocumentByUbicacion(documento).subscribe(resp => {
       this._utilesBase64Service.downloadPdf(resp.document, resp.nombre);
     });
+    this.varDocumento.emit(true);
   } 
 }

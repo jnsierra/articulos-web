@@ -18,7 +18,7 @@
                             <tr *ngFor="let item of listVerFormato; let i = index ">
                                 <td>{{i+1}}</td>
                                 <td>{{item.nombre}}</td>
-                                <td><span (click)="descargarDocumento(item.ubicacion, item.nombre)"><i class="material-icons">download_rounded </i></span></td>
+                                <td><span (click)="descargarDocumento(item.ubicacion, item.nombre)" style="cursor: pointer;"><i class="material-icons">download_rounded </i></span></td>
                             </tr>
                         </tbody>
                     </table>

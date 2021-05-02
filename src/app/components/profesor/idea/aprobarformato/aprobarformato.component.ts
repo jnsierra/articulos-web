@@ -1,3 +1,6 @@
+import { FormatoIdeaService } from './../../../../servicios/formatoIdea.service';
+import { UploadFormatoIdea } from './../../../../models/uploadformatoidea.model';
+import { UtilesBase64Service } from './../../../../servicios/utilesBase64.service';
 import { DownloadService } from './../../../../servicios/download.service';
 import { UsuarioModel } from './../../../../models/usuario.model';
 import { ComentarioGeneralModel } from './../../../../models/comentariogeneral.model';
@@ -24,14 +27,16 @@ export class AprobarformatoComponent implements OnInit {
   comentarioGeneral: ComentarioGeneralModel[];
   verPdf: boolean;
   usuarioAut: UsuarioModel;
+  
 
   constructor(private activatedRoute: ActivatedRoute,
     private _usuarioService: UsuarioService,
     private _comentarioGeneralService: ComentarioGeneralService,
-    private _downloadService: DownloadService,
     private _comentarioServicio: ComentarioGeneralService,
     private _ideaServicio: IdeaService,
     private _ideaService: IdeaService,
+    private _utilesBase64: UtilesBase64Service,
+    private _formatoIdeaService: FormatoIdeaService,
     private router: Router) {
     this.usuarioAut = JSON.parse(localStorage.getItem('usuario'));
     this.activatedRoute.params.subscribe(params => {
@@ -69,8 +74,30 @@ export class AprobarformatoComponent implements OnInit {
   }
 
   aprobarDocumento(id: number) {
+    const accepts = 'application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, .docx';
+    const html = `<div class="text-left">${this._utilesBase64.generateInputFile('Formato Firmado:','upload-formato-firmado', accepts )}</div>`;
     if(this.verPdf){
-      this.actualizarEstadoIdea(this.idea.id, 'FINALIZADA', 'Documento aprobado correctamente.');
+      Swal.fire({
+        allowOutsideClick: false,
+        title: 'DOCUMENTO APROBADO',
+        type: 'success',
+        text: 'Adjunta documento firmado.',
+        showCancelButton: true,
+        confirmButtonText: 'Enviar',
+        showLoaderOnConfirm: true,
+        html: html,
+        preConfirm: () =>{
+          var documento = (<HTMLInputElement>document.getElementById('upload-formato-firmado')).files[0];
+          if(!documento){
+            Swal.showValidationMessage(
+              `Adjunto es requerido`
+            )
+          }
+          return {'comentario': 'APROBADO', 'documento': documento };
+        }   
+      }).then((result) => {
+        this.enviarInformacionAprobado(result, 'FORMATO_APROBADO_TUTOR');
+      });
     }else{
       Swal.fire({
         type: 'error',
@@ -78,6 +105,40 @@ export class AprobarformatoComponent implements OnInit {
         text: 'Debes ver el pdf previo a la aprobación del documento'
       });
     }
+  }
+
+  async enviarInformacionAprobado(resultado:any, tipoComentario: string){
+    let uploadFormatoIdea = new UploadFormatoIdea();
+    var base =  await this._utilesBase64.baseTo64File(resultado.value.documento);
+    uploadFormatoIdea.base64 = String(base);
+    uploadFormatoIdea.idIdea = this.idIdea;
+    uploadFormatoIdea.formato = tipoComentario;
+    uploadFormatoIdea.tipo = this._utilesBase64.identificaTipoDocumento(resultado.value.documento.name);
+
+    this._formatoIdeaService.insertaFormatoIdea(uploadFormatoIdea).subscribe(resp => {
+      if(resp){
+        this.actualizarEstadoIdea(this.idea.id, 'ESPERA_JURADO', 'Documento aprobado correctamente.');
+        Swal.fire({
+          allowOutsideClick: false,
+          type: "success",
+          text: "Formato cargado correctamente"
+        }).then( (result) => {
+          if(result){
+            this.router.navigateByUrl('/listaIdeasProf');
+          }
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: false,
+          type: "error",
+          text: "Error al cargar el formato, contacte al administrador"
+        }).then( (result) => {
+          if(result){
+            this.router.navigateByUrl('/listaIdeasProf');
+          }
+        });
+      }
+    });
   }
 
   rechazarDocumento(id: number) {
@@ -107,42 +168,22 @@ export class AprobarformatoComponent implements OnInit {
         return {'comentario': comentario, 'documento': documento };
       }   
     }).then((result) => {
-      this.enviarInformacion(result);
+      this.enviarInformacion(result, 'RECHAZO_FORMATO_IDEA');
     });
   }
 
-  async enviarInformacion(resultado:any){
+  async enviarInformacion(resultado:any, tipoComentario: string){
     let comentario = new ComentarioGeneralModel();
-    comentario = comentario.of('RECHAZO_FORMATO_IDEA', this.usuarioAut.id, this.idea.id, resultado.value.comentario);    
+    comentario = comentario.of(tipoComentario, this.usuarioAut.id, this.idea.id, resultado.value.comentario);    
     if(resultado.value.documento){
-      var base =  await this.baseTo64File(resultado.value.documento);
+      var base =  await this._utilesBase64.baseTo64File(resultado.value.documento);
       comentario.base = String(base);
-      comentario.tipo_documento = this.identificaTipoDocumento(resultado.value.documento.name);
+      comentario.tipo_documento = this._utilesBase64.identificaTipoDocumento(resultado.value.documento.name);
     }
     this._comentarioServicio.insertarComentario(comentario).subscribe((resp) => {
       this.actualizarEstadoIdea(this.idea.id, 'APROBAR', 'Formato rechazado, El estudiante debe cargar de nuevo el formato.');
     }, (catcherror) => {
       Swal.showValidationMessage('Error al persistir el comentario');
-    });
-  }
-
-  identificaTipoDocumento(name:string):string{
-    var n = name.search("pdf");
-    if(n>=0){
-      return "pdf";
-    }
-    n = name.search("docx");
-    if(n>=0){
-      return "docx";
-    }
-    return "";
-  }
-
-  baseTo64File(file){
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
     });
   }
 
@@ -173,5 +214,9 @@ export class AprobarformatoComponent implements OnInit {
         });
       }
     });
+  }
+
+  marcarLeido(marcar: boolean){
+    this.verPdf = true;
   }
 }

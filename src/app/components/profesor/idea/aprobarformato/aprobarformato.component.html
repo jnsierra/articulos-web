@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="container container-main">    
-    <app-ver-formato-idea [idIdea]="idIdea" [tipoFormato]="'PROCESO_AUT_TUTOR'"  [titulo]="'VERSIONES DEL FORMATO REALIZADAS POR EL ALUMNO'"></app-ver-formato-idea>
+    <app-ver-formato-idea [idIdea]="idIdea" (varDocumento)="marcarLeido( $event )" [tipoFormato]="'PROCESO_AUT_TUTOR'"  [titulo]="'VERSIONES DEL FORMATO REALIZADAS POR EL ALUMNO'" ></app-ver-formato-idea>
     <app-comentarios [idIdea]="idIdea" [estadoComentarios]="'RECHAZO_FORMATO_IDEA'" [titulo]="'COMENTARIOS DE RECHAZO FORMATO'"></app-comentarios>
     <br/>
     <div class="row">

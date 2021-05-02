@@ -1,9 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { DocumentDownload } from './../../../../models/DocumentDownload.model';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { UsuarioModel } from './../../../../models/usuario.model';
-import { UsuarioService } from './../../../../servicios/usuario.service';
-import { ComentarioGeneralService } from './../../../../servicios/comentariogeneral.service';
+import { UtilesBase64Service } from './../../../../servicios/utilesBase64.service';
 import { ComentarioGeneralModel } from './../../../../models/comentariogeneral.model';
 import { FormatoIdeaService } from './../../../../servicios/formatoIdea.service';
 import { UploadFormatoIdea } from "./../../../../models/uploadformatoidea.model";
@@ -16,7 +11,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import Swal from "sweetalert2";
 import * as _ from "lodash";
-import { of, throwError } from 'rxjs';
 
 @Component({
   selector: "app-cargarformato",
@@ -40,6 +34,7 @@ export class CargarformatoComponent implements OnInit {
     private _downloadService: DownloadService,
     private router: Router,
     private _formatoIdeaService: FormatoIdeaService,
+    private _utilesBase64Service: UtilesBase64Service
   ) {
     this.idea = new IdeaModel();
     this.uploadFormatoIdea = new UploadFormatoIdea();
@@ -77,7 +72,7 @@ export class CargarformatoComponent implements OnInit {
   descargarFormato() {
     this._downloadService.getFormatoIdea().subscribe((resp) => {
       if(resp){
-        this.downloadPdf(resp.document, resp.nombre);
+        this._utilesBase64Service.downloadPdf(resp.document, resp.nombre);
       }else{
         Swal.fire('Error','Error formato no encontrado, contacte al administrador', 'error');
       }
@@ -90,11 +85,11 @@ export class CargarformatoComponent implements OnInit {
       this.textError = 'Adjunte el documento pdf';
       return;      
     }
-    var base =  await this.baseTo64File(fileInput)
+    var base =  await this._utilesBase64Service.baseTo64File(fileInput)
     this.uploadFormatoIdea.base64 = String(base);
     this.uploadFormatoIdea.idIdea = this.idIdea;
     this.uploadFormatoIdea.formato = "PROCESO_AUT_TUTOR";
-    this.uploadFormatoIdea.tipo = this.identificaTipoDocumento(fileInput.name);
+    this.uploadFormatoIdea.tipo = this._utilesBase64Service.identificaTipoDocumento(fileInput.name);
     this._formatoIdeaService.insertaFormatoIdea(this.uploadFormatoIdea).subscribe(resp => {
       if(resp){
         Swal.fire({
@@ -125,32 +120,5 @@ export class CargarformatoComponent implements OnInit {
       });      
     });
   }
-
-  identificaTipoDocumento(name:string):string{
-    var n = name.search("pdf");
-    if(n>=0){
-      return "pdf";
-    }
-    n = name.search("docx");
-    if(n>=0){
-      return "docx";
-    }
-    return "";
-  }
-
-  baseTo64File(file){
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-    });
-  }
-
-  downloadPdf(base64String, fileName) {
-    const source = `data:application/pdf;base64,${base64String}`;
-    const link = document.createElement("a");
-    link.href = source;
-    link.download = `${fileName}.docx`;
-    link.click();
-  }
+  
 }
