@@ -53,6 +53,11 @@ export class IdeaService {
     return this.http.put(URL_SERVICE,{});
   }
 
+  actualizarEstadoIdeaSinProf(idIdea: number, estado: string){
+    const URL_SERVICE = `${this._urlService.getEndPointIdeaDatos()}estado/${idIdea}/${estado}/`;
+    return this.http.put(URL_SERVICE,{});
+  }
+
   obtenerIdeaById(id: number){
     const URL_SERVICE = `${ this._urlService.getEndPointIdea() }${ id }/`;
     return this.http.get(URL_SERVICE);
@@ -71,6 +76,11 @@ export class IdeaService {
   consultarProfesoresByIdIdeas(idIdea: number){
     const URL_SERVICE = `${ this._urlService.getEndPointIdea() }by/profesores/${idIdea}`;
     return this.http.get<ProfesoresIdeaModel>(URL_SERVICE)
+  }
+
+  asignarJuradoIdea(idIdea: number, idJurado: number){
+    const URL_SERVICE = `${ this._urlService.getEndPointIdeaDatos() }jurado/${idIdea}/${idJurado}`;
+    return this.http.put<Boolean>(URL_SERVICE, {});
   }
 
 }
