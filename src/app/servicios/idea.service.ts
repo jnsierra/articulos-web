@@ -1,3 +1,4 @@
+import { ProfesoresIdeaModel } from './../models/profesoresidea.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { Injectable } from '@angular/core';
 import { UrlServices } from '../generales/url.entity';
@@ -60,6 +61,16 @@ export class IdeaService {
   obtieneIdArtByIdIdea(idIdea: number){
     const URL_SERVICE = `${ this._urlService.getEndPointArticuloDatos() }idea/${ idIdea }/`;
     return this.http.get(URL_SERVICE);
+  }
+
+  consultarIdeasByEstado(estado: string){
+    const URL_SERVICE = `${ this._urlService.getEndPointIdea() }by/`;
+    return this.http.get<IdeaModel[]>(URL_SERVICE, {params: {estado: estado}})
+  }
+
+  consultarProfesoresByIdIdeas(idIdea: number){
+    const URL_SERVICE = `${ this._urlService.getEndPointIdea() }by/profesores/${idIdea}`;
+    return this.http.get<ProfesoresIdeaModel>(URL_SERVICE)
   }
 
 }

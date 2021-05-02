@@ -16,7 +16,6 @@ export class ListaideasComponent implements OnInit {
   ideas;
 
   constructor(private _ideasService: IdeaService,
-              private _usuarioService: UsuarioService,
               private _authService: AuthService,
               private router: Router) {
     this.consultaIdeas();

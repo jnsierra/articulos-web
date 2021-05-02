@@ -80,7 +80,6 @@ export class CrearideaComponent implements OnInit {
   buscarProfesores(){
     this._usuarioService.consultarUsuarioByTipoUsuario('PROFESOR').subscribe( resp => {
       this.profesores = resp;
-      console.log(this.profesores);
     });
   }
 

@@ -51,4 +51,5 @@ export class VerFormatoIdeaComponent implements OnInit {
     });
     this.varDocumento.emit(true);
   } 
+
 }

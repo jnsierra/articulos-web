@@ -8,15 +8,23 @@
           <b>Profesor asignado por el Estudiante:</b>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          {{profesorAsignado | uppercase}}  
+          {{profesores.nombreProAsig | uppercase}}  
         </div>
       </div>
       <div class="row">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
-          <b>Profesor aprobador:</b>
+          <b>Tutor:</b>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          {{profesorAutoriza | uppercase}}
+          {{profesores.nombreProTutor | uppercase}}
+        </div>
+      </div>
+      <div class="row" *ngIf="profesores.nombreProJurado">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+          <b>Jurado:</b>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          {{profesores.nombreProJurado | uppercase}}
         </div>
       </div>
     </div>

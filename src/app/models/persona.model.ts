@@ -1,6 +1,6 @@
 export class PersonaModel{
     id: number;
-    nombre: string;
+    nombres: string;
     apellidos: string;
     fechaNacimiento: Date;
     documento: number;

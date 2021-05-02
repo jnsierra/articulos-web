@@ -37,6 +37,10 @@ export class UsuarioService {
     const URL_SERVICE = `${this.url.getEndPointUsuariosDatos()}/by/?tipoUsuario=${tipoUsuario}`;
     return this.http.get(URL_SERVICE);
   }
+  consultarUsuarioByTipoUsuarioEntity(tipoUsuario: string) {
+    const URL_SERVICE = `${this.url.getEndPointUsuariosDatos()}/by/?tipoUsuario=${tipoUsuario}`;
+    return this.http.get<UsuarioModel[]>(URL_SERVICE);
+  }
 
   leerUsuario(): string {
     if (localStorage.getItem("usuario")) {

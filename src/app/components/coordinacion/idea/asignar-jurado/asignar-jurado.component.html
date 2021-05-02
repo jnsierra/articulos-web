@@ -1,0 +1,44 @@
+<div class="container container-main">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <app-ver-idea [idIdea]="idIdea"></app-ver-idea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <app-profesores-idea [idIdea]="idIdea"></app-profesores-idea>
+        </div>
+    </div>
+    <app-ver-formato-idea [idIdea]="idIdea" [tipoFormato]="'FORMATO_APROBADO_TUTOR'"
+        [titulo]="'DOCUMENTO APROBADO Y FIRMADO POR EL TUTOR'"></app-ver-formato-idea>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="viewer-container">
+                <div class="viewer-title">
+                    <legend>
+                        ASIGNACION DE JURADO &nbsp;<i class="material-icons">face_outlined </i>
+                    </legend>
+                </div>
+                <div class="viewer-body">
+                    <form #f="ngForm" (ngSubmit)="asignarJurado( f )">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Jurado</mat-label>
+                            <mat-select required [(value)]="idJurado" name="profesor" [formControl]="selected"
+                                [errorStateMatcher]="matcher">
+                                <mat-option *ngFor="let item of profesores" [value]="item.id">
+                                    {{item.persona.apellidos + ' '+ item.persona.nombres}}
+                                </mat-option>
+                            </mat-select>
+
+                            <mat-error *ngIf="selected.hasError('required')">El Jurado es requerido</mat-error>
+                        </mat-form-field>
+                        <br />
+                        <br />
+                        <br />
+                        <button mat-raised-button color="primary" class="full-width" type="submit">Asignar como jurado</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
