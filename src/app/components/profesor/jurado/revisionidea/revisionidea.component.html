@@ -1,0 +1,31 @@
+<div class="container container-main">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <app-ver-idea [idIdea]="idIdea"></app-ver-idea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <app-profesores-idea [idIdea]="idIdea"></app-profesores-idea>
+        </div>
+    </div>
+    <app-ver-formato-idea [idIdea]="idIdea" [tipoFormato]="'FORMATO_APROBADO_TUTOR'"
+        [titulo]="'DOCUMENTO APROBADO Y FIRMADO POR EL TUTOR'"></app-ver-formato-idea>
+    <app-ver-formato-idea [idIdea]="idIdea" [tipoFormato]="'PROCESO_AUT_JURADO'"
+        [titulo]="'VERSIONES FORMATO ALUMNO'"></app-ver-formato-idea>
+        <app-comentarios [idIdea]="idIdea" [estadoComentarios]="'RECHAZO_FORMATO_IDEA_JURADO'" [titulo]="'COMENTARIOS DE RECHAZO JURADO FORMATO'"></app-comentarios>
+    <div class="row">        
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="viewer-container">
+                <div class="viewer-body">
+                    <legend>ACCIONES</legend>
+                </div>
+                <div class="viewer-body">
+                    <button color="primary" class="btn btn-outline-warning" style="width: 29%;" (click)="rechazarDocumento(idIdea)">Rechazar</button> &nbsp; &nbsp;&nbsp;
+                    <button color="primary" class="btn btn-outline-primary" style="width: 29%;" (click)="aprobarDocumento(idIdea)">Aprobar</button> &nbsp; &nbsp;&nbsp;
+                    <button color="danger"  class="btn btn-outline-danger"  style="width: 29%;" routerLink="/listaIdeasProf" routerLinkActive="active">Cancelar</button>
+                </div>                  
+            </div>
+        </div>
+    </div>
+</div>

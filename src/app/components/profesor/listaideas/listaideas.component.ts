@@ -17,6 +17,7 @@ export class ListaideasProfComponent implements OnInit {
   ideas;
   usuario;
   ideasEnEspera;
+  ideasJurado;
   usuarioAut: UsuarioModel;
 
   constructor(private _ideaServicio: IdeaService, 
@@ -36,6 +37,9 @@ export class ListaideasProfComponent implements OnInit {
     });
     this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'POR_CONFIRMAR_FORMATO').subscribe(resp => {
       this.ideasEnEspera = resp;
+    });
+    this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'APROBACION_FORMATO_JURADO').subscribe(resp => {
+      this.ideasJurado = resp;
     });
   }
 
@@ -98,7 +102,10 @@ export class ListaideasProfComponent implements OnInit {
 
   verFormato(idIdea: number){
     this.router.navigate(['/aprobarFormatoIdea', idIdea]);
-    console.log(idIdea);
+  }
+
+  verFormatoJurado(idIdea: number){
+    this.router.navigate(['/revisionIdeaJurado', idIdea]);
   }
 
 }

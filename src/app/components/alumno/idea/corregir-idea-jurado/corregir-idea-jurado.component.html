@@ -1,0 +1,34 @@
+<div class="container container-main">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <app-ver-idea [idIdea]="idIdea"></app-ver-idea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <app-profesores-idea [idIdea]="idIdea"></app-profesores-idea>
+        </div>
+    </div>
+    <app-ver-formato-idea [idIdea]="idIdea" [tipoFormato]="'FORMATO_APROBADO_TUTOR'"
+        [titulo]="'DOCUMENTO APROBADO Y FIRMADO POR EL TUTOR'"></app-ver-formato-idea>
+    <app-ver-formato-idea [idIdea]="idIdea" [tipoFormato]="'PROCESO_AUT_JURADO'"
+        [titulo]="'VERSIONES FORMATO ALUMNO'"></app-ver-formato-idea>
+    <div class="row">        
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="viewer-container">
+                <div class="viewer-title">
+                    <legend>ACCIONES</legend>
+                </div>
+                <div class="viewer-body">                          
+                    <label for="uploadFormat">Cargar formato con correcciones:</label>
+                    <input type="file" class="form-control" id="uploadFormat" id="archivoCarga" accept="application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, .docx" />
+                    <br/>
+                    {{textError}}
+                    <br/>
+                    <a class="btn btn-outline-danger btn-block" style="color: black" (click)="cargarFormato()">CARGAR FORMATO</a>
+                </div>           
+            </div>
+        </div>
+    </div>
+    <app-comentarios [idIdea]="idIdea" [estadoComentarios]="'RECHAZO_FORMATO_IDEA_JURADO'" [titulo]="'COMENTARIOS DE RECHAZO FORMATO JURADO'"></app-comentarios>
+</div>

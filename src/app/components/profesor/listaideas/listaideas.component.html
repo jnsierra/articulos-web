@@ -25,6 +25,10 @@
     </div>
   </div>
 </div>
+<div *ngIf="!ideas">
+  <br/>
+  <legend>NO TIENES IDEAS PARA REVISIÓN</legend>
+</div>
 <div *ngIf="ideasEnEspera">
   <h2>POR REVISAR FORMATO:</h2>
   <div class="container main-container">
@@ -46,4 +50,34 @@
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="!ideasEnEspera">
+  <br/>
+  <legend>NO TIENES IDEAS POR APROBAR FORMATOS</legend>
+</div>
+<div *ngIf="ideasJurado">
+  <h2>ASIGNADAS COMO JURADO:</h2>
+  <div class="container main-container">
+    <div class="card-columns">
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem" *ngFor="let item of ideasJurado">
+        <div class="card-header">
+          Alumno: {{ item.nombreAlumno | uppercase }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.titulo | uppercase }}</h5>
+          <p class="card-text">{{ item.contenido }}</p>
+        </div>
+        <footer class="blockquote-footer">
+          <a class="btn btn-outline-success btn-block" style="color: white" (click)="verFormatoJurado(item.id)">VER FORMATO</a>
+          <small class="text-muted">
+            Estado <cite title="Source Title">{{ item.estado }}</cite>
+          </small>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!ideasJurado">
+  <br/>
+  <legend>NO TIENES IDEAS ASIGNADAS PARA JURADO</legend>
 </div>

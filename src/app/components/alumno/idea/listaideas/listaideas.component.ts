@@ -56,5 +56,9 @@ export class ListaideasComponent implements OnInit {
   cargarFormato(id:number){
     this.router.navigate(['/cargarFormato',id]);
   }
+
+  correccionIdeasJurado(id: number){
+    this.router.navigate(['/correccionIdeaJuradoAlumno',id]);
+  }
   
 }

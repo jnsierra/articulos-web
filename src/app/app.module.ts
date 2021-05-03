@@ -61,6 +61,8 @@ import { NavbarcoordinacionComponent } from './components/share/navbarcoordinaci
 import { AsignacionTutorComponent } from './components/coordinacion/articulo/asignacion-tutor/asignacion-tutor.component';
 import { VerFormatoIdeaComponent } from './components/general/ver-formato-idea/ver-formato-idea.component';
 import { AsignarJuradoComponent } from './components/coordinacion/idea/asignar-jurado/asignar-jurado.component';
+import { RevisionideaComponent } from './components/profesor/jurado/revisionidea/revisionidea.component';
+import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +102,9 @@ import { AsignarJuradoComponent } from './components/coordinacion/idea/asignar-j
     NavbarcoordinacionComponent,
     AsignacionTutorComponent,
     VerFormatoIdeaComponent,
-    AsignarJuradoComponent
+    AsignarJuradoComponent,
+    RevisionideaComponent,
+    CorregirIdeaJuradoComponent
   ],
   imports: [
     BrowserModule,
