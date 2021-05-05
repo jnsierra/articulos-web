@@ -54,7 +54,11 @@
 <div class="container">
     <div class="row">
         <div class="col-12 viewer-container">
-            <app-ver-parrafos [idArticulo]="idArticulo" [titulo]="'PARRAFOS DEL ARTICULO'" [muestraUpdate]="true" (parrafoSeleccionado)="editar( $event )" ></app-ver-parrafos>
+            <app-ver-parrafos [idArticulo]="idArticulo" [titulo]="'PARRAFOS DEL ARTICULO'" 
+                                [muestraUpdate]="true" 
+                                (parrafoSeleccionado)="editar( $event )" 
+                                (parrafoEliminado)="eliminarItem( $event )"
+                                ></app-ver-parrafos>
         </div>
     </div>
 </div>

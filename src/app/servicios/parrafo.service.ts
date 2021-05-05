@@ -20,4 +20,9 @@ export class ParrafoService {
         return this.http.get<ParrafoModel[]>(URL_SERVICE);
     }
 
+    updateOrden(idParrafo: number, orden: number){
+        const URL_SERVICE = `${this._urlService.getEndPointParrafoDatos()}${idParrafo}/${orden}/`;
+        return this.http.put(URL_SERVICE,{});
+    }
+
 }

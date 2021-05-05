@@ -2,6 +2,7 @@ import { ParrafoModel } from './../../../models/parrafo.model';
 import { ParrafoService } from './../../../servicios/parrafo.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-ver-parrafos',
@@ -20,10 +21,14 @@ export class VerParrafosComponent implements OnInit {
   @Output()
   parrafoSeleccionado: EventEmitter<ParrafoModel>;
 
+  @Output()
+  parrafoEliminado: EventEmitter<ParrafoModel>;
+
   listaParrafos: ParrafoModel[];
 
   constructor(private _parrafoService: ParrafoService) {
     this.parrafoSeleccionado = new EventEmitter();
+    this.parrafoEliminado = new EventEmitter();
     this.buscarParrafos();
 
    }
@@ -45,12 +50,21 @@ export class VerParrafosComponent implements OnInit {
     this.parrafoSeleccionado.emit(item);
   }
 
+  eliminarItem(item: ParrafoModel){
+    this.parrafoEliminado.emit(item);
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.listaParrafos, event.previousIndex, event.currentIndex);
+    this.persistirOrden();
   }
 
   persistirOrden(){
-    console.log(this.listaParrafos);
+    for(let i = 0 ; i < this.listaParrafos.length; i++){
+      this._parrafoService.updateOrden(this.listaParrafos[i].id, i+1).subscribe(resp => {
+        console.log(resp);
+      });
+    }
   }
 
 }

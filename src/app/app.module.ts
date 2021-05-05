@@ -64,6 +64,7 @@ import { AsignarJuradoComponent } from './components/coordinacion/idea/asignar-j
 import { RevisionideaComponent } from './components/profesor/jurado/revisionidea/revisionidea.component';
 import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatNativeDateModule,
     MatCardModule,
     DragDropModule,
+    MatTooltipModule,
     APP_ROUTING
   ],
   providers: [

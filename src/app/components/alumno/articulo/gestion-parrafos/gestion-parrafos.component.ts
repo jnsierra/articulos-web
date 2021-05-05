@@ -1,5 +1,4 @@
 import { VerParrafosComponent } from './../../../general/ver-parrafos/ver-parrafos.component';
-import { catchError } from 'rxjs/operators';
 import { ParrafoService } from './../../../../servicios/parrafo.service';
 import { ParrafoModel } from './../../../../models/parrafo.model';
 import { NgForm } from '@angular/forms';
@@ -72,7 +71,6 @@ export class GestionParrafosComponent implements OnInit {
   modificarParrafo(){
     this.parrafo.estado = 'CORREGIDO_PARA_REVISION';
     this.crearParrafo();
-    console.log('Llego');
   }
 
   nonSubmited(){
@@ -83,7 +81,25 @@ export class GestionParrafosComponent implements OnInit {
 
   editar(item: ParrafoModel){
     this.parrafo = item;
-    console.log("Desde aquí:", item);
+  }
+
+  eliminarItem(item: ParrafoModel){
+    //this.parrafo = item;
+    //this.parrafo.estado = 'ELIMINADO';
+    Swal.fire({
+      allowOutsideClick: false,
+      type: 'info',
+      text: '¿Desea eliminar el párrafo? Esta acción no se puede reversar en un futuro.',
+      title: 'Confirmacion', 
+      showConfirmButton:true,
+      showCancelButton:true
+    }).then(resp => {
+      if(resp.value){
+        this.parrafo = item;
+        this.parrafo.estado = 'ELIMINADO';
+        this.crearParrafo(); 
+      }
+    });
   }
 
 }

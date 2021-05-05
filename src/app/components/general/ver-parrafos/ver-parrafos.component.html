@@ -1,32 +1,23 @@
 <div class="viewer-title">
     <legend>{{titulo}} <i class="material-icons">book_online</i></legend>
 </div>
-<div class="viewer-body">
-    <div class="table-responsive">
-        <table class="table table-borderless">
-            <tr *ngFor="let item of listaParrafos">
-                <td style="text-align:justify" data-toggle="tooltip" data-placement="left" title="Orden: {{item.orden}}">
-                <div class="border" style="padding: 10px;" [class.border-primary]="item.estado === 'POR_REVISAR_PROFESOR'"
-                     [class.border-warning]="item.estado === 'CORREGIDO_PARA_REVISION'">
-                    {{item.contenido}}
-                </div>
-                <br/>
-                </td>
-                <td *ngIf="muestraUpdate">
-                    <i class="material-icons" (click)="editarParrafo(item)" data-toggle="tooltip" data-placement="left" title="Editar Parrafo">edit</i>
-                </td>
-            </tr>
-        </table>
+<div class="viewer-body">    
+    <div cdkDropList class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  border" (cdkDropListDropped)="drop($event)">
+        <div class="example-box border " *ngFor="let parrafo of listaParrafos" cdkDrag
+                [class.border-primary]="parrafo.estado == 'POR_REVISAR_PROFESOR'"
+                [class.border-warning]="parrafo.estado == 'CORREGIDO_PARA_REVISION'"
+                [class.border-danger]="parrafo.estado == 'RECHAZADO'"
+                [class.border-success]="parrafo.estado == 'APROBADO'"
+        >
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 text-align">
+                {{parrafo.contenido}}
+            </div>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                <i class="material-icons" (click)="editarParrafo(parrafo)" matTooltip="Editar parrafo">edit</i>
+            </div>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                <i class="material-icons" (click)="eliminarItem(parrafo)" matTooltip="Eliminar parrafo">cancel_outlined</i>
+            </div>
+        </div>
     </div>
 </div>
-<br/>
-<br/><br/><br/>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let parrafo of listaParrafos" cdkDrag>
-    <div class="example-custom-placeholder" *cdkDragPlaceholder>Aqui</div>
-    {{parrafo.contenido}}
-    </div>
-</div>
-<br/>
-<div class="btn btn-outline-success" (click)="persistirOrden()" >Guardar</div>
-<br/><br/>
