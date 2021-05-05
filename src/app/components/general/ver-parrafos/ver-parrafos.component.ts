@@ -1,6 +1,7 @@
 import { ParrafoModel } from './../../../models/parrafo.model';
 import { ParrafoService } from './../../../servicios/parrafo.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-ver-parrafos',
@@ -42,6 +43,14 @@ export class VerParrafosComponent implements OnInit {
 
   editarParrafo(item: ParrafoModel){
     this.parrafoSeleccionado.emit(item);
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.listaParrafos, event.previousIndex, event.currentIndex);
+  }
+
+  persistirOrden(){
+    console.log(this.listaParrafos);
   }
 
 }

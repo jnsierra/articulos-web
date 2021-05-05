@@ -63,6 +63,7 @@ import { VerFormatoIdeaComponent } from './components/general/ver-formato-idea/v
 import { AsignarJuradoComponent } from './components/coordinacion/idea/asignar-jurado/asignar-jurado.component';
 import { RevisionideaComponent } from './components/profesor/jurado/revisionidea/revisionidea.component';
 import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,7 @@ import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-i
     VerFormatoIdeaComponent,
     AsignarJuradoComponent,
     RevisionideaComponent,
-    CorregirIdeaJuradoComponent
+    CorregirIdeaJuradoComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,6 +125,7 @@ import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-i
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
+    DragDropModule,
     APP_ROUTING
   ],
   providers: [

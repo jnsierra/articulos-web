@@ -32,13 +32,13 @@ export class ListaideasProfComponent implements OnInit {
 
   buscarIdeasProfesor() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'CREADA').subscribe(resp => {
+    /*this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'CREADA').subscribe(resp => {
       this.ideas = resp;
     });
     this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'POR_CONFIRMAR_FORMATO').subscribe(resp => {
       this.ideasEnEspera = resp;
-    });
-    this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'APROBACION_FORMATO_JURADO').subscribe(resp => {
+    });*/
+    this._ideaServicio.consultarIdeasProfesorByEstadoAndTypeProfesor(this.usuario.id, 'APROBACION_FORMATO_JURADO','JURADO').subscribe(resp => {
       this.ideasJurado = resp;
     });
   }

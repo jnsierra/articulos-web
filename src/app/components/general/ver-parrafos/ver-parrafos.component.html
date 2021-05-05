@@ -19,3 +19,14 @@
         </table>
     </div>
 </div>
+<br/>
+<br/><br/><br/>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let parrafo of listaParrafos" cdkDrag>
+    <div class="example-custom-placeholder" *cdkDragPlaceholder>Aqui</div>
+    {{parrafo.contenido}}
+    </div>
+</div>
+<br/>
+<div class="btn btn-outline-success" (click)="persistirOrden()" >Guardar</div>
+<br/><br/>
