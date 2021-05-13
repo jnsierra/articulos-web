@@ -10,8 +10,10 @@
     <div class="col-0 col-sm-0 col-md-2 col-lg-1"></div>
     <div class="col-12 col-sm-12 col-md-8 col-lg-10 text-center"> 
         <button class="btn btn-outline-primary" routerLink="/verIdeaArticulo/{{articulo.ideaId}}/{{articulo.id}}">Ver Idea</button>&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-outline-warning" routerLink="/verControlLectura/{{articulo.id}}" >Agregar Control de lectura</button>&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-outline-success" routerLink="/verParrafos/{{articulo.id}}" >Administrar Parrafos</button>
+        <button class="btn btn-outline-warning" routerLink="/verControlLectura/{{articulo.id}}" >Bibliografía</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-outline-success" routerLink="/verParrafos/{{articulo.id}}" >Administrar Parrafos</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-outline-info" (click)="verFlujo()" >Ver Flujo</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-outline-primary" routerLink="/verVistaPrevia/{{articulo.id}}" >Vista Previa</button>
     </div>
     <div class="col-0 col-sm-0 col-md-2 col-lg-1"></div>
 </div>
@@ -45,7 +47,22 @@
             Contenido obligatorio
         </mat-error>
     </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Introducción" [(ngModel)]="articulo.introduccion" name="introduccion" required></textarea>
+        <mat-hint>Digita la introducción de tu artículo</mat-hint>
+        <mat-error *ngIf="f.submitted && f.controls['introduccion'].invalid && f.controls['introduccion'].errors['required']">
+            Introducción obligatoria
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Conclusión" [(ngModel)]="articulo.conclusion" name="conclusion" required></textarea>
+        <mat-hint>Digita la introducción de tu artículo</mat-hint>
+        <mat-error *ngIf="f.submitted && f.controls['conclusion'].invalid && f.controls['conclusion'].errors['required']">
+            Conclusión obligatoria
+        </mat-error>
+    </mat-form-field>
     <div style="margin-top: 20px;">
         <button mat-raised-button color="primary" class="full-width">ENVIAR A CORREGIR</button>
     </div>
 </form>
+<br/>

@@ -1,3 +1,4 @@
+import { GestionVistapreviaComponent } from './components/alumno/articulo/gestion-vistaprevia/gestion-vistaprevia.component';
 import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
 import { RevisionideaComponent } from './components/profesor/jurado/revisionidea/revisionidea.component';
 import { AsignarJuradoComponent } from './components/coordinacion/idea/asignar-jurado/asignar-jurado.component';
@@ -55,6 +56,7 @@ const APP_ROUTERS: Routes = [
     { path: 'verIdeaArticulo/:id/:idArticulo', component: VerIdeaArticuloComponent, canActivate: [AuthGuard] },
     { path: 'verControlLectura/:id', component: GestionLecturaComponent, canActivate: [AuthGuard] },
     { path: 'verParrafos/:id', component: GestionParrafosComponent, canActivate: [AuthGuard] },
+    { path: 'verVistaPrevia/:id', component: GestionVistapreviaComponent, canActivate: [AuthGuard] },
     { path: 'correccionIdeaJuradoAlumno/:id', component: CorregirIdeaJuradoComponent, canActivate: [AuthGuard] },
     //Coordinacion
     { path: 'asignacionTutor', component: AsignacionTutorComponent, canActivate: [AuthGuard] },

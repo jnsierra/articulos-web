@@ -1,6 +1,6 @@
 <div class="container main-container">
-  <div class="login-dark">
-    <form #f="ngForm" (ngSubmit)="ingresar( f )">
+  <div class="login-dark ">
+    <form #f="ngForm" (ngSubmit)="ingresar( f )" class="border"> 
       <h2 class="sr-only">Ingreso</h2>
       <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
       <div class="form-group">          
@@ -23,12 +23,15 @@
           <mat-label>Password</mat-label>
           <input 
           class="inputs-form"
-          type="password" 
-          matInput placeholder="123456"
+          [type]="hide ? 'password' : 'text'" 
+          matInput 
           name="password" 
           placeholder="Password" 
           [(ngModel)]="usuario.password" 
           required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
       </div>
       <div class="form-group">

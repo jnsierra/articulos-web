@@ -9,9 +9,11 @@
       </div>
       <footer class="blockquote-footer">
           <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'APROBAR' " (click)="cargarFormato(item.id)" >CARGAR FORMATO</a>
+          <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'RECHAZO_FORMATO' " (click)="cargarFormato(item.id)" >CORREGIR FORMATO</a>
           <a class="btn btn-outline-info btn-block" style="color: white" *ngIf="item.estado == 'RECHAZAR' " (click)="actualizarIdea(item.id)" >CORREGIR</a>
           <a class="btn btn-outline-success btn-block" style="color: white" *ngIf="item.estado == 'FINALIZADA' " (click)="consultaArticuloByIdea(item.id)" >INICAR ARTICULO</a>
           <a class="btn btn-outline-warning btn-block" style="color: white" *ngIf="item.estado == 'RECHAZADO_JURADO' " (click)="correccionIdeasJurado(item.id)">CORREGIR JURADO</a>
+          <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(item.id)">VER FLUJO</a>
         <small class="text-muted">
           Estado <cite title="Source Title" *ngIf="item.estado == 'RECHAZAR' " >RECHAZADA</cite>
           <cite title="Source Title" *ngIf="item.estado == 'CREADA' " >POR REVISAR</cite>

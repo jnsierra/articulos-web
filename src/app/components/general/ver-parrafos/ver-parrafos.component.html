@@ -1,7 +1,7 @@
 <div class="viewer-title">
     <legend>{{titulo}} <i class="material-icons">book_online</i></legend>
 </div>
-<div class="viewer-body">    
+<div class="viewer-body" *ngIf="listaParrafos">    
     <div cdkDropList class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  border" (cdkDropListDropped)="drop($event)">
         <div class="example-box border " *ngFor="let parrafo of listaParrafos" cdkDrag
                 [class.border-primary]="parrafo.estado == 'POR_REVISAR_PROFESOR'"

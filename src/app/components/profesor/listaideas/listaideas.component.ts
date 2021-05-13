@@ -1,3 +1,4 @@
+import { DibujaProcesoComponent } from './../../general/dibuja-proceso/dibuja-proceso.component';
 import { Router } from '@angular/router';
 import { UsuarioModel } from './../../../models/usuario.model';
 import { ComentarioGeneralService } from './../../../servicios/comentariogeneral.service';
@@ -6,6 +7,7 @@ import { ComentariosService } from './../../../servicios/comentarios.service';
 import { Component, OnInit } from '@angular/core';
 import { IdeaService } from 'src/app/servicios/idea.service';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-listaideas',
@@ -22,6 +24,7 @@ export class ListaideasProfComponent implements OnInit {
 
   constructor(private _ideaServicio: IdeaService, 
               private _comentarioServicio: ComentarioGeneralService,
+              private dialog: MatDialog,
               private router: Router) {
     this.buscarIdeasProfesor();
     this.usuarioAut =  JSON.parse(localStorage.getItem('usuario'));
@@ -32,12 +35,12 @@ export class ListaideasProfComponent implements OnInit {
 
   buscarIdeasProfesor() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    /*this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'CREADA').subscribe(resp => {
+    this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'CREADA').subscribe(resp => {
       this.ideas = resp;
     });
     this._ideaServicio.consultarIdeasProfesorByEstado(this.usuario.id, 'POR_CONFIRMAR_FORMATO').subscribe(resp => {
       this.ideasEnEspera = resp;
-    });*/
+    });
     this._ideaServicio.consultarIdeasProfesorByEstadoAndTypeProfesor(this.usuario.id, 'APROBACION_FORMATO_JURADO','JURADO').subscribe(resp => {
       this.ideasJurado = resp;
     });
@@ -106,6 +109,10 @@ export class ListaideasProfComponent implements OnInit {
 
   verFormatoJurado(idIdea: number){
     this.router.navigate(['/revisionIdeaJurado', idIdea]);
+  }
+
+  verFlujo(id: number){
+    const dialogRef = this.dialog.open(DibujaProcesoComponent, {data:{idIdea: id}});
   }
 
 }

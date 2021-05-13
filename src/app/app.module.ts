@@ -65,6 +65,10 @@ import { RevisionideaComponent } from './components/profesor/jurado/revisionidea
 import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { DibujaProcesoComponent } from './components/general/dibuja-proceso/dibuja-proceso.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { GestionVistapreviaComponent } from './components/alumno/articulo/gestion-vistaprevia/gestion-vistaprevia.component';
+import { VistaPreviaArticuloComponent } from './components/general/vista-previa-articulo/vista-previa-articulo.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +111,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AsignarJuradoComponent,
     RevisionideaComponent,
     CorregirIdeaJuradoComponent,
+    DibujaProcesoComponent,
+    GestionVistapreviaComponent,
+    VistaPreviaArticuloComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +135,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatCardModule,
     DragDropModule,
     MatTooltipModule,
+    MatDialogModule,
     APP_ROUTING
   ],
   providers: [

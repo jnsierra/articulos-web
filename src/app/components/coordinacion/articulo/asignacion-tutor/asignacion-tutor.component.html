@@ -10,6 +10,7 @@
         </div>
         <footer class="blockquote-footer">
             <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'ESPERA_JURADO' " (click)="asignarJurado(item.id)" >ASIGNAR JURADO</a>
+            <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(item.id)">VER FLUJO</a>
           <small class="text-muted">
             Estado  
             <cite title="Source Title" *ngIf="item.estado == 'ESPERA_JURADO' " >A ESPERA DE ASIGNACIÓN JURADO</cite>          

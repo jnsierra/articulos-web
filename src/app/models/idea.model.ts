@@ -25,6 +25,11 @@ export class IdeaModel{
         idea.profesorAsignado = objeto.profesorAsignado;
         idea.profesorAutoriza = objeto.profesorAutoriza;
         idea.usuario = this.usuario.of( objeto.usuario );
+        try{
+            idea.estado = objeto.estado;
+        }catch(error){
+            console.log(error);
+        }
         return idea;
     }
 

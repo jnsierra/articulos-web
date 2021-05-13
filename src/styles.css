@@ -1,8 +1,5 @@
 
-
-@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
-
-
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 .inputs-form {
     min-width: 150px;
     max-width: 500px;
@@ -26,16 +23,16 @@
     width: 100%;
   }
 
-  .login-dark form {
+.login-dark form {
     width: 90%;
-    background-image: linear-gradient(#98999A,#373435);
+    background-color:white;
     padding: 30px; 
     border-radius: 4px;
     transform: translate(-50%, -50%);
     position: absolute;
-    top: 57%;
+    top: 40%;
     left: 50%;
-    color: #fff;
+    color: #000;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
 }
 

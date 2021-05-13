@@ -1,9 +1,11 @@
+import { DibujaProcesoComponent } from './../../../general/dibuja-proceso/dibuja-proceso.component';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { IdeaService } from 'src/app/servicios/idea.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-listaideas',
@@ -17,6 +19,7 @@ export class ListaideasComponent implements OnInit {
 
   constructor(private _ideasService: IdeaService,
               private _authService: AuthService,
+              private dialog: MatDialog,
               private router: Router) {
     this.consultaIdeas();
   }
@@ -59,6 +62,10 @@ export class ListaideasComponent implements OnInit {
 
   correccionIdeasJurado(id: number){
     this.router.navigate(['/correccionIdeaJuradoAlumno',id]);
+  }
+
+  verFlujo(id: number){
+    const dialogRef = this.dialog.open(DibujaProcesoComponent, {data:{idIdea: id}});
   }
   
 }

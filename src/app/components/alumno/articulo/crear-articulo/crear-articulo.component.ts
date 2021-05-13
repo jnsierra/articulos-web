@@ -1,3 +1,4 @@
+import { DibujaProcesoComponent } from './../../../general/dibuja-proceso/dibuja-proceso.component';
 import { ArticuloModel } from 'src/app/models/articulo.model';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/servicios/auth.service';
@@ -5,6 +6,7 @@ import { ArticulosService } from 'src/app/servicios/articulos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-crear-articulo',
@@ -19,6 +21,7 @@ export class CrearArticuloComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private _articuloService: ArticulosService,
     private _authService: AuthService,
+    private dialog: MatDialog,
     private router: Router) {
     this.activatedRoute.params.subscribe(params =>{
       this.idArticulo = Number(params['id']);
@@ -53,7 +56,29 @@ export class CrearArticuloComponent implements OnInit {
   }
 
   actualizarArticulo(f: NgForm){
+    if(f.invalid){
+      return ;
+    }
+    this._articuloService.actualizarArticulo(this.articulo).subscribe(resp => {
+      if(resp){
+        Swal.fire({
+          title: 'Actualizado',
+          text: 'Artículo actualizado con exito.',
+          type: 'success'
+        });
+      }else{
+        Swal.fire({
+          title: 'Error',
+          text: 'Error al actualizar el articulo',
+          type: 'error'
+        });
+      }
+    });
 
+  }
+
+  verFlujo(){
+    const dialogRef = this.dialog.open(DibujaProcesoComponent, {data:{idIdea: this.articulo.ideaId}});
   }
 
 }

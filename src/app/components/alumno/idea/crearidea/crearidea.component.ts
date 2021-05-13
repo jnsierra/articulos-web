@@ -1,3 +1,4 @@
+import { DibujaProcesoComponent } from './../../../general/dibuja-proceso/dibuja-proceso.component';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -8,6 +9,7 @@ import { IdeaService } from 'src/app/servicios/idea.service';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -35,6 +37,7 @@ export class CrearideaComponent implements OnInit {
 
   constructor(private _usuarioService: UsuarioService,
     private _ideaService: IdeaService,
+    private dialog: MatDialog,
     private router: Router) {
     this.idea = new IdeaModel();
     this.profesores = [];
@@ -88,6 +91,10 @@ export class CrearideaComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  verFlujo(){
+    const dialogRef = this.dialog.open(DibujaProcesoComponent, {data:{idIdea: -1}});
   }
 
 }

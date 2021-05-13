@@ -9,6 +9,8 @@ export class ArticuloModel{
     ideaId: number;
     contenido: string;
     idea?: IdeaModel;
+    introduccion?: string;
+    conclusion?:string;
 
     constructor(){
         this.idea = new IdeaModel();
@@ -27,6 +29,8 @@ export class ArticuloModel{
         }
         try {
             articulo.ideaId = objeto.ideaId;
+            articulo.conclusion = objeto.conclusion;
+            articulo.introduccion = objeto.introduccion;
         } catch (error) {
             console.log(error);
         }

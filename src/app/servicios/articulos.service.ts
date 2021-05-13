@@ -54,4 +54,9 @@ export class ArticulosService {
     const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}idea/user/${idAlumno}/`;
     return this.http.get<ArticuloModel[]>(URL_SERVICE);
   }
+
+  actualizarArticulo(articulo: ArticuloModel){
+    const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}`;
+    return this.http.put<ArticuloModel>(URL_SERVICE, articulo);
+  }
 }

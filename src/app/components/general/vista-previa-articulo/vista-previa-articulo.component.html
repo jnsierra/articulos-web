@@ -1,0 +1,93 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item ">
+            <span style="cursor: pointer;" routerLink="/editarArticulo/{{idArticulo}}">Articulo</span>
+        </li>
+        <li class="breadcrumb-item active">
+            <span style="color: blue; text-decoration: underline; cursor: pointer;">Vista Previa</span>
+        </li>
+    </ol>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-12 viewer-container">
+            <div class="viewer-title">
+                <legend>VISTA PREVIA<i class="material-icons">attach_file_rounded</i></legend>
+            </div>
+            <div class="viewer-body">
+                <div class="row">
+                    <div class="col-11">
+                        <h2>Contenido</h2>
+                        <h3 style="padding-left: 30px;">Introducción</h3>
+                        <h3 style="padding-left: 30px;">Abstract</h3>
+                        <h3 style="padding-left: 30px;">Resumen</h3>
+                        <h3 style="padding-left: 30px;">Resultados</h3>
+                        <h3 style="padding-left: 30px;">Conclusiones</h3>
+                        <h3 style="padding-left: 30px;">Referencias Bibliográficas</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-11">
+                        <h1>Introduccion</h1><br/>
+                        {{articulo.introduccion}}
+                    </div>
+                    <div class="col-1">
+                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario">add_comment</i><br/>
+                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
+                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-11">
+                        <h1>Abstract</h1><br/>
+                        {{articulo.resumen_ingles}}
+                    </div>
+                    <div class="col-1">
+                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario">add_comment</i><br/>
+                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
+                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-11">
+                        <h1>Resumen</h1><br/>
+                        {{articulo.resumen}}
+                    </div>
+                    <div class="col-1">
+                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario">add_comment</i><br/>
+                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
+                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-11"><h1>{{articulo.titulo}}</h1></div>
+                    <div class="col-1">
+                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario">add_comment</i><br/>
+                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
+                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                    </div>
+                </div><br/>
+                <div class="row" *ngFor="let item of parrafos">
+                    <div class="col-11" style="text-align: justify;" ><p class="lh-lg" >{{item.contenido}}</p></div>
+                    <div class="col-1">
+                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario">add_comment</i><br/>
+                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
+                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-11">
+                        <h1>Conclusiones</h1><br/>
+                        {{articulo.conclusion}}
+                    </div>
+                    <div class="col-1">
+                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario">add_comment</i><br/>
+                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
+                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                    </div>
+                </div><br/>
+            </div>
+        </div>
+    </div>
+</div>

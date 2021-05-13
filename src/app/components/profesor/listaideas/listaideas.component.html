@@ -17,6 +17,8 @@
             (click)="actualizarEstadoIdea(item.id, 'APROBAR')">APROBAR</a>
           <a class="btn btn-outline-danger btn-block" style="color: white"
             (click)="capturaComentarioRechazo(item.id, 'RECHAZAR')">RECHAZAR</a>
+          <a class="btn btn-outline-primary btn-block" style="color: white"
+            (click)="verFlujo(item.id)">VER FLUJO</a>
           <small class="text-muted">
             Estado <cite title="Source Title">{{ item.estado }}</cite>
           </small>
@@ -43,6 +45,7 @@
         </div>
         <footer class="blockquote-footer">
           <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFormato(item.id)">VER FORMATO</a>
+          <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(item.id)">VER FLUJO</a>
           <small class="text-muted">
             Estado <cite title="Source Title">{{ item.estado }}</cite>
           </small>
@@ -69,6 +72,7 @@
         </div>
         <footer class="blockquote-footer">
           <a class="btn btn-outline-success btn-block" style="color: white" (click)="verFormatoJurado(item.id)">VER FORMATO</a>
+          <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(item.id)">VER FLUJO</a>
           <small class="text-muted">
             Estado <cite title="Source Title">{{ item.estado }}</cite>
           </small>

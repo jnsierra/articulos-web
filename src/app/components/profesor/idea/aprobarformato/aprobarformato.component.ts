@@ -181,7 +181,7 @@ export class AprobarformatoComponent implements OnInit {
       comentario.tipo_documento = this._utilesBase64.identificaTipoDocumento(resultado.value.documento.name);
     }
     this._comentarioServicio.insertarComentario(comentario).subscribe((resp) => {
-      this.actualizarEstadoIdea(this.idea.id, 'APROBAR', 'Formato rechazado, El estudiante debe cargar de nuevo el formato.');
+      this.actualizarEstadoIdea(this.idea.id, 'RECHAZO_FORMATO', 'Formato rechazado, El estudiante debe cargar de nuevo el formato.');
     }, (catcherror) => {
       Swal.showValidationMessage('Error al persistir el comentario');
     });
