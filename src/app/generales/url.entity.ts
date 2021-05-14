@@ -67,6 +67,14 @@ export class UrlServices {
         return `${ this.urlBase }v.1/comentario/`;
     }
 
+    getEndPointComentarioArticulo(): string {
+        return `${ this.urlBase }v.1/comentarioarticulo/`;
+    }
+
+    getEndPointComentarioArticuloDatos(): string {
+        return `${ this.urlBaseDatos }v.1/comentarioarticulo/`;
+    }
+
     getEndPointComentarioDatos(): string {
         return `${ this.urlBaseDatos }v.1/comentario/`;
     }

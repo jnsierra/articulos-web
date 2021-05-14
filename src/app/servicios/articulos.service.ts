@@ -21,7 +21,7 @@ export class ArticulosService {
   }
 
   actualizarEstadoArticulo(id: number, estado: string){
-    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}cambiarestado/?idArticulo=${id}&estado=${estado}`;
+    const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}cambiarestado/?idArticulo=${id}&estado=${estado}`;
     return this.http.put(URL_SERVICE, null);
   }
 
@@ -58,5 +58,10 @@ export class ArticulosService {
   actualizarArticulo(articulo: ArticuloModel){
     const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}`;
     return this.http.put<ArticuloModel>(URL_SERVICE, articulo);
+  }
+
+  consultarArticulosTutorAndEstado(idTutor: number, estado: string){
+    const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}profesor/${idTutor}/${estado}/`;
+    return this.http.get<ArticuloModel[]>(URL_SERVICE);
   }
 }

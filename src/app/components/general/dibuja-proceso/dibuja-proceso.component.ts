@@ -14,7 +14,8 @@ enum EstadoIdea {
   ESPERA_JURADO_COORDINACION,
   IDEA_ESPERA_APROBACION_JURADO,
   IDEA_FORMATO_RECHAZADO_JURADO,
-  IDEA_FINALIZADA
+  IDEA_FINALIZADA,
+  ARTICULO_EN_CORRECCION_TUTOR
 }
 
 @Component({
@@ -79,10 +80,12 @@ export class DibujaProcesoComponent implements OnInit {
       if(resp){
         let articulo = new ArticuloModel();
         articulo = articulo.of(resp);
-        console.log(articulo);
+        //console.log(articulo);
         if(articulo.estado === 'ENVIADO_POR_CORRECCIONES'){
           //envidado por correcciones
           this.estadoFlujo = EstadoIdea.IDEA_FINALIZADA;
+        }else if(articulo.estado === 'REVISAR_PROFESOR'){
+          this.estadoFlujo = EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR;
         }
         this.dibujarProceso();
       }
@@ -138,7 +141,7 @@ export class DibujaProcesoComponent implements OnInit {
       //sumo 152 pixeles al eje x
       this.generarFlecha(ctx, 1252,80,25);
 
-      this.generarCuadroBase(ctx,1280,50, "Aprobación Articulo", "Tutor");
+      this.generarCuadroBase(ctx,1280,50, "Aprobación Articulo", "Tutor", (this.estadoFlujo === EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR) ? this.activoColor : null  );
       //sumo 152 pixeles al eje x
       this.generarFlecha(ctx, 1432,80,25);
 

@@ -1,3 +1,4 @@
+import { GestionarRevisionComponent } from './components/profesor/articulo/gestionar-revision/gestionar-revision.component';
 import { GestionVistapreviaComponent } from './components/alumno/articulo/gestion-vistaprevia/gestion-vistaprevia.component';
 import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
 import { RevisionideaComponent } from './components/profesor/jurado/revisionidea/revisionidea.component';
@@ -64,6 +65,7 @@ const APP_ROUTERS: Routes = [
     //Profesores
     { path: 'aprobarFormatoIdea/:id', component: AprobarformatoComponent, canActivate: [AuthGuard] },
     { path: 'revisionIdeaJurado/:id', component: RevisionideaComponent, canActivate: [AuthGuard] },
+    { path: 'revisionArticuloTutor/:id', component: GestionarRevisionComponent, canActivate: [AuthGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'login'} 
 ];
 

@@ -6,8 +6,15 @@
     <p class="card-text"><b>Abstract: </b>{{articulo.resumen_ingles}}</p>
 </div>
 <footer class="blockquote-footer">
+    <!--Botones para los estudiantes-->
     <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES'" routerLink="/editarArticulo/{{articulo.id}}" >VER ARTICULO</a>
+    
+    <!--Botones para los profesores-->
+    <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'REVISAR_PROFESOR'" routerLink="/revisionArticuloTutor/{{articulo.id}}" >REVISAR ARTICULO</a>
+    <!--Boton para ambos-->
+    <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(articulo.id)">VER FLUJO</a>
     <small class="text-muted">
         ESTADO <cite title="Source Title" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES' " >GUARDADA</cite>
+        <cite title="Source Title" *ngIf="articulo.estado == 'REVISAR_PROFESOR' " >EN REVISION PROFESOR</cite>
     </small>
 </footer>

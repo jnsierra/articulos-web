@@ -85,3 +85,13 @@
   <br/>
   <legend>NO TIENES IDEAS ASIGNADAS PARA JURADO</legend>
 </div>
+
+<div *ngIf="articulosRevision">
+  <h2>ASIGNADOS POR REVISIÓN</h2>
+  <div class="container main-container">
+      <div class="card-columns">
+          <div class="card text-white bg-dark mb-3" style="max-width: 18rem" *ngFor="let item of articulosRevision">
+              <app-item-art [articulo]="item"></app-item-art>
+          </div>
+  </div>
+</div>

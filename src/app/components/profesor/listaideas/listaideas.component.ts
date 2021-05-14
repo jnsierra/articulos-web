@@ -1,3 +1,5 @@
+import { ArticuloModel } from 'src/app/models/articulo.model';
+import { ArticulosService } from 'src/app/servicios/articulos.service';
 import { DibujaProcesoComponent } from './../../general/dibuja-proceso/dibuja-proceso.component';
 import { Router } from '@angular/router';
 import { UsuarioModel } from './../../../models/usuario.model';
@@ -21,8 +23,10 @@ export class ListaideasProfComponent implements OnInit {
   ideasEnEspera;
   ideasJurado;
   usuarioAut: UsuarioModel;
+  articulosRevision: ArticuloModel[];
 
   constructor(private _ideaServicio: IdeaService, 
+              private _articuloServicio: ArticulosService,
               private _comentarioServicio: ComentarioGeneralService,
               private dialog: MatDialog,
               private router: Router) {
@@ -43,6 +47,9 @@ export class ListaideasProfComponent implements OnInit {
     });
     this._ideaServicio.consultarIdeasProfesorByEstadoAndTypeProfesor(this.usuario.id, 'APROBACION_FORMATO_JURADO','JURADO').subscribe(resp => {
       this.ideasJurado = resp;
+    });
+    this._articuloServicio.consultarArticulosTutorAndEstado(this.usuario.id, 'REVISAR_PROFESOR').subscribe( resp => {
+      this.articulosRevision = resp;
     });
   }
 

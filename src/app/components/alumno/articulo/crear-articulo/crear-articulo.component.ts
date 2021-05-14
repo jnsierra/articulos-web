@@ -81,4 +81,18 @@ export class CrearArticuloComponent implements OnInit {
     const dialogRef = this.dialog.open(DibujaProcesoComponent, {data:{idIdea: this.articulo.ideaId}});
   }
 
+  actualizarEstadoArticulo(){
+    this._articuloService.actualizarEstadoArticulo(this.articulo.id, "REVISAR_PROFESOR").subscribe(resp => {
+      if(resp){
+        Swal.fire(
+          "Enviado",
+           "Enviado al profesor",
+          "success").then(resp => {
+            this.router.navigate(['/listarArticulos']);
+          });
+      }
+    })
+    
+  }
+
 }

@@ -1,0 +1,27 @@
+<form #f="ngForm" (ngSubmit)="ingresarComentario( f )">
+    <h2 mat-dialog-title>
+        AÑADIR COMENTARIO SOBRE:
+        <span *ngIf="comentario.typeComentarioArt === 'INTRODUCCION'">INTRODUCCIÓN</span>
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="container horizontal-scrollable">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <div class="form-group">
+                        <span class="text-danger" *ngIf="f.submitted && f.controls['comentario'].invalid">Comentario es
+                            obligatorio</span>
+                        <mat-form-field class="full-width">
+                            <mat-label>Realiza tu comentario</mat-label>
+                            <textarea name="comentario" matInput placeholder="Realiza tu comentario"
+                                [(ngModel)]="comentario.comentario" required ></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close type="button">Cerrar</button>
+        <button mat-raised-button color="primary" type="submit">Almacenar</button>
+    </mat-dialog-actions>
+</form>

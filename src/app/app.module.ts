@@ -69,6 +69,8 @@ import { DibujaProcesoComponent } from './components/general/dibuja-proceso/dibu
 import { MatDialogModule } from '@angular/material/dialog';
 import { GestionVistapreviaComponent } from './components/alumno/articulo/gestion-vistaprevia/gestion-vistaprevia.component';
 import { VistaPreviaArticuloComponent } from './components/general/vista-previa-articulo/vista-previa-articulo.component';
+import { GestionarRevisionComponent } from './components/profesor/articulo/gestionar-revision/gestionar-revision.component';
+import { AddCommentProfesorComponent } from './components/general/add-comment-profesor/add-comment-profesor.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +116,8 @@ import { VistaPreviaArticuloComponent } from './components/general/vista-previa-
     DibujaProcesoComponent,
     GestionVistapreviaComponent,
     VistaPreviaArticuloComponent,
+    GestionarRevisionComponent,
+    AddCommentProfesorComponent,
   ],
   imports: [
     BrowserModule,
