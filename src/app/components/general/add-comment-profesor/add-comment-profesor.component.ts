@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class AddCommentProfesorComponent implements OnInit {
   
   comentario:ComentarioArticuloModel;
+
   
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -43,11 +44,10 @@ export class AddCommentProfesorComponent implements OnInit {
           text: 'Comentario insertado correctamente'
         }).then((result) => {
           if (result.value) {
-            this.dialogRef.close();
+            this.dialogRef.close({creaCom: true, typeComentarioArt: this.comentario.typeComentarioArt});
           }
         });
       }
-      console.log(resp);
     });
   }
 

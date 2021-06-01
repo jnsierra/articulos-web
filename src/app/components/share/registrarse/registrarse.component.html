@@ -14,6 +14,14 @@
         </mat-form-field>
       </div>
       <div class="form-group">
+        <span class="text-danger" *ngIf="f.submitted && f.controls['codigo'].invalid">Código es obligatorio</span>
+        <mat-form-field class="full-width">
+          <mat-label>Código</mat-label>
+          <input matInput placeholder="Código Universitario" type="text" name="codigo" placeholder="Documento"
+            [(ngModel)]="usuario.codigo" required>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
         <span class="text-danger" *ngIf="f.submitted && f.controls['nombre'].invalid">Nombres son obligatorios</span>
         <mat-form-field class="full-width">
           <mat-label>Nombres</mat-label>

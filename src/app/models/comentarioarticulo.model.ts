@@ -8,6 +8,7 @@ export class ComentarioArticuloModel{
     respuestaComentario:string;
     historico:string;
     llave?:string;
+    createdDate?;
 
     constructor(){}
 

@@ -69,6 +69,5 @@ export class RegistrarseComponent implements OnInit {
         });
       }
     );
-    console.log(form);
   }
 }

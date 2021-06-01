@@ -23,6 +23,7 @@ export class UsuarioService {
       contrasena: usuario.password,
       nombre: usuario.nombre,
       cambioContra: "S",
+      codigo: usuario.codigo,
       persona: personaDto,
     };
     return this.http.post(this.url.getEndPointRegistrarse(), usuarioDto);

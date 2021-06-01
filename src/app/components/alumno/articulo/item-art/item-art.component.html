@@ -7,10 +7,11 @@
 </div>
 <footer class="blockquote-footer">
     <!--Botones para los estudiantes-->
-    <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES'" routerLink="/editarArticulo/{{articulo.id}}" >VER ARTICULO</a>
+    <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES' && alumno" routerLink="/editarArticulo/{{articulo.id}}" >VER ARTICULO</a>
+    <a class="btn btn-outline-success btn-block" style="color: white" *ngIf="articulo.estado == 'ARTICULO_APROBADO' && alumno" routerLink="/generacionDocumento/{{articulo.id}}" >GENERAR ARTICULO</a>
     
     <!--Botones para los profesores-->
-    <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'REVISAR_PROFESOR'" routerLink="/revisionArticuloTutor/{{articulo.id}}" >REVISAR ARTICULO</a>
+    <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'REVISAR_PROFESOR' && !alumno" routerLink="/revisionArticuloTutor/{{articulo.id}}" >REVISAR ARTICULO</a>
     <!--Boton para ambos-->
     <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(articulo.id)">VER FLUJO</a>
     <small class="text-muted">

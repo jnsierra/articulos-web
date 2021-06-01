@@ -33,11 +33,39 @@
                         {{articulo.introduccion}}
                     </div>
                     <div class="col-1">
-                        <i *ngIf="!alumno" class="material-icons" matTooltip="Añadir comentario" (click)="adicionarComentarioGeneral('INTRODUCCION', articulo.introduccion)">add_comment</i><br/>
-                        <i class="material-icons" matTooltip="Ver comentarios">comment</i><br/>
-                        <i *ngIf="alumno"class="material-icons" matTooltip="Responder comentarios">connect_without_contact</i>
+                        <i *ngIf="!alumno" class="material-icons" style="cursor: pointer;" matTooltip="Añadir comentario" (click)="adicionarComentarioGeneral('INTRODUCCION', articulo.introduccion)">add_comment</i><br/>
+                        <i class="material-icons" style="cursor: pointer;" matTooltip="Ver comentarios" (click)="verComentarios('INTRODUCCION'); comIntroVer = !comIntroVer" >comment</i><br/>
                     </div>
-                </div><br/>
+                </div>
+                <div class="row border not-hover" *ngIf="comIntroVer">
+                    <div class="col-12">
+                        <div class="table-responsive ">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                    <th [width]="10">Fecha</th>
+                                    <th [width]="25">Comentario</th>
+                                    <th [width]="25">Respuesta</th>
+                                    <th [width]="30">Historico</th>
+                                    <th [width]="5" *ngIf="alumno">Responder</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let comentario of comIntro; let indice=index" class="border" 
+                                            [class.border-success]="comentario.respuestaComentario" 
+                                            [class.border-danger]="!comentario.respuestaComentario">
+                                      <td>{{comentario.createdDate | date :'short'}}</td>
+                                      <td>{{comentario.comentario}}</td>
+                                      <td>{{vistaNula(comentario.respuestaComentario, 'Sin dar respuesta')}}</td>
+                                      <td>{{comentario.historico}}</td>
+                                      <td *ngIf="alumno && !comentario.respuestaComentario"><i class="material-icons" style="cursor: pointer;" matTooltip="Responder" (click)="responderComentario(comentario.id, comentario.comentario)" >contact_mail</i></td>
+                                  </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>
+                </div>
+                <br/><br/><br/>
                 <div class="row">
                     <div class="col-11">
                         <h1>Abstract</h1><br/>
@@ -89,7 +117,8 @@
                 </div><br/>
             </div>
             <div class="viewer-footer" *ngIf="!alumno">
-                <button class="btn btn-outline-primary btn-block"  >ENVIAR A CORREGIR</button><br/>
+                <button class="btn btn-outline-warning btn-block" (click)="enviarCorregirAlumno()" >ENVIAR A CORREGIR</button><br/>
+                <button class="btn btn-outline-success btn-block" (click)="enviarGenerarDocumento()" >ENVIAR A GENERAR DOCUMENTO</button><br/>
             </div>
         </div>
     </div>

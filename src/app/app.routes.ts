@@ -1,3 +1,4 @@
+import { GenerarArtWordComponent } from './components/general/generar-art-word/generar-art-word.component';
 import { GestionarRevisionComponent } from './components/profesor/articulo/gestionar-revision/gestionar-revision.component';
 import { GestionVistapreviaComponent } from './components/alumno/articulo/gestion-vistaprevia/gestion-vistaprevia.component';
 import { CorregirIdeaJuradoComponent } from './components/alumno/idea/corregir-idea-jurado/corregir-idea-jurado.component';
@@ -59,6 +60,7 @@ const APP_ROUTERS: Routes = [
     { path: 'verParrafos/:id', component: GestionParrafosComponent, canActivate: [AuthGuard] },
     { path: 'verVistaPrevia/:id', component: GestionVistapreviaComponent, canActivate: [AuthGuard] },
     { path: 'correccionIdeaJuradoAlumno/:id', component: CorregirIdeaJuradoComponent, canActivate: [AuthGuard] },
+    { path: 'generacionDocumento/:id', component: GenerarArtWordComponent, canActivate: [AuthGuard] },
     //Coordinacion
     { path: 'asignacionTutor', component: AsignacionTutorComponent, canActivate: [AuthGuard] },
     { path: 'asignacionTutorIdea/:id', component: AsignarJuradoComponent, canActivate: [AuthGuard] },

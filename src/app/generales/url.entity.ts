@@ -114,4 +114,8 @@ export class UrlServices {
     getEndPointParrafoDatos(): string{
         return `${ this.urlBaseDatos }v.1/parrafo/`;
     }
+
+    getEndPointFormato(): string{
+        return `${ this.urlBase }v.1/formato/`
+    }
 }

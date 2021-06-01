@@ -13,6 +13,8 @@ export class ItemArtComponent implements OnInit {
 
   @Input()
   articulo:ArticuloModel;
+  @Input()
+  alumno:boolean;
 
   constructor(private dialog: MatDialog) {
     

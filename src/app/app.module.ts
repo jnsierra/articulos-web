@@ -71,6 +71,7 @@ import { GestionVistapreviaComponent } from './components/alumno/articulo/gestio
 import { VistaPreviaArticuloComponent } from './components/general/vista-previa-articulo/vista-previa-articulo.component';
 import { GestionarRevisionComponent } from './components/profesor/articulo/gestionar-revision/gestionar-revision.component';
 import { AddCommentProfesorComponent } from './components/general/add-comment-profesor/add-comment-profesor.component';
+import { GenerarArtWordComponent } from './components/general/generar-art-word/generar-art-word.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +119,7 @@ import { AddCommentProfesorComponent } from './components/general/add-comment-pr
     VistaPreviaArticuloComponent,
     GestionarRevisionComponent,
     AddCommentProfesorComponent,
+    GenerarArtWordComponent,
   ],
   imports: [
     BrowserModule,

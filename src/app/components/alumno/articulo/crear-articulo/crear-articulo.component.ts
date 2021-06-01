@@ -82,17 +82,27 @@ export class CrearArticuloComponent implements OnInit {
   }
 
   actualizarEstadoArticulo(){
-    this._articuloService.actualizarEstadoArticulo(this.articulo.id, "REVISAR_PROFESOR").subscribe(resp => {
-      if(resp){
-        Swal.fire(
-          "Enviado",
-           "Enviado al profesor",
-          "success").then(resp => {
-            this.router.navigate(['/listarArticulos']);
-          });
-      }
-    })
+    this._articuloService.enviarRevisionArticulo(this.articulo.id).subscribe(resp => {
+      this.validaRespuesta(resp);
+    });
     
+  }
+
+  validaRespuesta(resp: any){
+    if(resp && resp.status === 'error'){
+      Swal.fire(
+        "Mensaje",
+        resp.message,
+        "error");
+
+    }else{
+      Swal.fire(
+        "Enviado",
+         "Enviado al profesor",
+        "success").then(resp => {
+          this.router.navigate(['/listarArticulos']);
+      });
+    }
   }
 
 }

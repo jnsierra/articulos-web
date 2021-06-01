@@ -64,4 +64,15 @@ export class ArticulosService {
     const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}profesor/${idTutor}/${estado}/`;
     return this.http.get<ArticuloModel[]>(URL_SERVICE);
   }
+
+  enviarRevisionArticulo(idArticulo: number){
+    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}revisonarticulo/${idArticulo}/`;
+    return this.http.post<ArticuloModel>(URL_SERVICE,{});
+  }
+
+  aprobarRevisionArticulo(idArticulo: number){
+    const URL_SERVICE = `${this._urlService.getEndPointArticulo()}aprobararticulo/${idArticulo}/`;
+    return this.http.post<ArticuloModel>(URL_SERVICE,{});
+  }
+
 }

@@ -7,6 +7,7 @@ export class UsuarioModel{
     password: string;
     tipoUsuario?: TipoUsuarioModel;
     persona: PersonaModel;
+    codigo?: string; 
 
     constructor(){
         this.tipoUsuario = new TipoUsuarioModel();

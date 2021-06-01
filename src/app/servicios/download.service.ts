@@ -33,4 +33,9 @@ export class DownloadService {
     const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}`;
     return this.http.post<DocumentDownload>(URL_SERVICE, documento);
   }
+
+  getFormatoArticulo(idArt: number){
+    const URL_SERVICE = `${this._urlService.getEndPointDownloadFiles()}formatoArticulo/${idArt}/`;
+    return this.http.post<DocumentDownload>(URL_SERVICE, {});
+  }
 }

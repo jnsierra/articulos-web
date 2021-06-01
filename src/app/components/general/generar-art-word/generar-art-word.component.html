@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container main-container">
+            <div class="viewer-container">
+                <div class="viewer-title">
+                    <legend>Descargar Formato</legend> 
+                </div>
+                <div class="viewer-body">
+                    Descarga el formato con la informaciòn basica de tu articulo la cual ha sido aprobada por tu tutor y posterior a eso cargala de nuevo para ser corregido por el tutor. 
+                    Haz Click <span (click)="generarDocumento()" style="color: blue;cursor: pointer;" >aquí</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container main-container">
+            <div class="viewer-container">
+                <div class="viewer-title">
+                    <legend>Cargue Articulo</legend>
+                </div>
+                <div class="viewer-body">
+                    <div style="color: red">{{ textError }}</div>
+                    <input type="file" class="form-control" id="uploadFormat" id="archivoCarga" accept="application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, .docx" />
+                </div>
+                <div class="viewer-footer">
+                    <div class="btn btn-outline-success btn-block" (click)="subirFormatoArticulo()" >SUBIR ARTICULO</div>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
