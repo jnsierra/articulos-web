@@ -17,4 +17,10 @@ export class FormatoService {
         return this.http.post<FormatoModel>(URL_SERVICE, formato);
     }
 
+    insertarFormatoBaseArt(formato: FormatoModel){
+        const URL_SERVICE = `${this._urlService.getEndPointFormato()}formatoBase/`
+        return this.http.post<FormatoModel>(URL_SERVICE, formato);
+
+    }
+
 }

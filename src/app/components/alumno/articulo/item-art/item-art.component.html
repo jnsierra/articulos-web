@@ -2,8 +2,8 @@
     <b>{{articulo.titulo | uppercase}}</b>
 </div>
 <div class="card-body">
-    <p class="card-text"><b>Resumen: </b>{{articulo.resumen}}</p>
-    <p class="card-text"><b>Abstract: </b>{{articulo.resumen_ingles}}</p>
+    <p class="card-text"><b>Resumen: </b>{{validaCaracteres(articulo.resumen)}}</p>
+    <p class="card-text"><b>Abstract: </b>{{validaCaracteres(articulo.resumen_ingles)}}</p>
 </div>
 <footer class="blockquote-footer">
     <!--Botones para los estudiantes-->

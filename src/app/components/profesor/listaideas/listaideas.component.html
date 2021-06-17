@@ -1,3 +1,4 @@
+
 <div *ngIf="ideas">
   <h2>POR REVISIÓN:</h2>
   <div class="container main-container">
@@ -91,6 +92,15 @@
   <div class="container main-container">
       <div class="card-columns">
           <div class="card text-white bg-dark mb-3" style="max-width: 18rem" *ngFor="let item of articulosRevision">
+              <app-item-art [articulo]="item" [alumno]="false"></app-item-art>
+          </div>
+  </div>
+</div>
+<div *ngIf="articulosPorRevisar">
+  <h2>ENVIADOS POR EL ALUMNO POR REVISAR</h2>
+  <div class="container main-container">
+      <div class="card-columns">
+          <div class="card text-white bg-dark mb-3" style="max-width: 18rem" *ngFor="let item of articulosPorRevisar">
               <app-item-art [articulo]="item" [alumno]="false"></app-item-art>
           </div>
   </div>

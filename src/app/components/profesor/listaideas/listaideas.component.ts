@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { UsuarioModel } from './../../../models/usuario.model';
 import { ComentarioGeneralService } from './../../../servicios/comentariogeneral.service';
 import { ComentarioGeneralModel } from './../../../models/comentariogeneral.model';
-import { ComentariosService } from './../../../servicios/comentarios.service';
 import { Component, OnInit } from '@angular/core';
 import { IdeaService } from 'src/app/servicios/idea.service';
 import Swal from 'sweetalert2';
@@ -24,6 +23,7 @@ export class ListaideasProfComponent implements OnInit {
   ideasJurado;
   usuarioAut: UsuarioModel;
   articulosRevision: ArticuloModel[];
+  articulosPorRevisar: ArticuloModel[];
 
   constructor(private _ideaServicio: IdeaService, 
               private _articuloServicio: ArticulosService,
@@ -31,6 +31,8 @@ export class ListaideasProfComponent implements OnInit {
               private dialog: MatDialog,
               private router: Router) {
     this.buscarIdeasProfesor();
+    this.articulosRevision = new Array();
+    this.articulosPorRevisar = new Array();
     this.usuarioAut =  JSON.parse(localStorage.getItem('usuario'));
   }
 
@@ -49,7 +51,14 @@ export class ListaideasProfComponent implements OnInit {
       this.ideasJurado = resp;
     });
     this._articuloServicio.consultarArticulosTutorAndEstado(this.usuario.id, 'REVISAR_PROFESOR').subscribe( resp => {
-      this.articulosRevision = resp;
+      if(resp){
+        this.articulosRevision = resp;
+      }
+    });    
+    this._articuloServicio.consultarArticulosTutorAndEstado(this.usuario.id, 'POR_REVISAR').subscribe( resp => {
+      if(resp){
+        this.articulosPorRevisar = resp;
+      }
     });
   }
 

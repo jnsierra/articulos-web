@@ -11,6 +11,7 @@ export class ArticuloModel{
     idea?: IdeaModel;
     introduccion?: string;
     conclusion?:string;
+    ubicacion_formato?: string;
 
     constructor(){
         this.idea = new IdeaModel();
@@ -31,6 +32,11 @@ export class ArticuloModel{
             articulo.ideaId = objeto.ideaId;
             articulo.conclusion = objeto.conclusion;
             articulo.introduccion = objeto.introduccion;
+        } catch (error) {
+            console.log(error);
+        }
+        try {
+            articulo.ubicacion_formato = objeto.ubicacion_formato;            
         } catch (error) {
             console.log(error);
         }
