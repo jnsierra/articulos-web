@@ -1,3 +1,4 @@
+import { RevisionFormatoComponent } from './components/profesor/articulo/revision-formato/revision-formato.component';
 import { GenerarArtWordComponent } from './components/general/generar-art-word/generar-art-word.component';
 import { GestionarRevisionComponent } from './components/profesor/articulo/gestionar-revision/gestionar-revision.component';
 import { GestionVistapreviaComponent } from './components/alumno/articulo/gestion-vistaprevia/gestion-vistaprevia.component';
@@ -68,6 +69,7 @@ const APP_ROUTERS: Routes = [
     { path: 'aprobarFormatoIdea/:id', component: AprobarformatoComponent, canActivate: [AuthGuard] },
     { path: 'revisionIdeaJurado/:id', component: RevisionideaComponent, canActivate: [AuthGuard] },
     { path: 'revisionArticuloTutor/:id', component: GestionarRevisionComponent, canActivate: [AuthGuard] },
+    { path: 'revisionFormatoArticuloTutor/:id', component: RevisionFormatoComponent, canActivate: [AuthGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'login'} 
 ];
 

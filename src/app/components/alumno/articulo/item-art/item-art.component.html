@@ -1,5 +1,5 @@
 <div class="card-header">
-    <b>{{articulo.titulo | uppercase}}</b>
+    <b>{{articulo.titulo }}</b>
 </div>
 <div class="card-body">
     <p class="card-text"><b>Resumen: </b>{{validaCaracteres(articulo.resumen)}}</p>
@@ -12,10 +12,13 @@
     
     <!--Botones para los profesores-->
     <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'REVISAR_PROFESOR' && !alumno" routerLink="/revisionArticuloTutor/{{articulo.id}}" >REVISAR ARTICULO</a>
+    <a class="btn btn-outline-success btn-block" style="color: white" *ngIf="articulo.estado == 'POR_REVISAR' && !alumno" routerLink="/revisionFormatoArticuloTutor/{{articulo.id}}" >REVISAR ARTICULO</a>
+
     <!--Boton para ambos-->
     <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(articulo.id)">VER FLUJO</a>
     <small class="text-muted">
         ESTADO <cite title="Source Title" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES' " >GUARDADA</cite>
         <cite title="Source Title" *ngIf="articulo.estado == 'REVISAR_PROFESOR' " >EN REVISION PROFESOR</cite>
+        <cite title="Source Title" *ngIf="articulo.estado == 'POR_REVISAR' " >REVISAR FORMATO FINAL</cite>
     </small>
 </footer>

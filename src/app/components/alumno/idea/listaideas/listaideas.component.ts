@@ -1,6 +1,5 @@
 import { DibujaProcesoComponent } from './../../../general/dibuja-proceso/dibuja-proceso.component';
 import { AuthService } from 'src/app/servicios/auth.service';
-import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { IdeaService } from 'src/app/servicios/idea.service';
 import { Router } from '@angular/router';

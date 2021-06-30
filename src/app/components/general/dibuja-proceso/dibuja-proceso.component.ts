@@ -15,7 +15,8 @@ enum EstadoIdea {
   IDEA_ESPERA_APROBACION_JURADO,
   IDEA_FORMATO_RECHAZADO_JURADO,
   IDEA_FINALIZADA,
-  ARTICULO_EN_CORRECCION_TUTOR
+  ARTICULO_EN_CORRECCION_TUTOR,
+  ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION
 }
 
 @Component({
@@ -86,6 +87,8 @@ export class DibujaProcesoComponent implements OnInit {
           this.estadoFlujo = EstadoIdea.IDEA_FINALIZADA;
         }else if(articulo.estado === 'REVISAR_PROFESOR'){
           this.estadoFlujo = EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR;
+        }else if(articulo.estado === 'POR_REVISAR'){
+          this.estadoFlujo = EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION;
         }
         this.dibujarProceso();
       }
@@ -145,10 +148,15 @@ export class DibujaProcesoComponent implements OnInit {
       //sumo 152 pixeles al eje x
       this.generarFlecha(ctx, 1432,80,25);
 
-      this.generarCuadroBase(ctx,1460,50, "Publicación", "Alumno");
+      this.generarCuadroBase(ctx,1460,50, "REVISION FORMATO", "Tutor", (this.estadoFlujo === EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION) ? this.activoColor : null  );
       //sumo 152 pixeles al eje x
       this.generarFlecha(ctx, 1612,80,25);
-      this.generarCirculo(ctx,1650, 80, 'Publicado por el Tutor', );
+
+      this.generarCuadroBase(ctx,1640,50, "Publicación", "Alumno");
+      //sumo 152 pixeles al eje x
+      //this.generarFlecha(ctx, 1612,80,25);
+
+      //this.generarCirculo(ctx,1700, 80, 'Publicado por el Tutor', );
     }
   }
 
