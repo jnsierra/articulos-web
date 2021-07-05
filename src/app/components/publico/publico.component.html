@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <mat-card>
-          <h2>ideas por estado finalizado</h2>
+          <h2>Ideas por estado</h2>
           <div>
             <div>
               <div class="chart">
-                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                <canvas  baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
                   [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
                   [legend]="pieChartLegend">
                 </canvas>
@@ -16,8 +16,9 @@
           </div>
         </mat-card>
         <div>
+          <br/>
           <button mat-button mat-raised-button class="btn btn-outline-primary" (click)="pieChartLegend=!pieChartLegend">
-            Eliminar Etiquetas modificado
+            Mostrar o Ocultar etiquetas
           </button>
         </div>
       </div>
