@@ -71,12 +71,18 @@ export class ListaideasProfComponent implements OnInit {
         Swal.showLoading()
       }
     });
+    let mensaje = "";
+    if(estado === 'APROBAR'){
+      mensaje = 'Idea actualizada correctamente. Su estudiante ya puede subir la informacion del articulo'
+    }else if(estado === 'RECHAZAR'){
+      mensaje = 'El rechazo será notificado al estudiante';
+    }
     this._ideaServicio.actualizarEstadoIdea(idIdea, estado, this.usuario.id).subscribe(resp => {
       if (resp) {
         Swal.fire({
           allowOutsideClick: false,
           type: 'success',
-          text: 'Idea actualizada correctamente. Su estudiante ya puede subir la informacion del articulo',
+          text: mensaje,
           title: 'Idea actualizada'
         }).then((result) => {
           if (result.value) {

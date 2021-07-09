@@ -1,1 +1,36 @@
 <p>revision-formato works!</p>
+<div class="container container-main">
+    <div class="row">
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2">
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-10 col-xl-8">
+            <div class="viewer-container">
+                <div class="viewer-title">
+                    <legend>ARTICULO EN REVISIÓN PARA ENVÍO A REVISTA &nbsp;<i class="material-icons">mail_outline</i></legend>
+                </div>
+                <div class="viewer-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+                            <b>Título:</b>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            {{articulo.titulo | uppercase}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+                            <b>Ver Formato para envío a revista: </b> <span (click)="descargarFormato()" style="color: blue; text-decoration: underline blue;cursor:pointer;">aquí</span>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="viewer-title">
+                    <button color="primary" class="btn btn-outline-warning" >Rechazar</button> &nbsp; &nbsp;&nbsp;
+                    <button color="primary" class="btn btn-outline-success" >Aprobar</button> &nbsp; &nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2">
+        </div>
+
+    </div>
+</div>
