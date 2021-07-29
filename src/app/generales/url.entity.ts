@@ -118,4 +118,8 @@ export class UrlServices {
     getEndPointFormato(): string{
         return `${ this.urlBase }v.1/formato/`
     }
+
+    getEndPointFormatoDatos(): string{
+        return `${ this.urlBaseDatos }v.1/formato/`
+    }
 }

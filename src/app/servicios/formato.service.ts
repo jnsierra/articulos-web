@@ -20,7 +20,11 @@ export class FormatoService {
     insertarFormatoBaseArt(formato: FormatoModel){
         const URL_SERVICE = `${this._urlService.getEndPointFormato()}formatoBase/`
         return this.http.post<FormatoModel>(URL_SERVICE, formato);
+    }
 
+    consultarFormatoArticulos(idArt: number){
+        const URL_SERVICE = `${this._urlService.getEndPointFormatoDatos()}${idArt}/`;
+        return this.http.get<FormatoModel[]>(URL_SERVICE);
     }
 
 }
