@@ -1,3 +1,4 @@
+import { ComentarioFormatoArticuloModel } from './comentarioformatoarticulo.model';
 export class FormatoModel{
 
     id:number;
@@ -9,6 +10,7 @@ export class FormatoModel{
     base64?:string;
     base64FormatoBase?:string;
     mensaje?:string;
+    comentarios?: ComentarioFormatoArticuloModel[];
 
     constructor(){}
     

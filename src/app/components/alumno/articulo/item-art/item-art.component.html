@@ -8,7 +8,7 @@
 <footer class="blockquote-footer">
     <!--Botones para los estudiantes-->
     <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'ENVIADO_POR_CORRECCIONES' && alumno" routerLink="/editarArticulo/{{articulo.id}}" >VER ARTICULO</a>
-    <a class="btn btn-outline-success btn-block" style="color: white" *ngIf="articulo.estado == 'ARTICULO_APROBADO' && alumno" routerLink="/generacionDocumento/{{articulo.id}}" >GENERAR ARTICULO</a>
+    <a class="btn btn-outline-success btn-block" style="color: white" *ngIf="(articulo.estado == 'ARTICULO_APROBADO' || articulo.estado == 'FORMATO_RECHAZADO_CON_COMENTARIO') && alumno" routerLink="/generacionDocumento/{{articulo.id}}" >GENERAR ARTICULO</a>
     
     <!--Botones para los profesores-->
     <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="articulo.estado == 'REVISAR_PROFESOR' && !alumno" routerLink="/revisionArticuloTutor/{{articulo.id}}" >REVISAR ARTICULO</a>

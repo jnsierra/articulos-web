@@ -1,3 +1,5 @@
+import { DocumentDownload } from './../../../models/DocumentDownload.model';
+import { ComentarioFormatoArticuloService } from './../../../servicios/comentarioformatoarticulo.service';
 import { ArticuloModel } from 'src/app/models/articulo.model';
 import { title } from 'process';
 import { FormatoService } from './../../../servicios/formato.service';
@@ -8,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ArticulosService } from 'src/app/servicios/articulos.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-generar-art-word',
@@ -22,17 +23,21 @@ export class GenerarArtWordComponent implements OnInit {
   textErrorFormato:string;
   archivoCargado:boolean;
   articulo: ArticuloModel;
+  formatos: FormatoModel[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private downloadService: DownloadService,
               private articuloService: ArticulosService,
               private _utilesBase64Service: UtilesBase64Service,
+              private _comentarioFormatoArticuloService: ComentarioFormatoArticuloService,
               private _formatoService: FormatoService,
+              private _downloadService: DownloadService, 
               private router: Router) {
     this.archivoCargado = false;
     this.activatedRoute.params.subscribe(params =>{
       this.idArticulo = Number(params['id']);
       this.buscarArticulo();
+      this.consultaFormatos();
     });
   }
 
@@ -103,6 +108,37 @@ export class GenerarArtWordComponent implements OnInit {
           }); 
         }
       }
+    });
+  }
+
+  consultaFormatos(){
+    this._formatoService.consultarFormatoArticulos(this.idArticulo).subscribe(resp => {
+      if(resp && resp.length > 0){
+        this.formatos = resp;
+        this.buscarComentarios();
+      }else{
+        Swal.fire(
+          'Sin Informacion',
+          'No existen formatos por revisar por favor contacte al administrador',
+          'error'
+        );
+      }
+    });
+  }
+
+  buscarComentarios(){
+    this.formatos.forEach(item => {
+      this._comentarioFormatoArticuloService.consultaComentariosByFormato(item.id).subscribe(resp => {
+        item.comentarios = resp;
+      });      
+    }) 
+  }
+
+  descargarHistorico(ubicacion: string){
+    let documento = new DocumentDownload();
+    documento.ubicacion = ubicacion;
+    this._downloadService.getDocumentByUbicacion(documento).subscribe(resp => {
+      this._utilesBase64Service.downloadPdf(resp.document, resp.nombre);
     });
   }
 

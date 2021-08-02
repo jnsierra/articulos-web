@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="viewer-title">
-          <button color="primary" class="btn btn-outline-warning">
+          <button color="primary" class="btn btn-outline-warning" (click)="rechazarFormato()">
             Rechazar
           </button>
           &nbsp; &nbsp;&nbsp;
@@ -54,7 +54,7 @@
 </div>
 <br />
 <br />
-<div class="container container-main">
+<div class="container container-main" *ngIf="formatos">
   <div class="row">
     <div class="col-0 col-sm-0 col-md-1 col-lg-1 col-xl-2"></div>
     <div class="col-0 col-sm-0 col-md-1 col-lg-10 col-xl-8">
@@ -68,18 +68,23 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Mensaje</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Respuesta</th>
+                <th scope="col">Descargar</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of formatos; let indice = index">
                 <td>{{ indice + 1 }}</td>
-                <td>{{ item.mensaje }}</td>
+                <td>{{ (item.comentarios && item.comentarios.length > 0) ?  item.comentarios[0].comentario : 'Sin Comentarios' }} </td>
+                <td>{{ (item.comentarios && item.comentarios.length > 0 && item.comentarios[0].respuestaAlumno ) ?  item.comentarios[0].respuestaAlumno : 'Sin Respuesta' }} </td>
+                <td>
+                  <span style="cursor: pointer" (click)="descargarHistorico(item.ubicacion)">
+                    <i class="material-icons" >cloud_download</i>
+                  </span>                  
+                </td>
               </tr>
             </tbody>
           </table>
-          {{ formatos | json }}
         </div>
       </div>
     </div>

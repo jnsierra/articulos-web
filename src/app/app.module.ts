@@ -73,6 +73,7 @@ import { GestionarRevisionComponent } from './components/profesor/articulo/gesti
 import { AddCommentProfesorComponent } from './components/general/add-comment-profesor/add-comment-profesor.component';
 import { GenerarArtWordComponent } from './components/general/generar-art-word/generar-art-word.component';
 import { RevisionFormatoComponent } from './components/profesor/articulo/revision-formato/revision-formato.component';
+import { RechazarFormatoArticuloComponent } from './components/dialog/rechazar-formato-articulo/rechazar-formato-articulo.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { RevisionFormatoComponent } from './components/profesor/articulo/revisio
     AddCommentProfesorComponent,
     GenerarArtWordComponent,
     RevisionFormatoComponent,
+    RechazarFormatoArticuloComponent,
   ],
   imports: [
     BrowserModule,
