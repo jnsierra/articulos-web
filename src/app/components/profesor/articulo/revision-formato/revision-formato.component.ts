@@ -130,8 +130,24 @@ export class RevisionFormatoComponent implements OnInit {
           }
         })
       }
-      console.log(resp);
     });
+  }
+
+  aprobarArticulo(){
+    this._articuloService.actualizarEstadoArticulo(this.formatos[0].idArticulo, "FORMATO_APROBADO_PARA_PUBLICAR").subscribe(resp => {
+      if(resp){
+        Swal.fire({
+          allowOutsideClick: false,
+          type: 'success',
+          text: 'Formato listo para publicar en revista.'
+        }).then((result) => {
+          if (result.value) {
+            this.router.navigateByUrl('/listaIdeasProf');
+          }
+        });
+      }
+    })
+
   }
 
 }
