@@ -126,4 +126,8 @@ export class UrlServices {
     getEndPointComentarioFormatoArticuloDatos(): string{
         return `${ this.urlBaseDatos }v.1/comentarioformatoarticulo/`
     }
+
+    getEndPointCartaPublicacion(): string{
+        return `${ this.urlBase }v.1/carta-publicacion/`
+    }
 }

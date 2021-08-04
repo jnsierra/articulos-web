@@ -1,7 +1,6 @@
 import { DocumentDownload } from './../../../models/DocumentDownload.model';
 import { ComentarioFormatoArticuloService } from './../../../servicios/comentarioformatoarticulo.service';
 import { ArticuloModel } from 'src/app/models/articulo.model';
-import { title } from 'process';
 import { FormatoService } from './../../../servicios/formato.service';
 import { FormatoModel } from './../../../models/formato.model';
 import { UtilesBase64Service } from './../../../servicios/utilesBase64.service';

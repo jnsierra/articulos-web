@@ -74,6 +74,7 @@ import { AddCommentProfesorComponent } from './components/general/add-comment-pr
 import { GenerarArtWordComponent } from './components/general/generar-art-word/generar-art-word.component';
 import { RevisionFormatoComponent } from './components/profesor/articulo/revision-formato/revision-formato.component';
 import { RechazarFormatoArticuloComponent } from './components/dialog/rechazar-formato-articulo/rechazar-formato-articulo.component';
+import { UploadCartaPublicacionComponent } from './components/alumno/articulo/upload-carta-publicacion/upload-carta-publicacion.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { RechazarFormatoArticuloComponent } from './components/dialog/rechazar-f
     GenerarArtWordComponent,
     RevisionFormatoComponent,
     RechazarFormatoArticuloComponent,
+    UploadCartaPublicacionComponent,
   ],
   imports: [
     BrowserModule,

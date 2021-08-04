@@ -33,6 +33,7 @@ import { ArticuloindividualComponent } from './components/alumno/articuloindivid
 import { SubirpdfComponent } from './components/alumno/subirpdf/subirpdf.component';
 import { SubirpdflistComponent } from './components/alumno/subirpdflist/subirpdflist.component';
 import { CargarformatoComponent } from './components/alumno/idea/cargarformato/cargarformato.component';
+import { UploadCartaPublicacionComponent } from './components/alumno/articulo/upload-carta-publicacion/upload-carta-publicacion.component';
 //Componentes para profesor
 import { ListaideasProfComponent } from './components/profesor/listaideas/listaideas.component';
 import { ActualizarComponent } from './components/alumno/idea/actualizar/actualizar.component';
@@ -62,6 +63,7 @@ const APP_ROUTERS: Routes = [
     { path: 'verVistaPrevia/:id', component: GestionVistapreviaComponent, canActivate: [AuthGuard] },
     { path: 'correccionIdeaJuradoAlumno/:id', component: CorregirIdeaJuradoComponent, canActivate: [AuthGuard] },
     { path: 'generacionDocumento/:id', component: GenerarArtWordComponent, canActivate: [AuthGuard] },
+    { path: 'uploadCartaPublicacion/:id', component: UploadCartaPublicacionComponent, canActivate: [AuthGuard] },
     //Coordinacion
     { path: 'asignacionTutor', component: AsignacionTutorComponent, canActivate: [AuthGuard] },
     { path: 'asignacionTutorIdea/:id', component: AsignarJuradoComponent, canActivate: [AuthGuard] },
