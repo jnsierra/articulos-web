@@ -75,4 +75,9 @@ export class ArticulosService {
     return this.http.post<ArticuloModel>(URL_SERVICE,{});
   }
 
+  consultaByEstados(estado: string){
+    const URL_SERVICE = `${this._urlService.getEndPointArticuloDatos()}by/`;
+    return this.http.get<ArticuloModel[]>(URL_SERVICE, {params: {estado: estado}})
+
+  }
 }

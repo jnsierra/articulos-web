@@ -13,7 +13,27 @@
             <a class="btn btn-outline-primary btn-block" style="color: white" (click)="verFlujo(item.id)">VER FLUJO</a>
           <small class="text-muted">
             Estado  
-            <cite title="Source Title" *ngIf="item.estado == 'ESPERA_JURADO' " >A ESPERA DE ASIGNACIÓN JURADO</cite>          
+            <cite title="Source Title" *ngIf="item.estado == 'ESPERA_JURADO' " >A ESPERA DE ASIGNACIÓN JURADO</cite> {{item.estado}}         
+          </small>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <h2>Articulos por publicar</h2>
+  <h2 *ngIf="listaArticulos.length === 0">NO EXISTEN ARTICULOS POR PUBLICAR</h2> 
+  <div class="container main-container">
+    <div class="card-columns">
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor="let item of listaArticulos ">
+        <div class="card-header"><b>Titulo:</b> {{item.titulo | uppercase}}</div>
+        <div class="card-body">
+          <h5 class="card-title"><b>Introducción: </b>{{item.introduccion | uppercase}}</h5>
+          <p class="card-text"><b>Contenido: </b>{{item.resumen}}</p>
+        </div>
+        <footer class="blockquote-footer">
+            <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'ESPERA_PUBLICACION_CORDINACION' "  >PUBLICAR ARTICULO</a>
+          <small class="text-muted">
+            Estado  
+            <cite title="Source Title" *ngIf="item.estado == 'ESPERA_PUBLICACION_CORDINACION' " >A ESPERA DE PUBLICACIÓN</cite> {{item.estado}}         
           </small>
         </footer>
       </div>

@@ -1,3 +1,5 @@
+import { ArticuloModel } from './../../../../models/articulo.model';
+import { ArticulosService } from 'src/app/servicios/articulos.service';
 import { DibujaProcesoComponent } from './../../../general/dibuja-proceso/dibuja-proceso.component';
 import { Router } from '@angular/router';
 import { IdeaModel } from 'src/app/models/idea.model';
@@ -13,12 +15,16 @@ import { MatDialog } from '@angular/material/dialog';
 export class AsignacionTutorComponent implements OnInit {
 
   listIdeas: IdeaModel[];
+  listaArticulos: ArticuloModel[];
 
   constructor(private _ideasService: IdeaService,
+    private _articulosService: ArticulosService,
     private dialog: MatDialog,
-    private router: Router) {
+    private router: Router,
+    ) {
     this.listIdeas = new Array(0);
-    this.consultaIdeas()
+    this.consultaIdeas();
+    this.consultaArticulos();
   }
 
   ngOnInit(): void {
@@ -28,7 +34,14 @@ export class AsignacionTutorComponent implements OnInit {
     this._ideasService.consultarIdeasByEstado('ESPERA_JURADO').subscribe(resp =>{
       if(resp){
         this.listIdeas = resp;
-        console.log(this.listIdeas);
+      }
+    });
+  }
+
+  consultaArticulos(){
+    this._articulosService.consultaByEstados("ESPERA_PUBLICACION_CORDINACION").subscribe(resp => {
+      if(resp){
+        this.listaArticulos = resp;
       }
     });
   }
