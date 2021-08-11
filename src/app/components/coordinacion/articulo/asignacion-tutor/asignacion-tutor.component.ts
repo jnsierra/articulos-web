@@ -23,6 +23,7 @@ export class AsignacionTutorComponent implements OnInit {
     private router: Router,
     ) {
     this.listIdeas = new Array(0);
+    this.listaArticulos = new Array(0);
     this.consultaIdeas();
     this.consultaArticulos();
   }
