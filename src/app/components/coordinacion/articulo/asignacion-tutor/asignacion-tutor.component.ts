@@ -30,8 +30,8 @@ export class AsignacionTutorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  consultaIdeas(){
+  
+  consultaIdeas(){11
     this._ideasService.consultarIdeasByEstado('ESPERA_JURADO').subscribe(resp =>{
       if(resp){
         this.listIdeas = resp;

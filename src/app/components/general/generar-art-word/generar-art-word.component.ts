@@ -36,7 +36,6 @@ export class GenerarArtWordComponent implements OnInit {
     this.activatedRoute.params.subscribe(params =>{
       this.idArticulo = Number(params['id']);
       this.buscarArticulo();
-      this.consultaFormatos();
     });
   }
 
@@ -52,6 +51,7 @@ export class GenerarArtWordComponent implements OnInit {
           this.archivoCargado=true;
         }       
       }
+      this.consultaFormatos();
     });
   }
 
@@ -115,7 +115,7 @@ export class GenerarArtWordComponent implements OnInit {
       if(resp && resp.length > 0){
         this.formatos = resp;
         this.buscarComentarios();
-      }else{
+      }else if(!this.archivoCargado){
         Swal.fire(
           'Sin Informacion',
           'No existen formatos por revisar por favor contacte al administrador',
