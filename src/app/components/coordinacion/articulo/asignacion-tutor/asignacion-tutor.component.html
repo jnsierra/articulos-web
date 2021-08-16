@@ -28,10 +28,10 @@
         <div class="card-body">
           <h5 class="card-title"><b>Introducción: </b>{{item.introduccion | uppercase}}</h5>
           <p class="card-text"><b>Contenido: </b>{{item.resumen}}</p>
-          <p>Ver carta de publicación <span style="color: blue; text-decoration: underline blue;cursor:pointer;">aquí</span></p>
+          <p>Ver carta de publicación <span style="color: white; text-decoration: underline white;cursor:pointer;font-weight: bolder;" (click)="verCarta(item.ubicacion_carta_publicacion)">aquí</span></p>
         </div>
         <footer class="blockquote-footer">
-            <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'ESPERA_PUBLICACION_CORDINACION' "  >PUBLICAR ARTICULO</a>
+            <a class="btn btn-outline-danger btn-block" style="color: white" *ngIf="item.estado == 'ESPERA_PUBLICACION_CORDINACION' " (click)="publicarArticulo(item.id)" >PUBLICAR ARTICULO</a>
           <small class="text-muted">
             Estado  
             <cite title="Source Title" *ngIf="item.estado == 'ESPERA_PUBLICACION_CORDINACION' " >A ESPERA DE PUBLICACIÓN</cite> {{item.estado}}         
