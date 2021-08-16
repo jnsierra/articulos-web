@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
     }
     this.authServices.login( this.usuario ).subscribe( resp => {
       Swal.close();
+      localStorage.removeItem('cerrandoapp');
       localStorage.setItem('email', this.usuario.email);
       this.consultarUsuarioAutenticado(this.usuario.email);
     }, catchError => {

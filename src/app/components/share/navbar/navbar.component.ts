@@ -89,6 +89,7 @@ export class NavbarComponent {
   }
 
   logout() {
+    localStorage.setItem('cerrandoapp', "Si");
     this.authService.logout();
     this.numNotifi = -1;
     this.router.navigateByUrl('/publico');
