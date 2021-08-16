@@ -74,6 +74,10 @@ export class PublicoComponent {
           this.pieChartDataArt.push(item.conteo);
           this.pieChartLabelsArt.push('ARTICULO CORREGIDO POR EL TUTOR, PARA GENERAR DOCUMENTO');
         }
+        if(item.estado == "PUBLICADO"){
+          this.pieChartDataArt.push(item.conteo);
+          this.pieChartLabelsArt.push('ARTICULO PUBLICADO Y FINALIZADO');
+        }
       });
       console.log( resp );
     });
