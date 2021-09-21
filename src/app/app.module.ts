@@ -75,6 +75,7 @@ import { GenerarArtWordComponent } from './components/general/generar-art-word/g
 import { RevisionFormatoComponent } from './components/profesor/articulo/revision-formato/revision-formato.component';
 import { RechazarFormatoArticuloComponent } from './components/dialog/rechazar-formato-articulo/rechazar-formato-articulo.component';
 import { UploadCartaPublicacionComponent } from './components/alumno/articulo/upload-carta-publicacion/upload-carta-publicacion.component';
+import { ResetearpassComponent } from './components/share/resetearpass/resetearpass.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { UploadCartaPublicacionComponent } from './components/alumno/articulo/up
     RevisionFormatoComponent,
     RechazarFormatoArticuloComponent,
     UploadCartaPublicacionComponent,
+    ResetearpassComponent,
   ],
   imports: [
     BrowserModule,

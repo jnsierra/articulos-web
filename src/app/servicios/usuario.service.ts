@@ -72,4 +72,9 @@ export class UsuarioService {
     const URL_SERVICE = `${this.url.getEndPointUsuariosDatos()}`;
     return this.http.put(URL_SERVICE, {}, { params: { id: usuarioDto.id, estado: usuarioDto.estado, tipoUsuario: usuarioDto.tipoUsuario } });
   }
+
+  recuperarContrasenia(correo: string){
+    const URL_SERVICE = `${this.url.getEndPointUsuarios()}recuperarPass/${correo}/`;
+    return this.http.post(URL_SERVICE,{});
+  }
 }

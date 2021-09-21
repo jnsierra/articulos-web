@@ -1,0 +1,33 @@
+<div class="container main-container">
+  <div class="">
+    <form
+      #f="ngForm"
+      (ngSubmit)="recuperarContrasenia(f)"
+      class="border"
+      style="top: 55%; padding: 30px"
+    >
+      <h2 class="sr-only">Restablecer contraseña</h2>
+      <div class="form-group">
+        <span
+          class="text-danger"
+          *ngIf="f.submitted && f.controls['correo'].invalid"
+          >Correo es obligatorio</span
+        >
+        <mat-form-field class="full-width">
+          <mat-label>Correo</mat-label>
+          <input
+            matInput
+            type="email"
+            name="correo"
+            placeholder="Correo Registrado"
+            [(ngModel)]="correo"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">
+        Enviar
+      </button>
+    </form>
+  </div>
+</div>

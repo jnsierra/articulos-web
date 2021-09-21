@@ -1,3 +1,4 @@
+import { ResetearpassComponent } from './components/share/resetearpass/resetearpass.component';
 import { RevisionFormatoComponent } from './components/profesor/articulo/revision-formato/revision-formato.component';
 import { GenerarArtWordComponent } from './components/general/generar-art-word/generar-art-word.component';
 import { GestionarRevisionComponent } from './components/profesor/articulo/gestionar-revision/gestionar-revision.component';
@@ -43,6 +44,7 @@ const APP_ROUTERS: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'registrarse', component: RegistrarseComponent },
+    { path: 'reseteoPass', component: ResetearpassComponent },
     { path: 'admAuUsuario', component: AutorizarusuariosComponent, canActivate: [AuthGuard] },
     { path: 'actUsuario/:id', component: ActusuarioComponent, canActivate: [AuthGuard] },
     { path: 'crearIdea', component: CrearideaComponent, canActivate: [AuthGuard] },
