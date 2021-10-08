@@ -56,9 +56,11 @@ export class GenerarArtWordComponent implements OnInit {
   }
 
   generarDocumento() {
+    Swal.showLoading();
     this.downloadService.getFormatoArticulo(this.idArticulo).subscribe( resp => {
       if(resp){
         this._utilesBase64Service.downloadPdf(resp.document, resp.nombre);
+        Swal.fire({title:'Exitoso',type: 'success', text: 'Formato generado de forma correcta'});
       }
     });
   }

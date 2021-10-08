@@ -16,7 +16,9 @@ enum EstadoIdea {
   IDEA_FORMATO_RECHAZADO_JURADO,
   IDEA_FINALIZADA,
   ARTICULO_EN_CORRECCION_TUTOR,
-  ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION
+  ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION,
+  ARTICULO_FORMATO_APROBADO_PARA_PUBLICAR,
+  ARTICULO_ESPERA_PUBLICACION_CORDINACION
 }
 
 @Component({
@@ -81,7 +83,6 @@ export class DibujaProcesoComponent implements OnInit {
       if(resp){
         let articulo = new ArticuloModel();
         articulo = articulo.of(resp);
-        //console.log(articulo);
         if(articulo.estado === 'ENVIADO_POR_CORRECCIONES'){
           //envidado por correcciones
           this.estadoFlujo = EstadoIdea.IDEA_FINALIZADA;
@@ -89,6 +90,10 @@ export class DibujaProcesoComponent implements OnInit {
           this.estadoFlujo = EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR;
         }else if(articulo.estado === 'POR_REVISAR'){
           this.estadoFlujo = EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION;
+        }else if(articulo.estado == 'FORMATO_APROBADO_PARA_PUBLICAR'){
+          this.estadoFlujo = EstadoIdea.ARTICULO_FORMATO_APROBADO_PARA_PUBLICAR;
+        }else if(articulo.estado == 'ESPERA_PUBLICACION_CORDINACION'){
+          this.estadoFlujo = EstadoIdea.ARTICULO_ESPERA_PUBLICACION_CORDINACION;
         }
         this.dibujarProceso();
       }
@@ -148,11 +153,16 @@ export class DibujaProcesoComponent implements OnInit {
       //sumo 152 pixeles al eje x
       this.generarFlecha(ctx, 1432,80,25);
 
-      this.generarCuadroBase(ctx,1460,50, "REVISION FORMATO", "Tutor", (this.estadoFlujo === EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION) ? this.activoColor : null  );
+      this.generarCuadroBase(ctx,1460,50, "Revisión Formato", "Tutor", (this.estadoFlujo === EstadoIdea.ARTICULO_EN_CORRECCION_TUTOR_POR_APROBACION) ? this.activoColor : null  );
       //sumo 152 pixeles al eje x
       this.generarFlecha(ctx, 1612,80,25);
+      
+      this.generarCuadroBase(ctx,1640,50, "Subir Carta Publicación", "Alumno", (this.estadoFlujo === EstadoIdea.ARTICULO_FORMATO_APROBADO_PARA_PUBLICAR) ? this.activoColor : null  );
+      //sumo 152 pixeles al eje x
+      this.generarFlecha(ctx, 1792,80,25);
 
-      this.generarCuadroBase(ctx,1640,50, "Publicación", "Alumno");
+      
+      this.generarCuadroBase(ctx,1820,50, "Publicación", "Coordinación", (this.estadoFlujo === EstadoIdea.ARTICULO_ESPERA_PUBLICACION_CORDINACION) ? this.activoColor : null);
       //sumo 152 pixeles al eje x
       //this.generarFlecha(ctx, 1612,80,25);
 
